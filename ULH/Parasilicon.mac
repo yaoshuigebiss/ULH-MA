@@ -1,0 +1,6 @@
+!==================== 定义材料属性
+KEYW,PR_SGVOF,0
+ET,2,SHELL181  
+EX,2,EX_Silicon
+PRXY,2,PRXY_Silicon
+DENS,2,DENS_Silicon 

@@ -1,0 +1,4 @@
+/POST1   
+/EFACET,1    
+PLNSOL, U,X, 0,1.0  
+/REPLOT

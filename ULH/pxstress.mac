@@ -1,0 +1,10 @@
+/POST1  
+ /EFACET,1
+SET,LAST
+PLNSOL, S,X, 0,1.0  
+/REPLOT
+
+
+
+ 
+

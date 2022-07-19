@@ -1,0 +1,17 @@
+*Abb,NDIR-ON,/psymb,ndir,1
+*Abb,NDIR-OFF,/psymb,ndir,0
+*Abb,ESYS-ON,/psymb,esys,1
+*Abb,ESYS-OFF,/psymb,esys,0
+*Abb,LDIR-ON,/psymb,ldir,1
+*Abb,LDIR-OFF,/psymb,ldir,0
+*Abb,ADIR-On,/psymb,adir,1
+*Abb,ADIR-Off,/psymb,adir,0
+*abb,PRES-ON,/psf,pres,2
+*abb,PRES-Off,/psf,pres,1
+*abb,WIRE-ON,/device,vector,on
+*abb,WIRE-OFF,/device,vector,off
+*abb,VTRL-ON,/TRLCY,VOLU,1,ALL
+*abb,VTRL-OFF,/TRLCY,VOLU,0,ALL
+*abb,ETRL-ON,/TRLCY,ELEM,1,ALL
+*abb,ETRL-OFF,/TRLCY,ELEM,0,ALL
+*abb,RETURN,abbres,,GJ_1_v3.0,abbr

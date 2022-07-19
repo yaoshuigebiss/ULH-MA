@@ -1,0 +1,17 @@
+*abbr,SAV_DB,save
+*abbr,RES_DB,resume
+*abbr,Sav_S1,SEone
+*abbr,RES_S1,Rmone
+*abbr,Undo,undo
+*abbr,QUERY,STT
+*abbr,KPLOT,kplot
+*abbr,LPLOT,lplot
+*abbr,APLOT,aplot
+*abbr,VPLOT,vplot
+*abbr,NPLOT,nplot
+*abbr,EPLOT,eplot
+*abbr,ALLSEL,allsel,all
+*abbr,ESH-ON,/eshape,1
+*abbr,ESH-OFF,/eshape,0
+*abbr,NUM-Switch,abbres,,GJ_2_v3.0,abbr
+*abbr,Sign-Switch,abbres,,GJ_3_v3.0,abbr

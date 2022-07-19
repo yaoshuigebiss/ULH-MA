@@ -1,0 +1,21 @@
+*do,i,1,4,1
+   dk,4*n+i,all,US
+*enddo
+
+sfgrad,pres,,x,0,0
+asel,s,loc,x,-(1.2),1.2
+asel,r,loc,z,0,1.2
+sfa,all,1,pres,q
+allsel
+acel,0,0,g
+
+FLST,2,6,3,ORDE,6   
+FITEM,2,n+n/4 
+FITEM,2,n+n/2  
+FITEM,2,n+n/2+n/4 
+FITEM,2,3*n+n/4  
+FITEM,2,3*n+n/2 
+FITEM,2,3*n+n/2+n/4
+FK,P51X,FY,-fy
+
+ 

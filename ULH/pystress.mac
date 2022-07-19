@@ -1,0 +1,5 @@
+/POST1   
+/EFACET,1  
+SET,LAST
+PLNSOL, S,Y, 0,1.0  
+/replot

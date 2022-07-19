@@ -1,0 +1,7034 @@
+:F UIMENU.GRN
+:D Modified on %E%, Revision (SID) = %I% 
+:I    389,   97978,  107728
+:! 
+:N Men_FP-Power Island
+:S    224,   129,    88
+:T Menu
+:A ULH-Support Modeling Analysis
+:D Menu of ULH-Support Modeling Analysis
+Men_Materials
+Men_Modelss
+Men_Model_Mesh
+Fnc_Model_DDof
+Fnc_Model_SSolve
+Men_My_Results
+:E END
+:!********************************************************************
+:N Men_Materials 
+:S    137,   101,    29
+:T Menu
+:A Materia_Selection
+:D Menu of Material_Selection
+Fnc_My_steel
+Fnc_My_silicon 
+:E END
+:!********************************************************************
+:N Men_Modelss
+:S    133,    91,    35
+:T Menu
+:A Model_Buliding
+:D Menu of Model_Buliding
+Fnc_Steel_column
+Fnc_Silicon_plate
+:E END
+:!********************************************************************
+:N Men_Model_Mesh
+:S    125,    86,    32
+:T Menu
+:A Model_Mesh
+:D Menu of Model_Mesh
+Fnc_Mesh_steel
+Fnc_Mesh_silicon
+:E END
+:!********************************************************************
+:N Men_My_Results
+:S    141,    86,    48
+:T Menu
+:A My_Results
+:D Menu of My_Results
+Men_My_stress_result
+Men_My_displacement_result
+:E END
+:!********************************************************************
+:N Men_My_stress_result
+:S    164,   104,    53
+:T Menu
+:A Structure_stress
+:D Menu of Structure_stress
+Fnc_X_stress
+Fnc_Y_stress
+Fnc_Z_stress
+Fnc_FN-stress
+:E END
+:!********************************************************************
+:N Men_My_displacement_result
+:S    249,   122,   120
+:T Menu
+:A Structure_displacement
+:D Menu of Structure_displacement
+Fnc_X-Structure-displacement
+Fnc_Y-Structure-displacement
+Fnc_Z-Structure-displacement
+Fnc_Total-Structure-displacement
+:E END
+:!********************************************************************
+:N Fnc_MFMCC
+:S    568,   376,   185
+:T Menu
+:C )/NOPR
+:C )*GET,_z1,common,,dofcom,,int,82   ! get fieldflag for MFAN command
+:C )*GET,_z2,common,,MFLDCMD,,int,2279 ! 
+:C )keyw,KEY,0
+:C )*if,_z1,eq,1,then !{
+:C )*if,_z2,eq,0,then !{
+:C )keyw,KEY,1
+:C )*endif !}
+:C )*if,_z2,eq,3,then !{
+:C )keyw,KEY,1
+:C )*endif !}
+:C )*endif !}
+:C )/GO
+:A MFX-ANSYS/ANSYS
+:D MFX-ANSYS/ANSYS
+K_LN(KEY)
+Men_MFS_MCCSetup
+K_LN(KEY)
+Fnc_MFX_AA_LoadComm
+K_LN(KEY)
+Fnc_MFX_Time
+K_LN(KEY)
+Men_MFX_AC_Advanced
+K_LN(KEY)
+Fnc_MFMCC_Clear
+K_LN(KEY)
+Fnc_MFMCC_Stat
+K_LN(KEY)
+Fnc_MFX_Write
+:E END
+:! 
+:N Fnc_MFSCC
+:S    646,   376,   263
+:T Menu
+:C )/NOPR
+:C )*GET,_z1,common,,dofcom,,int,82   ! get fieldflag for MFAN command
+:C )*GET,_z2,common,,MFLDCMD,,int,2279 ! 
+:C )keyw,KEY,0
+:C )*if,_z1,eq,1,then !{
+:C )*if,_z2,eq,0,then !{
+:C )keyw,KEY,1
+:C )*endif !}
+:C )*if,_z2,eq,1,then !{
+:C )keyw,KEY,1
+:C )*endif !}
+:C )*endif !}
+:C )/GO
+:A MFS-Single Code
+:D MFS-Single Code
+K_LN(KEY)
+Men_MFS_Define
+K_LN(KEY)
+Fnc_MFS_Capture
+K_LN(KEY&PREP7)
+Fnc_MFS_Import
+K_LN(KEY)
+Men_MFS_SCCSetup
+K_LN(KEY)
+Men_MFS_SCCInterface
+K_LN(KEY)
+Men_MFS_Stagger
+K_LN(KEY)
+Fnc_MFS_Time
+K_LN(KEY)
+Fnc_MFS_Freq
+K_LN(KEY)
+Fnc_MFSCC_Clear
+K_LN(KEY)
+Fnc_MFSCC_Stat
+:E END
+:! 
+:N Fnc_MFSCC_Solu
+:S    620,   381,   232
+:T Menu
+:C )/NOPR
+:C )*GET,_z1,common,,dofcom,,int,82   ! get fieldflag for MFAN command
+:C )*GET,_z2,common,,MFLDCMD,,int,2279 ! 
+:C )keyw,KEY,0
+:C )*if,_z1,eq,1,then !{
+:C )*if,_z2,eq,0,then !{
+:C )keyw,KEY,1
+:C )*endif !}
+:C )*if,_z2,eq,1,then !{
+:C )keyw,KEY,1
+:C )*endif !}
+:C )*endif !}
+:C )/GO
+:A MFS-Single Code
+:D MFS-Single Code
+K_LN(KEY)
+Men_MFS_Define
+K_LN(KEY)
+Fnc_MFS_Capture
+K_LN(KEY)
+Men_MFS_SCCSetup
+K_LN(KEY)
+Men_MFS_SCCInterface
+K_LN(KEY)
+Men_MFS_Stagger
+K_LN(KEY)
+Fnc_MFS_Time
+K_LN(KEY)
+Fnc_MFS_Freq
+K_LN(KEY)
+Fnc_MFSCC_Clear
+K_LN(KEY)
+Fnc_MFSCC_Stat
+:E END
+:! 
+:N Fnc_MFSET_KEY
+:S    459,   250,   202
+:T  Command
+:C )! Fnc_MFSET_KEY
+:K (PREP7*SOLUTION*NOFILTER)
+:C )/NOPR
+:C )*GET,_z1,common,,dofcom,,int,82   ! get fieldflag for MFAN command
+:C )/GO
+:A Select method
+:D Multi-field ON/OFF
+:H Hlp_C_MFANALYSIS
+Inp_NoApply
+  Typ_lab
+  Prm_ 
+Cmd_)*SET,_z1
+ Fld_2
+  Prm_[MFAN]    MFS/MFX Activation key
+  Typ_Lis_RadioB
+  Lis_OFF,0
+  Lis_ON,1
+  Def_*PAR(_z1)
+Cmd_)/GO
+Cal_Fnc_MF_Off,2,eq,0,1
+Cal_Fnc_MF_ON,2,eq,1,1
+:E END
+:! 
+:N Fnc_MFX_Ans_CFX
+:S    567,   378,   182
+:T Menu
+:C )/NOPR
+:C )*GET,_z1,common,,dofcom,,int,82   ! get fieldflag for MFAN command
+:C )*GET,_z2,common,,MFLDCMD,,int,2279 ! 
+:C )keyw,KEY,0
+:C )*if,_z1,eq,1,then !{
+:C )*if,_z2,eq,0,then !{
+:C )keyw,KEY,1
+:C )*endif !}
+:C )*if,_z2,eq,2,then !{
+:C )keyw,KEY,1
+:C )*endif !}
+:C )*endif !}
+:C )/GO
+:A MFX-ANSYS/CFX
+:D MFX-ANSYS/CFX
+K_LN(KEY)
+Fnc_MFX_AC_Solu
+K_LN(KEY)
+Fnc_MFX_AC_LoadComm
+K_LN(KEY)
+Fnc_MFX_Time
+K_LN(KEY)
+Men_MFX_AC_Advanced
+K_LN(KEY)
+Fnc_MFX_Clear
+K_LN(KEY)
+Fnc_MFMCC_Stat
+K_LN(KEY)
+Fnc_MFX_Write
+:E END
+:! 
+:N Men_AAOnComp
+:S    352,   234,   111
+:T Menu
+:A    On Components
+:D Apply Angular Acceleration On Components
+:K ((PR_STRUC*PR_FLUID*PR_CFD*pr_set) + (lsdyna))
+:K #(STRUCTRL*FLUID*CFD*NOFILTER)
+:K #((PREP7*SOLUTION)+(cfd*NOFILTER))
+Fnc_CMDOMEGA_Dir
+Fnc_CMDOMEGA_DNPik
+Fnc_CMDOMEGA_DKPik
+Fnc_CMDOMEGA_Axis
+Fnc_CMDOMEGA_ANPik
+Fnc_CMDOMEGA_AKPik
+:E END
+:! 
+:N Men_AVOnComp
+:S    342,   230,   105
+:T Menu
+:A    On Components
+:D Apply Angular Velocity On Components
+:K ((PR_STRUC*PR_FLUID*PR_CFD*pr_set) + (lsdyna))
+:K #(STRUCTRL*FLUID*CFD*NOFILTER)
+:K #((PREP7*SOLUTION)+(cfd*NOFILTER))
+Fnc_CMOMEGA_Dir
+Fnc_CMOMEGA_DNPik
+Fnc_CMOMEGA_DKPik
+Fnc_CMOMEGA_Axis
+Fnc_CMOMEGA_ANPik
+Fnc_CMOMEGA_AKPik
+:E END
+:! 
+:N Men_Adamsc
+:S    148,   110,    31
+:T MENU
+:A ADAMS Connection
+:D ADAMS File Transfer
+:K (STRUCTRL+lsdyna)
+Fnc_ADAMSOUT
+Sep_
+Fnc_WSPRINGS
+:E END
+:! 
+:N Men_Add
+:S     98,    63,    28
+:T Menu
+:A    Add
+:C
+:D Add
+Fnc_VADD
+Fnc_AADD
+Fnc_LCOMB
+:E END
+:! 
+:N Men_AdvSolOpt
+:S    135,    78,    50
+:T Menu
+:A  Advanced Solution Option
+Sep_
+Men_DecOpt
+Men_SymmetryOptions
+Men_Surf_Mesh
+:E END
+:! 
+:N Men_AnalyTyp
+:S    228,   106,   115
+:T Menu
+:A Analysis Type
+:K (lsdyna)
+:P (LINPLUS*THERMAL*ELECMAG)
+Fnc_ANTYPE
+Fnc_Restart
+K_LN(lsdyna+SOLUTION)
+Fnc_EuidlSol
+Fnc_EXPASS
+Fnc_An_Opts
+Fnc_ANTYPE
+Fnc_Restart
+Fnc_EXPASS
+:E End
+:! 
+:N Men_Analysis
+:S    396,   123,   266
+:T Menu
+:A Analysis Type
+:D Analysis Type
+:K (lsdyna)
+:P (LINPLUS*THERMAL*ELECMAG)
+Fnc_ANTYPE
+K_LN(lsdyna+((modal+buckling+trnsient)*FULL*SIMPLOFF))
+Fnc_Restart
+K_LN(lsdyna+SOLUTION)
+Fnc_EuidlSol
+K_LN(lsdyna+(MODAL*SUBSTRUC*BUCKLING*TRNSIENT*HARMONIC*SIMPLOFF))
+Fnc_EXPASS
+K_LN(lsdyna+ROMES*((static+trnsient)*SIMPLOFF*REDUCED*MODESUP))
+Fnc_An_Opts
+:E END
+:! 
+:N Men_AngAccel
+:S    251,   220,    24
+:T Menu
+:A    Angular Accel
+:D Apply Angular Acceleration
+:K ((PR_STRUC*PR_FLUID*PR_CFD*pr_set) + (lsdyna))
+:K #(STRUCTRL*FLUID*CFD*NOFILTER)
+:K #((PREP7*SOLUTION)+(cfd*NOFILTER))
+Fnc_DOMEGA
+Men_AAOnComp
+:E END
+:! 
+:N Men_AngVeloc
+:S    276,   219,    50
+:T Menu
+:A    Angular Velocity
+:D Apply Angular Velocity
+:K ((PR_STRUC*PR_FLUID*PR_CFD*pr_set) + (lsdyna))
+:K #(STRUCTRL*FLUID*CFD*NOFILTER)
+:K #((PREP7*SOLUTION)+(cfd*NOFILTER))
+Fnc_OMEGA
+Fnc_RotCoriolis
+Men_AVOnComp
+Fnc_SYNCRO
+:E END
+:! 
+:N Men_AppConvect
+:S    290,   177,   106
+:T Menu
+:A    Convection
+:D Apply Convection
+:K (PR_THERM*PR_FLUID*PR_CFD*pr_set)
+:K (THERMAL*FLUID*CFD*NOFILTER)
+:P (THERMAL*FLOTRAN)
+Fnc_SFL_conv
+Fnc_SFA_conv
+Fnc_SF_conv
+Sep_
+-On Elements-
+Fnc_SFE_convu
+Fnc_SFE_convt
+Sep_
+Fnc_LDREAD_film
+:E END
+:! 
+:N Men_AppDisplace
+:S    375,   162,   206
+:T Menu
+:A    Displacement
+:D Apply Displacements
+:K ((PR_STRUC*pr_set)+(lsdyna))
+:K #(STRUCTRL*NOFILTER)
+:P (LINPLUS)
+Fnc_DL_u
+Fnc_DA_u
+Fnc_DK_u
+Fnc_D_u
+Fnc_D_uCM
+Fnc_DJ_joint
+Sep_
+-Symmetry B.C.-
+Fnc_DL_symm_na
+Fnc_DL_symm
+Fnc_DA_symm
+Fnc_DSYM_symm
+Sep_
+-Antisymm B.C.-
+Fnc_DL_asym_na
+Fnc_DL_asym
+Fnc_DA_asym
+Fnc_DSYM_asym
+:E END
+:! 
+:N Men_AppElecExcit
+:S    589,   217,   365
+:T Menu
+:A    Excitation
+:D    Excitation
+:K (PR_ELMAG*pr_set*PR_MULTI*(PR_THERM+ELECTRIC))
+:K (ELECTRIC+vfed)*CIRC*ELECSTAT*TIMEINTP*EDGEELC*NOFILTER)
+:P (ELECMAG*THERMAL)
+Fnc_-AppCurrent-
+Fnc_FK_amps
+Fnc_F_amps
+Fnc_-ImprCurr-
+Fnc_FK_amps_ic
+Fnc_F_amps_ic
+Sep_
+Fnc_-AppCharge-
+Fnc_FK_chrg
+Fnc_F_chrg
+Sep_
+Fnc_-AppCharDens-
+Fnc_BFL_chrg
+Fnc_BFA_chrg
+Fnc_BFV_chrg
+Fnc_BFK_chrgd
+Fnc_BF_chrgd
+Fnc_BFE_chrgd
+Sep_
+Fnc_-AppSurfChar-
+Fnc_SFL_chrgs
+Fnc_SFA_chrgs
+Fnc_SF_chrgs
+Fnc_SFE_chrgs
+Sep_
+Fnc_-AppElecField-
+Fnc_BFL_ef
+Fnc_BFA_ef
+Fnc_BF_ef
+:E END
+:! 
+:N Men_AppElecFlag
+:S    342,   205,   130
+:T Menu
+:A    Flag
+:D    Flag
+:K (PR_ELMAG*pr_set*PR_MULTI*(PR_THERM+ELECTRIC))
+:K ((ELECTRIC+vfed)*CIRC*ELECSTAT*TIMEINTP*EDGEELC*NOFILTER)
+:P (ELECMAG*THERMAL)
+Fnc_FMAGBCE
+Sep_
+Fnc_-AppInfinite-
+Fnc_SFL_inf
+Fnc_SFA_inf
+Fnc_SF_inf
+Sep_
+Fnc_-AppMaxwell-
+Fnc_SFL_mxwf
+Fnc_SFA_mxwf
+Fnc_SF_mxwf
+:E END
+:! 
+:N Men_AppElecPoten
+:S    672,   226,   439
+:T Menu
+:A    Boundary
+:D Apply Electric Potential
+:K (PR_ELMAG*pr_set*PR_MULTI*(PR_THERM+ELECTRIC))
+:K (ELECTRIC+vfed)*CIRC*ELECSTAT*TIMEINTP*EDGEELC*NOFILTER)
+:P (ELECMAG*THERMAL)
+Fnc_-AppImped_E-
+Fnc_SFA_impdE
+Fnc_SF_impdE
+Sep_
+Fnc_-AppShield-
+Fnc_SFA_shld
+Fnc_SF_shld
+Sep_
+Fnc_-Voltage-
+Fnc_DK_volt
+Fnc_D_volt
+Fnc_DL_volt
+Fnc_DA_volt
+Men_J-Normal1
+Fnc_J-Parall
+Sep_
+Fnc_-TimeInt-
+Fnc_DK_volt_ti
+Fnc_D_volt_ti
+Fnc_DA_volt_ti
+Men_J-Normal-T
+Fnc_J-Parall-T
+Sep_
+Fnc_-PerfEC-
+Fnc_DL_pec
+Fnc_DA_pec
+Fnc_D_pec
+Fnc_DA_pmc
+K_LN(EDGEELC*NOFILTER)
+Sep_
+Fnc_-PMLOpt-
+Fnc_PMLOPT
+Fnc_PMLOPT_ST
+Fnc_PMLOPT_CLE
+Sep_
+Men_AppEmagTemp
+:E END
+:! 
+:N Men_AppEmagTemp
+:S    302,   158,   137
+:T Menu
+:A Temperature
+:D Apply Temperature
+:K #((ELECTRIC+ELECSTAT*EDGEELC*QUASISTA)*(MAGNETIC+thermal)*NOFILTER)
+Fnc_EM_BFL_temp
+Fnc_EM_BFA_temp
+Fnc_EM_BFV_temp
+Fnc_EM_BFK_temp
+Sep_
+Fnc_EM_BF_temp
+Fnc_EM_LDREAD_temp
+Fnc_EM_TUNIF
+Sep_
+Fnc_EM_BFE_temp
+:E END
+:! 
+:N Men_AppFSI
+:S    196,   154,    35
+:T Menu
+:A    Field Surface
+:D Apply Field Surface Interface
+:K (PR_FLUID*pr_set)
+:K (FLUID*NOFILTER)
+:P (FULL_ANS)
+Fnc_SFL_fsi
+Fnc_SFA_fsi
+Fnc_SF_fsi
+:E End
+:! 
+:N Men_AppFlPrsANS
+:S    165,   111,    47
+:T Menu
+:A    Pressure DOF
+:K (PR_FLUID*pr_set)
+:K (FLUID*NOFILTER)
+Fnc_DK_pres
+Fnc_DL_pres
+Fnc_DA_pres
+Fnc_D_pres
+:E END
+:! 
+:N Men_AppFlowANS
+:S    136,   102,    27
+:T Menu
+:A    Flow
+:K (PR_FLUID*pr_set)
+:K (FLUID*NOFILTER)
+Fnc_FK_flow_a
+Fnc_F_flow_a
+:E END
+:! 
+:N Men_AppFluidDisp
+:S    196,   142,    47
+:T Menu
+:A    Displacement
+:D Apply Displacements in Flotran
+:K (PR_CFD*pr_set)
+:K (CFD*NOFILTER)
+Fnc_DK_uCFD
+Fnc_DL_uCFD
+Fnc_DA_uCFD
+Fnc_D_uCFD
+:E END
+:! 
+:N Men_AppFluidPres
+:S    162,   108,    47
+:T Menu
+:A    Pressure DOF
+:K (PR_CFD*pr_set)
+:K (CFD*NOFILTER)
+Fnc_DK_pres
+Fnc_DL_pres
+Fnc_DA_pres
+Fnc_D_pres
+:E END
+:! 
+:N Men_AppFluidVel
+:S    163,   121,    35
+:T Menu
+:A    Velocity
+:D Apply Velocity
+:K (PR_CFD*pr_set)
+:K (CFD*NOFILTER)
+Fnc_DK_v
+Fnc_DL_v
+Fnc_DA_v
+Fnc_D_v
+:E END
+:! 
+:N Men_AppForce
+:S    246,   158,    81
+:T Menu
+:A    Force/Moment
+:D Apply Force/Moment
+:K ((PR_STRUC*PR_CFD*pr_set) + (lsdyna))
+:K #(STRUCTRL*CFD*NOFILTER)
+Fnc_FK_fm
+Fnc_F_fm
+Fnc_F_fmCM
+Fnc_FJ_joint
+Sep_
+Fnc_LDREAD_reac
+Fnc_LDREAD_mforc
+:E END
+:! 
+:N Men_AppHeatFlow
+:S    159,   129,    23
+:T Menu
+:A    Heat Flow
+:D Apply Heat Flow
+:K (PR_THERM*pr_set)
+:K (THERMAL*NOFILTER)
+Fnc_FK_heat
+Fnc_F_heat
+:E END
+:! 
+:N Men_AppHeatFlux
+:S    259,   155,    97
+:T Menu
+:A    Heat Flux
+:D Apply Heat Flux
+:K (PR_THERM*PR_FLUID*PR_CFD*pr_set)
+:K (THERMAL*FLUID*CFD*NOFILTER)
+Fnc_SFL_hflux
+Fnc_SFA_hflux
+Sep_
+Fnc_SF_hflux
+Fnc_SFE_hflux
+Sep_
+Fnc_LDREAD_hflu
+Fnc_LDREAD_hfhf
+:E END
+:! 
+:N Men_AppHeatGen
+:S    249,   123,   119
+:T Menu
+:A    Heat Generat
+:K (PR_THERM*PR_CFD*pr_set)
+:K (THERMAL*CFD*NOFILTER)
+Fnc_BFL_hgen
+Fnc_BFA_hgen
+Fnc_BFV_hgen
+Fnc_BFK_hgen
+Sep_
+Fnc_BF_hgen
+Fnc_BFUNIF_hgen
+Sep_
+Fnc_BFE_hgen
+Fnc_LDREAD_hgen
+:E END
+:! 
+:N Men_AppHeatGenANS
+:S    200,   113,    80
+:T Menu
+:A    Heat Generat
+:K (PR_FLUID*pr_set)
+:K (FLUID*NOFILTER)
+Fnc_BFK_hgen
+Sep_
+Fnc_BF_hgen
+Fnc_BFUNIF_hgen
+Sep_
+Fnc_BFE_hgen
+Fnc_LDREAD_hgen
+:E END
+:! 
+:N Men_AppHeatGenCFD
+:S    193,   109,    77
+:T Menu
+:A    Heat Generat
+:K (PR_CFD*pr_set)
+:K (CFD*NOFILTER)
+Fnc_BFA_hgen
+Fnc_BFV_hgen
+Sep_
+Fnc_BF_hgen
+Fnc_BFE_hgen
+Sep_
+Fnc_LDREAD_hgen
+:E END
+:! 
+:N Men_AppImpedance
+:S    192,   129,    56
+:T Menu
+:A    Impedance
+:D Apply Impedance
+:K (pr_set*PR_FLUID)
+:K #(FLUID*NOFILTER)
+Fnc_SFL_impd
+Fnc_SFA_impd
+Sep_
+Fnc_SF_impd
+Fnc_SFE_impd
+:E End
+:! 
+:N Men_AppLoadVect
+:S    212,   150,    55
+:T Menu
+:A Load Vector
+:D Apply Load Vector
+:K (lsdyna)
+:K #(PREP7*SOLUTION+pmethod*elecstat)
+:P (LINPLUS)
+Fnc_SFE_selv
+Fnc_LVSCALE
+Fnc_LVSCALE_PSD
+Fnc_RMLVSCALE
+:E End
+:! 
+:N Men_AppMagExcit
+:S    380,   135,   238
+:T Menu
+:A    Excitation
+:D   Excitation
+:K (PR_ELMAG*pr_set+cfd)
+:K #((MAGNETIC)*NOFILTER)
+Fnc_-AppCurrDens-
+Fnc_BFL_js
+Fnc_BFA_js
+Fnc_BFV_js
+Fnc_BFK_js
+Fnc_BF_js
+Fnc_BFE_js
+Fnc_LDREAD_js
+Sep_
+Fnc_-AppMagField-
+Fnc_BFA_h
+Fnc_BF_h
+Sep_
+Fnc_-AppVoltDrop-
+Fnc_BFA_vltg
+Fnc_BFV_vltg
+Fnc_BFE_vltg
+Sep_
+K_LN(SCALARP*NOFILTER)
+Fnc_RACE
+:E END
+:! 
+:N Men_AppMagFlag
+:S    262,   145,   110
+:T Menu
+:A    Flag
+:D   Apply Magnetic Flag
+:K (PR_ELMAG*pr_set+cfd)
+:K #((MAGNETIC+edgeelc)*NOFILTER)
+Fnc_FMAGBC
+Sep_
+Fnc_-AppInfinite-
+Fnc_SFL_inf
+Fnc_SFA_inf
+Fnc_SF_inf
+Sep_
+Fnc_-AppMCI-
+Fnc_SFA_mci
+Fnc_SF_mci
+:E END
+:! 
+:N Men_AppMagMisc
+:S    389,   144,   238
+:T Menu
+:A    Other
+:D   Apply Other Loads
+:K (PR_ELMAG*pr_set+cfd)
+:K #((MAGNETIC+edgeelc)*NOFILTER)
+Fnc_-AppMagFlux-
+Fnc_FK_flux
+Fnc_F_flux
+Sep_
+Fnc_-AppCurrSeg-
+Fnc_FK_csg
+Fnc_F_csg
+Sep_
+Fnc_-AppMaxwell-
+Fnc_SFL_mxwf
+Fnc_SFA_mxwf
+Fnc_SF_mxwf
+Sep_
+Fnc_-AppVirtDisp-
+Fnc_BFK_mvdi
+Fnc_BF_mvdi
+Sep_
+-Electric Field-
+Fnc_BFE_EF
+Fnc_LDREAD_EF
+:E END
+:! 
+:N Men_AppMagPoten
+:S    393,   153,   233
+:T Menu
+:A    Boundary
+:D Apply Magnetic Potential
+:K (PR_ELMAG*pr_set+cfd)
+:K #((MAGNETIC+edgeelc)*NOFILTER)
+Fnc_-ScalarPot-
+Fnc_DK_mag
+Fnc_D_mag
+Fnc_DA_mag
+Fnc_D_magP
+Men_FluxNorma
+Sep_
+Fnc_-VectorPot-
+Fnc_DL_a
+Fnc_DA_a
+Fnc_DK_a
+Fnc_D_a
+Men_VectFluxP
+Men_VectFluxN
+Fnc_PERBC2D
+Sep_
+Fnc_-EdgeMVP-
+Men_FluxPMVP
+Fnc_DA_azN
+Sep_
+Men_AppEmagTemp
+:E END
+:! 
+:N Men_AppNormVel
+:S    154,   117,    30
+:T Menu
+:A    Normal Velo
+:K (PR_FLUID*pr_set)
+:K ((FLUID+TFILM)*NOFILTER)
+Fnc_BFA_norm_v
+Fnc_BFE_norm_v
+:E END
+:! 
+:N Men_AppOtherStru
+:S    328,   180,   141
+:T Menu
+:A    Other
+:D Apply Other Structural Loads
+:K ((PR_STRUC*PR_FLUID*PR_CFD*pr_set) + (lsdyna))
+:K #(STRUCTRL*FLUID*CFD*NOFILTER)
+Fnc_App_Stress
+P_LN(LINPLUS)
+Sep_
+Fnc_-Fluence-
+Fnc_BFL_flue
+Fnc_BFA_flue
+Fnc_BFV_flue
+Fnc_BFK_flue
+Fnc_BF_flue
+Fnc_BFE_flue
+Fnc_BFUNIF_flue
+:E END
+:! 
+:N Men_AppPressure
+:S    302,   142,   153
+:T Menu
+:A    Pressure
+:D Apply Pressure
+:K ((PR_STRUC*pr_set) + (lsdyna))
+:K #(STRUCTRL*NOFILTER)
+Fnc_SFL_pres
+Fnc_SFA_pres
+Fnc_SF_pres
+Fnc_SF_presCM
+Sep_
+K_LN(cyclic)
+Fnc_SFE_pres
+K_LN(CYCLIC)
+Fnc_SFE_p
+Fnc_SFE_presCM
+Fnc_LDREAD_pres
+Sep_
+Fnc_SFBEAM
+:E END
+:! 
+:N Men_AppRad
+:S    241,   178,    56
+:T Menu
+:A    Ambient Rad
+:D Apply Radiation
+:K (lsdyna)
+:K (PREP7*SOLUTION)+(CFD*NOFILTER)
+:P (THERMAL+FLOTRAN+LINPLUS+FULL_ANS)*(FLOTRAN)
+Fnc_SFL_radF
+Fnc_SFA_radF
+Sep_
+Fnc_SF_radF
+Fnc_SFE_radF
+:E END
+:! 
+:N Men_AppRad_old
+:S    239,   180,    52
+:T Menu
+:A    Radiation
+:D Apply Radiation
+:K (lsdyna)
+:K (PREP7*SOLUTION)+(CFD*NOFILTER)
+:P (THERMAL+FLOTRAN+LINPLUS+FULL_ANS)*(FLOTRAN)
+Fnc_SFL_rad
+Fnc_SFA_rad
+Sep_
+Fnc_SF_rad
+Fnc_SFE_rad
+:E END
+:! 
+:N Men_AppRadiSF
+:S    239,   181,    51
+:T Menu
+:A    Radiation
+:D Apply Surface-to-Surface Radiation
+:K (lsdyna)
+:K (PREP7*SOLUTION)+((RADSURF+THERMAL+cfd)*NOFILTER)
+:P (THERMAL)
+Fnc_SFL_rdmx
+Fnc_SFA_rdmx
+Fnc_SF_rdmx
+Fnc_SFE_rdmx
+:E END
+:! 
+:N Men_AppSpecies
+:S    144,   102,    35
+:T Menu
+:A    Species
+:K (PR_CFD*pr_set)
+:K #(CFD*NOFILTER)
+Fnc_DL_spec
+Fnc_DA_spec
+Fnc_D_spec
+:E END
+:! 
+:N Men_AppSpectrum
+:S    367,   150,   210
+:T Menu
+:A    Spectrum
+:D Apply Spectrum
+:K ((PR_STRUC*pr_set) +lsdyna)
+:K #((STRUCTRL+SPECTRUM)*NOFILTER)
+Fnc_-BasePSD-
+Fnc_DK_psd
+Fnc_D_psd
+Sep_
+Fnc_-NodePSD-
+Fnc_FK_psd
+Fnc_F_psd
+Sep_
+Fnc_-SinglPtFor-
+Fnc_FK_sv
+Fnc_F_sv
+Sep_
+Fnc_-MultiPtBas-
+Fnc_DK_multi
+Fnc_D_multi
+Sep_
+Fnc_-MultiPtNod-
+Fnc_FK_multi
+Fnc_F_multi
+:E END
+:! 
+:N Men_AppStruInertia
+:S    393,   213,   173
+:T Menu
+:A    Inertia
+:D Apply Inertia Loads
+:K ((PR_STRUC*PR_FLUID*PR_CFD*pr_set) + (lsdyna))
+:K #(STRUCTRL*FLUID*CFD*NOFILTER)
+:K #((PREP7*SOLUTION)+(cfd*NOFILTER))
+-Angular Veloc-
+Fnc_OMEGA
+Fnc_RotCoriolis
+Men_AVOnComp
+Fnc_SYNCRO
+Sep_
+-Angular Accel-
+Fnc_DOMEGA
+Men_AAOnComp
+Sep_
+Fnc_Coriolis
+-Gravity-
+Fnc_ACEL
+Fnc_CMACEL
+Sep_
+Fnc_IRLF
+:E END
+:! 
+:N Men_AppStruTemp
+:S    308,   159,   142
+:T Menu
+:A    Temperature
+:D Apply Structural Temperature
+:K ((PR_STRUC*pr_set) + (lsdyna))
+:K #(STRUCTRL*NOFILTER)
+Fnc_BFL_temp
+Fnc_BFA_temp
+Fnc_BFV_temp
+Fnc_BFK_temp
+Sep_
+Fnc_BF_temp
+Fnc_BF_tempCM
+Fnc_LDREAD_temp
+Fnc_TUNIF
+Sep_
+Fnc_BFE_temp
+Fnc_BFE_tempCM
+:E END
+:! 
+:N Men_AppTemp
+:S    260,   155,    98
+:T Menu
+:A    Temperature
+:D Apply Temperature
+:K (PR_THERM*PR_FLUID*PR_CFD*pr_set)
+:K (THERMAL*FLUID*CFD*NOFILTER)
+Fnc_DK_temp
+Fnc_DL_temp
+Fnc_DA_temp
+Fnc_D_temp
+Fnc_TUNIF
+Sep_
+Fnc_LDREAD_tempCFD
+Fnc_LDREAD_tempD
+:E END
+:! 
+:N Men_AppTurb
+:S    144,   102,    35
+:T Menu
+:A    Turbulence
+:K (PR_CFD*pr_set)
+:K #(CFD*NOFILTER)
+Fnc_DL_turb
+Fnc_DA_turb
+Fnc_D_turb
+:E END
+:! 
+:N Men_AppVolFracCFD
+:S    156,   109,    40
+:T Menu
+:A    Volume Fract
+:K (PR_CFD*pr_set)
+:K (CFD*NOFILTER)
+-Bound Loads-
+Fnc_SFL_VFRC
+Fnc_SFE_VFRC
+:E END
+:! 
+:N Men_ApplyBodFor
+:S    220,   155,    58
+:T Menu
+:A    Forces
+:D Nodal Body Forces
+:K ((PR_CFD*pr_set) +(lsdyna))
+:K (CFD*NOFILTER)
+:P (LINPLUS*FLOTRAN)
+-Body Forces-
+Fnc_BF_Force
+Sep_
+-Forces-
+Fnc_LDREAD_mforc
+:E END
+:! 
+:N Men_ApplyFSI
+:S    278,   211,    60
+:T Menu
+:A Field Surface Intr
+:D Apply Field Surface Interface
+:K (PR_THERM*PR_FLUID*PR_CFD*pr_set)
+:K (THERMAL*FLUID*CFD*STRUCTRL*NOFILTER)
+:P (THERMAL*FLOTRAN*NOFILTER)
+Fnc_SFL_FSInt
+Fnc_SFA_FSInt
+Sep_
+Fnc_SF_FSInt
+Fnc_SFE_FSInt
+:E END
+:! 
+:N Men_ApplyFVIN
+:S    122,   102,    13
+:T Menu
+:A Field Volume Intr
+:D Apply Field Volume Interface
+Fnc_BFE_FVIN
+:E END
+:! 
+:N Men_ApplyLoads
+:S    283,    95,   181
+:T Menu
+:A    Apply
+:K (lsdyna)
+:K #(PREP7*SOLUTION)
+Men_StrucApply
+Men_ThermApply
+Men_MagApply
+Men_ElecApply
+Men_FluidApply
+Men_ApplyFSI
+Men_ApplyFVIN
+Sep_
+Men_InitialCond
+Men_AppLoadVect
+Sep_
+-Functions-
+Fnc_FUNC_EDIT
+Fnc_FUNC_READ
+:E END
+:! 
+:N Men_Arb_Area
+:S    132,    82,    43
+:T Menu
+:A    Arbitrary
+:D Arbitrary Area
+Fnc_A
+Fnc_ASUB
+Fnc_AL
+Fnc_ASKIN
+Fnc_AOFFST
+:E END
+:! 
+:N Men_Arb_Volume
+:S    117,    97,    13
+:T Menu
+:A    Arbitrary
+:D Arbitrary Volume
+:P (mdl2d)
+Fnc_V
+Fnc_VA
+:E END
+:! 
+:N Men_Arc
+:S    122,    62,    53
+:T Menu
+:A    Arcs
+:D Arcs
+Fnc_LARC_3kp
+Fnc_LARC
+Fnc_CIRCLE_arc
+Sep_
+Fnc_CIRCLE
+:E END
+:! 
+:N Men_Archive
+:S    111,    81,    23
+:T Menu
+:A Archive Model
+:D Archive Model
+Fnc_CDWRITE
+Fnc_CDREAD
+:E END
+:! 
+:N Men_Aux12
+:S    433,   205,   221
+:T Menu
+:A Radiation Opt
+:C )/nopr
+:C )!*get,_z1,active,,routin
+:C )!*if,_z1,ne,62,then
+:C /AUX12
+:C )!*endif
+:C )/go
+:D Radiation Matrix Utility (AUX12)
+:P #(THERMAL)
+K_LN((pr_cfd+cfd)*NOFILTER)
+Fnc_Aux12Fil
+-Matrix Method-
+Fnc_Emiss_aux12
+Fnc_SetUp_aux12
+Fnc_Write_aux12
+K_LN(AUX12*PR_CFD*PR_THERM*(RADSURF+THERMAL)*CFD)
+-Radiosity Meth-
+Fnc_RadOpt12
+Fnc_RadOpt13
+Fnc_VFCALC
+Fnc_VFQUERY
+:E END
+:! 
+:N Men_BEAM_endr
+:S    113,    79,    27
+:T Menu
+:A Beams
+:D Beam End Releases
+Fnc_ENDR_all
+Fnc_ENDR_node
+:E END
+:! 
+:N Men_Beam_Custom
+:S    144,    94,    43
+:T Menu
+:A    Custom Sections
+:D Customize Section
+Fnc_SecWrite_A
+Fnc_User_Beam
+Fnc_Beam_Edit
+:E END
+:! 
+:N Men_Beam_Taper
+:S    127,    88,    32
+:T Menu
+:A    Taper Sections
+:D Taper Section
+Fnc_Taper_explct
+Fnc_Taper_pick
+:E END
+:! 
+:N Men_Block
+:S    112,    77,    28
+:T Menu
+:A    Block
+:D Block
+:P (mdl2d)
+Fnc_BLC4
+Fnc_BLC5
+Fnc_BLOCK
+:E END
+:! 
+:N Men_CMS
+:S    252,   161,    84
+:T Menu
+:A    CMS
+:D CMS Analysis
+:K (lsdyna)
+:K ((STRUCTRL+thermal+pr_therm+pr_fluid)+transduc)*(PR_STRUC+pr_therm+pr_fluid)
+-CMS Superelements-
+Fnc_CMS_Name
+Fnc_ALLSEL
+-CMS Interface-
+Fnc_M
+Sep_
+Fnc_CMS_Stat
+:E END
+:! 
+:N Men_CheckCtrl
+:S    153,   100,    46
+:T Menu
+:A Checking Ctrls
+:D Checking Ctrls
+:K #(igesfail)
+Fnc_Mesh_Check
+Fnc_Shpp_Check
+Fnc_SHPP_toggle
+:E END
+:! 
+:N Men_Check_geom
+:S    177,    83,    87
+:T Menu
+:A    Check Geom
+:K #(igesfail) 
+K_LN(priges) 
+Fnc_SSLN
+K_LN(priges)
+Men_Degen_copy
+K_LN(priges)
+Sep_
+Fnc_KDIS
+Fnc_NDIS
+:E END
+:! 
+:N Men_Check_mesh
+:S    184,    84,    93
+:T Menu
+:A    Check Mesh
+:D    Check Mesh
+-Individual Elm-
+Fnc_CHECK_plt
+Fnc_CHECK_ESEL
+Sep_
+-Connectivity-
+Fnc_MCHECK
+Fnc_MCHECK_ESEL
+:E END
+:! 
+:N Men_ChkElmShape
+:S    131,    91,    33
+:T Menu
+:A Check Elem Shape
+:D Check Elem Shape
+Fnc_ESCHECK_plt
+Fnc_ESCHECK_ESEL
+:E END
+:! 
+:N Men_CirR3
+:S    148,    81,    60
+:T Menu
+:A   Indp Curr Src
+:D Indp Curr Src
+Fnc_CirP3_0
+Fnc_CirP3_1
+Fnc_CirP3_2
+Fnc_CirP3_3
+Fnc_CirP3_4
+:E END
+:! 
+:N Men_CirR3_copy
+:S    153,    86,    60
+:T Menu
+:A   Indp Curr Src
+:D Indp Curr Src
+Fnc_CirP3_0
+Fnc_CirP3_1
+Fnc_CirP3_2
+Fnc_CirP3_3
+Fnc_CirP3_4
+:E END
+:! 
+:N Men_CirR4
+:S    148,    81,    60
+:T Menu
+:A   Indp Vltg Src
+:D Indp Vltg Src
+Fnc_CirP4_0
+Fnc_CirP4_1
+Fnc_CirP4_2
+Fnc_CirP4_3
+Fnc_CirP4_4
+:E END
+:! 
+:N Men_CirR4_copy
+:S    153,    86,    60
+:T Menu
+:A   Indp Vltg Src
+:D Indp Vltg Src
+Fnc_CirP4_0
+Fnc_CirP4_1
+Fnc_CirP4_2
+Fnc_CirP4_3
+Fnc_CirP4_4
+:E END
+:! 
+:N Men_Circle
+:S    149,    69,    73
+:T Menu
+:A    Circle
+:D Circle
+Fnc_CYL4_2d
+Fnc_CYL4_holl_2d
+Fnc_CYL4_part_2d
+Sep_
+Fnc_CYL5_2d
+Fnc_PCIRC
+:E END
+:! 
+:N Men_Circuit
+:S    350,    91,   252
+:T Menu
+:A Circuit
+:D Circuit Builder
+:P #(ELECMAG)
+Fnc_Cir_WP
+Fnc_Iconscale
+Sep_
+-Builder-
+Men_Circuit_E
+Men_Circuit_M
+Men_Circuit_P
+Men_Circuit_T
+Men_Circuit_ROM
+Sep_
+Fnc_rcedit_124
+Sep_
+-Plot-
+Fnc_Cir_Nod
+Fnc_CirPR
+Fnc_CirPWF_1
+Fnc_Plt_Diode
+Fnc_Plt_EMT
+Fnc_Plt_Spring
+Sep_
+Fnc_Cir_Merge
+Fnc_EDEL_MEM
+:E END
+:! 
+:N Men_Circuit_E
+:S    346,   146,   193
+:T Menu
+:A    Electric
+:D Electric Circuit Builder
+:C )/NOPR
+:C )KEYW,PIEZO,0
+:C )*set,_e0,'124'
+:C )/GO
+Fnc_Wire
+Fnc_CirP0
+Fnc_CirP1
+Fnc_CirP2
+Fnc_CirP8
+Fnc_Diode
+Fnc_ZeDiode
+Sep_
+Men_CirR3
+Men_CirR4
+Sep_
+Fnc_CirP9_1
+Fnc_CirP10_1
+Fnc_CirP11_1
+Fnc_CirP12_1
+Sep_
+Fnc_CirP5_1
+Fnc_CirP6_1
+Fnc_CirP7_1
+:E END
+:! 
+:N Men_Circuit_M
+:S    275,    96,   172
+:T Menu
+:A    Mechanical
+:D Mechanical Circuit Builder
+-Spring-
+Fnc_Trn_Spring
+Fnc_Trn_Spr_No
+Fnc_Rot_Spring
+Fnc_Rot_Spr_No
+Sep_
+-Damper-
+Fnc_Trn_Damper
+Fnc_Trn_Dam_No
+Fnc_Rot_Damper
+Fnc_Rot_Dam_No
+Fnc_Slide_Film
+Sep_
+Fnc_Mass
+:E END
+:! 
+:N Men_Circuit_P
+:S    285,   204,    74
+:T Menu
+:A    Piezoelectric
+:D Piezo-Electric Circuit Builder
+:C )/NOPR
+:C )KEYW,PIEZO,1
+:C )*set,_e0,'94'
+:C )/GO
+:P ((LINPLUS+THERMAL+E3+ELECMAG+FLOTRAN)*PP*ED)
+Fnc_Wire
+Fnc_CirP0
+Fnc_CirP1
+Fnc_CirP2
+Sep_
+Men_CirR3_copy
+Men_CirR4_copy
+:E END
+:! 
+:N Men_Circuit_ROM
+:S    132,   103,    22
+:T Menu
+:A    ROM
+:D ROM Circuit Builder
+:P (ELECMAG*PP*ED)
+Fnc_ROMBRS
+Fnc_ROMELM
+:E END
+:! 
+:N Men_Circuit_T
+:S    168,   146,    15
+:T Menu
+:A    Transducer
+:P ((LINPLUS+THERMAL+E3+ELECMAG+FLOTRAN)*PP*ED)
+:D Electromechanical Transducer
+Fnc_Transducer
+:E END
+:! 
+:N Men_Clear
+:S    132,    81,    44
+:T Menu
+:A    Clear
+:D Clear
+:K #(igesfail)
+Fnc_KCLEAR
+Fnc_LCLEAR
+Fnc_ACLEAR
+Fnc_VCLEAR
+:E END
+:! 
+:N Men_CntcSurf
+:S   1757,  1702,    48
+:T Menu
+:C )/NOPR
+:C )KEYW,NOLNMESH,1
+:C )KEYW,NOARMESH,1
+:C )KEYW,NOELEMS,1
+:C )*GET,_z1,ELEM,,COUNT
+:C )*IF,_z1,NE,0,THEN !{
+:C )CM,_ELEMCM,ELEM             ! Find if contact/target elems exist
+:C )ESEL,S,ENAME,,169,174
+:C )*GET,_z1,ELEM,,COUNT
+:C )CMSEL,S,_ELEMCM
+:C )CMDEL,_ELEMCM
+:C )KEYW,CNTCELEM,0
+:C )*IF,_z1,GT,0,THEN !{
+:C )KEYW,CNTCELEM,1             ! Contact elements defined
+:C )*ENDIF !}
+:C )*ENDIF !}
+:C )! Determine if there is a mesh
+:C )_z1=lsinqr(0,14)  ! are there any lines
+:C )*IF,_z1,GT,0,THEN !{
+:C )*DEL,_l1
+:C )*DEL,_l2
+:C )*DIM,_l1,,_z1
+:C )*DIM,_l2,,_z1
+:C )*GET,_z2,COMMON,,ERRCOM,,INT,6   ! Get the value of /NERR
+:C )/NERR,0
+:C )*VGET,_l1(1),LINE,1,ATTR,NDIV
+:C )/NERR,_z2
+:C )*VFUN,_l2(1),PWR,_l1(1),2
+:C )*VSCFUN,_z1,SUM,_l2(1)
+:C )*IF,_z1,EQ,0,THEN !{
+:C )KEYW,NOLNMESH,1
+:C )*ELSE !}{
+:C )KEYW,NOLNMESH,0
+:C )*ENDIF  !}
+:C )*DEL,_l1
+:C )*DEL,_l2
+:C )_z1=arinqr(0,14)   ! Determine if there are areas meshed
+:C )*IF,_z1,GT,0,THEN  !{
+:C )*DEL,_l1
+:C )*DEL,_l2
+:C )*DIM,_l1,,_z1
+:C )*DIM,_l2,,_z1
+:C )*GET,_z2,COMMON,,ERRCOM,,INT,6   ! Get the value of /NERR
+:C )/NERR,0
+:C )*VGET,_l1(1),AREA,1,ATTR,NNOD
+:C )/NERR,_z2
+:C )*VFUN,_l2(1),PWR,_l1(1),2
+:C )*VSCFUN,_z1,SUM,_l2(1)
+:C )*IF,_z1,EQ,0,THEN  !{
+:C )KEYW,NOARMESH,1
+:C )*ELSE  !}{
+:C )KEYW,NOARMESH,0
+:C )*ENDIF  !}
+:C )*DEL,_l1
+:C )*DEL,_l2
+:C )*ENDIF  !}
+:C )_z1=elmiqr(0,14)  ! are there any elements
+:C )*IF,_z1,GT,0,THEN !{
+:C )KEYW,NOELEMS,0
+:C )*ENDIF  !}
+:C )*ELSE  !}{
+:C )_z1=elmiqr(0,14)  ! are there any elements
+:C )*IF,_z1,GT,0,THEN !{
+:C )KEYW,NOELEMS,0
+:C )*ENDIF  !}
+:C )*ENDIF  !}
+:C )/GO
+:A Contact Pair
+:D Contact Pair
+:K #(PREP7)
+:K (PR_STRUC*pr_set)
+Fnc_CWz_Entry
+Fnc_CWz_ViewPair
+Fnc_CWz_DelePair
+:E END
+:! 
+:N Men_Cone
+:S     99,    74,    18
+:T Menu
+:A    Cone
+:D Cone
+:P (mdl2d)
+Fnc_CON4
+Fnc_CONE
+:E END
+:! 
+:N Men_Contact_Controls
+:S    252,    96,   149
+:T Menu
+:A Contact
+:D Contact
+:K (LSDYNA+PREP7)
+Fnc_DYNA_Params
+Fnc_DYNA_DefBox
+Fnc_DYNA_Contopt
+Fnc_DYNA_ConMore
+Fnc_DYNA_LisCont
+Fnc_DYNA_PltCont
+Fnc_DYNA_DelCon
+Fnc_DYNA_DeacCon
+Fnc_DYNA_ActCon
+:E END
+:! 
+:N Men_Copy
+:S    229,    81,   141
+:T Menu
+:A    Copy
+:C
+:D Copy
+:K #(igesfail)
+Fnc_KGEN
+Fnc_LGEN
+Fnc_AGEN
+Fnc_VGEN
+Sep_
+Fnc_MSHC_l
+Fnc_MSHC_a
+Sep_
+-Nodes-
+Fnc_NGEN_copy
+Fnc_NSCALE_copy
+-Elements-
+Fnc_EGEN_copy
+Fnc_ENGEN
+:E END
+:! 
+:N Men_Correlation
+:S    176,   107,    62
+:T Menu
+:A    Correlation
+:K #(PSDRANDM*NOFILTER)
+:P (FULL_ANS)
+Fnc_COVAL
+Fnc_QDVAL
+Fnc_CO_QD_eras
+Sep_
+Fnc_PSDWAV
+Fnc_PSDSPL
+:E END
+:! 
+:N Men_CoupCeqn
+:S    376,   170,   199
+:T Menu
+:A Coupling / Ceqn
+:C
+:D Coupling / Ceqn
+:K #(maghfe*(MAGHFE+MAGNOD+MAGEDG+MAGELC+PR_SET+PR_CFD+PR_MULTI))
+:K #(igesfail)
+K_LN(LSDYNA)
+Fnc_DYNA_Rigid
+Fnc_CP_1b
+Fnc_CP_1a
+K_LN(STRUCTRL)
+Sep_
+Fnc_CPLGEN
+Fnc_CPSGEN
+Fnc_CPINTF
+Fnc_CPCYC
+Fnc_CPDELE
+Sep_
+Fnc_CE
+Fnc_CESGEN
+Fnc_CECMOD
+Fnc_CEINTF
+Fnc_CERIG_P
+Fnc_CEDELE
+Fnc_RBE3
+:E END
+:! 
+:N Men_CrePath
+:S    202,    89,   106
+:T Menu
+:A Path Operations
+:K #((PREP7)*NOFILTER)
+Men_PPATH_P7
+Men_PATHDELETE
+Fnc_PATHPLOT
+Sep_
+Fnc_PATHRECALL
+-Store-
+Fnc_PATHSAVE
+-Retrieve-
+Fnc_PATHRESU
+:E End
+:! 
+:N Men_Create52
+:S    650,   301,   342
+:T Menu
+:A    Create
+:C )/nopr
+:C )*create,ansuitmp
+:C )_z1=etyiqr(0,14)
+:C )keyw,xfemcrk,0
+:C )*do,_z2,1,_z1,1
+:C )_ztyp=etyiqr(_z2,-2)
+:C )*if,_ztyp,eq,182,then
+:C )keyw,xfemcrk,1
+:C )*endif
+:C )*enddo
+:C )*end
+:C )/inp,ansuitmp
+:C )/go
+:D Create
+:K (priges)
+Men_Keypoint
+Sep_
+-Lines-
+Men_Line
+Men_Arc
+Men_Spline
+Fnc_LFILLT
+Sep_
+-Areas-
+Men_Arb_Area
+Men_Rectangle
+Men_Circle
+Men_Polygon
+Fnc_AFILLT
+P_LN(mdl2d)
+Sep_
+P_LN(mdl2d)
+-Volumes-
+Men_Arb_Volume
+Men_Block
+Men_Cylinder
+Men_Prism
+Men_Sphere
+Men_Cone
+Fnc_TORUS
+Sep_
+Men_Nodes
+Men_Elements
+Fnc_CWz_Entry
+Men_Circuit
+Men_Crack
+Fnc_RACE
+Men_Transduc
+:E END
+:! 
+:N Men_Create53
+:S    508,   316,   185
+:T Menu
+:A    Create
+:C )/nopr
+:C )*create,ansuitmp
+:C )_z1=etyiqr(0,14)
+:C )keyw,xfemcrk,0
+:C )*do,_z2,1,_z1,1
+:C )_ztyp=etyiqr(_z2,-2)
+:C )*if,_ztyp,eq,182,then
+:C )keyw,xfemcrk,1
+:C )*endif
+:C )*enddo
+:C )*end
+:C )/inp,ansuitmp
+:C )/go
+:D Create
+:K (PRIGES)
+:K #(igesfail)
+Men_HPT_54
+Sep_
+-Primitives-
+Fnc_BLC5_iges
+Fnc_CYL4_iges
+Fnc_CON4_iges
+Fnc_SPH4_iges
+Sep_
+Fnc_VA53
+Sep_
+Men_Nodes
+Men_Elements
+Fnc_CWz_Entry
+Men_Circuit
+Men_Crack
+Fnc_RACE
+Men_Transduc
+:E END
+:! 
+:N Men_CycPhase
+:S    219,   102,   110
+:T Menu
+:A Cyclic Phase
+:K #((POST1+RESULTS+CYCLIC)*NOFILTER)
+Fnc_CycPhase_Sweep
+Fnc_CycPhase_Put
+Fnc_CycPhase_List
+Fnc_CycPhase_Get
+Fnc_CycPhase_Status
+Fnc_CycPhase_Clear
+:E End
+:! 
+:N Men_Cylinder
+:S    157,    86,    64
+:T Menu
+:A    Cylinder
+:D Cylinder
+:P (mdl2d)
+Fnc_CYL4
+Fnc_CYL4_hollow
+Fnc_CYL4_part
+Sep_
+Fnc_CYL5
+Fnc_CYLIND
+:E END
+:! 
+:N Men_DMPEXT
+:S    131,    98,    26
+:T Menu
+:A DampExtract
+:D ThinFilm Operations
+:P (FULL_ANS)
+Fnc_DMPEXT
+Fnc_DMPEXT_EIG
+:E END
+:! 
+:N Men_DYNAPREP
+:S    277,   133,   137
+:T Menu
+:A LS-DYNA Options
+:D LSDYNA3D Explicit Dynamics
+:K (LSDYNA*FULL_ANS)
+:K #(igesfail)
+Fnc_DYNA_Parts
+Fnc_DYNA_Assem
+Men_DYNA_IParts
+Men_Contact_Controls
+Men_DYNA_Cnstr
+K_LN(LSDYNA)
+Men_DYNA_Veloc
+Men_Solu_Load
+Men_Spotweld
+:E END
+:! 
+:N Men_DYNASOLU
+:S    225,   119,    99
+:T Menu
+:A LS-DYNA Controls
+:D LSDYNA3D Explicit Dynamics
+:K (LSDYNA*FULL_ANS)
+Men_Default_Controls
+Men_File_Control
+Men_Local_CS
+Fnc_Step_Control
+Fnc_DYNA_MatProp
+Fnc_DYNA_Damp
+:E END
+:! 
+:N Men_DYNA_ALE
+:S    166,   111,    48
+:T Menu
+:A ALE Options
+:D ALE Options for LS-DYNA
+:K (LSDYNA+SOLUTION)
+Fnc_DYNA_EDGC
+Fnc_DYNA_ALEDEal
+Fnc_DYNA_ALELSal
+:E END
+:! 
+:N Men_DYNA_Accel
+:S    141,   100,    34
+:T Menu
+:A Acceleration CS
+:D Acceleration CS
+:K (LSDYNA)
+Fnc_App_Coriolis
+Fnc_del_Coriolis
+:E END
+:! 
+:N Men_DYNA_AdptMsh
+:S    187,   133,    47
+:T Menu
+:A Adaptive Meshing
+:D Adaptive Meshing Options for LS-DYNA
+:K (LSDYNA+SOLUTION)
+Fnc_DYNA_Edadapt
+Fnc_DYNA_AdList
+Fnc_DYNA_EDAC
+:E END
+:! 
+:N Men_DYNA_Cnstr
+:S    145,    92,    46
+:T Menu
+:A Constraints
+:D Constraints
+:K (LSDYNA)
+Men_DYNapplyDisp
+Men_DYNDelDisp
+Fnc_DYNexport
+:E END
+:! 
+:N Men_DYNA_Curve
+:S    203,   123,    73
+:T Menu
+:A Curve Options
+:D Curve Data for LS-DYNA Explicit
+:K (LSDYNA*FULL_ANS)
+Fnc_DYNA_CurvAdd
+Fnc_DYNA_CurvDel
+Sep_
+Fnc_DYNA_CurvLis
+Fnc_DYNA_CurvPlt
+:E END
+:! 
+:N Men_DYNA_EDTER
+:S    169,   111,    51
+:T Menu
+:A Criteria to Stop
+:D Criteria to Stop
+:K (LSDYNA*FULL_ANS)
+Fnc_DYNA_EDTERnd
+Fnc_DYNA_EDTERpt
+Fnc_DYNA_EDTERls
+:E END
+:! 
+:N Men_DYNA_Files
+:S    144,   107,    30
+:T Menu
+:A Input File/Parts
+:D Input Files and Parts
+:K (LSDYNA)
+Fnc_DYNA_Input
+Fnc_DYNA_Parts
+:E END
+:! 
+:N Men_DYNA_Hgl
+:S    149,   108,    34
+:T Menu
+:A Hourglass Ctrls
+:D LS-DYNA Hourglass Options
+:K (LSDYNA)
+Fnc_DYNA_Hourgls
+Fnc_DYNA_MatProp
+:E END
+:! 
+:N Men_DYNA_IParts
+:S    191,   136,    48
+:T Menu
+:A Inertia Options
+:D Rigid Body Inertia Options
+:K (LSDYNA*FULL_ANS)
+:K #(igesfail)
+Fnc_EDIPART_def
+Fnc_EDIPART_lis
+Fnc_EDIPART_del
+:E END
+:! 
+:N Men_DYNA_OutCtrl
+:S    225,   142,    76
+:T Menu
+:A Output Controls
+:D Output Control Options for LS-DYNA.
+:K ((LSDYNA*FULL_ANS)+SOLUTION)
+Fnc_DYNA_Edopt
+Men_DYNA_RstHt
+Fnc_DYNA_Edout
+Fnc_DYNA_Edhist
+Fnc_DYNA_Edint
+:E END
+:! 
+:N Men_DYNA_Read
+:S    155,    69,    79
+:T Menu
+:A Read LSDYNA Data
+Fnc_GLREAD
+Fnc_MATREAD
+Fnc_SPCREAD
+Fnc_RCREAD
+Fnc_SLREAD
+Fnc_RBREAD
+Fnc_NDREAD
+:E End
+:! 
+:N Men_DYNA_RstHt
+:S    174,   135,    32
+:T Menu
+:A File Output Freq
+:D Specify File Output Frequency
+:K ((LSDYNA*FULL_ANS)+SOLUTION)
+Fnc_DYNA_RstHt
+Fnc_DYNA_RstHtDt
+:E END
+:! 
+:N Men_DYNA_TimeCon
+:S    204,   138,    59
+:T Menu
+:A Time Controls
+:D Time Control Options for LS-DYNA.
+:K ((LSDYNA*FULL_ANS)+SOLUTION)
+Fnc_DYNA_Term
+Fnc_EDTIMSTP
+Fnc_DYNA_Scale
+Fnc_DYNA_Subcycl
+:E END
+:! 
+:N Men_DYNA_Veloc
+:S    272,   102,   163
+:T Menu
+:A Initial Velocity
+:D Initial Velocity
+:K (LSDYNA)
+-On Nodes-
+Fnc_DYNA_VelInpt
+Fnc_DYNA_VelGene
+Fnc_DYNA_VelDele
+Fnc_DYNA_VelList
+Sep_
+-On Parts-
+Fnc_DYNApVelInpt
+Fnc_DYNApVelGene
+Fnc_DYNApVelDele
+Fnc_DYNApVelList
+:E END
+:! 
+:N Men_DYNA_dBND
+:S    195,   159,    29
+:T Menu
+:A Symm Bndry Plane
+:D Delete Symmetry Boundary Plane
+:K ((PR_STRUC*pr_set)+(LSDYNA))
+:K #(STRUCTRL*NOFILTER)
+Fnc_DYNA_adBND
+Fnc_DYNA_dBND
+:E END
+:! 
+:N Men_DYNA_dEDNB
+:S    196,   158,    31
+:T Menu
+:A Non-Refl Bndry
+:D Delete Non-Reflecting Boundary
+:K ((PR_STRUC*pr_set)+(LSDYNA))
+:K #(STRUCTRL*NOFILTER)
+Fnc_DYNA_adEDNB
+Fnc_DYNA_dEDNB
+:E END
+:! 
+:N Men_DYNA_dLoad
+:S    140,   102,    31
+:T Menu
+:A Delete Loads
+:D Delete LS-DYNA Loads
+:K (LSDYNA)
+Fnc_DYNA_adLoad
+Fnc_DYNA_dLoad
+:E END
+:! 
+:N Men_DYNDelDisp
+:S    239,   140,    92
+:T Menu
+:A Delete
+:D Delete Displacements
+:K ((PR_STRUC*pr_set)+(LSDYNA))
+:K #(STRUCTRL*NOFILTER)
+Fnc_DKDELE_uva
+Fnc_DLDELE
+Fnc_DADELE
+Fnc_DDELE_uva
+Men_dDYNROT
+Men_DYNA_dBND
+Men_DYNA_dEDNB
+:E END
+:! 
+:N Men_DYNapplyDisp
+:S    342,   153,   182
+:T Menu
+:A Apply
+:D Apply Displacements
+:K ((PR_STRUC*pr_set)+(LSDYNA))
+:K #(STRUCTRL*NOFILTER)
+:P (LINPLUS)
+Fnc_DL_u
+Fnc_DA_u
+Fnc_DK_u
+Fnc_D_u
+Fnc_DYNROT
+Fnc_DYN_cnst
+Fnc_DL_symm_na
+Fnc_DL_symm
+Fnc_DA_symm
+Fnc_DYNA_BND
+Fnc_DYNA_EDNB
+Sep_
+Men_Local_CS
+Fnc_DL_asym_na
+Fnc_DL_asym
+Fnc_DA_asym
+:E END
+:! 
+:N Men_DecOpt
+:S    106,    70,    29
+:T Menu
+:A Decimation Options  
+Sep_
+Fnc_DecOpt
+Fnc_Dec_Stat
+:E END
+:! 
+:N Men_Default_Controls
+:S    330,   141,   182
+:T Menu
+:A Analysis Options
+:D Analysis Options for LS-DYNA.
+:K ((LSDYNA*FULL_ANS)+SOLUTION)
+Fnc_DYNA_Start
+Fnc_DYNA_StrInit
+Fnc_DYNA_CPU
+Men_DYNA_EDTER
+Fnc_DYNA_Energy
+Fnc_DYNA_Relax
+Fnc_DYNA_Visco
+Men_DYNA_Hgl
+Men_DYNA_AdptMsh
+Men_DYNA_ALE
+Fnc_DYNA_Double
+Fnc_DYNA_Paralel
+:E END
+:! 
+:N Men_DefineLoads
+:S    201,    83,   111
+:T Menu
+:A Define Loads
+:D Define Loads
+Men_LoadSettings
+Men_ApplyLoads
+Men_DeleteLoads
+Men_OperLoads
+K_LN(PARPERF)
+Sep_
+K_LN(PARPERF)
+Fnc_DomainDcomp
+:E END
+:! 
+:N Men_Degen
+:S    141,    83,    51
+:T Menu
+:A Show Degeneracy
+:D Show Degeneracy
+Fnc_ADGL
+Fnc_VDGL
+Sep_
+Fnc_APLOT_deg
+Fnc_VPLOT_deg
+:E END
+:! 
+:N Men_Degen_copy
+:S    146,    88,    51
+:T Menu
+:A Show Degeneracy
+:D Show Degeneracy
+Fnc_ADGL
+Fnc_VDGL
+Sep_
+Fnc_APLOT_deg
+Fnc_VPLOT_deg
+:E END
+:! 
+:N Men_DelAllLoads
+:S    564,   125,   432
+:T Menu
+:A All Load Data
+:D Delete All Load Data
+:K (lsdyna)
+:K #(PREP7*SOLUTION)
+Fnc_LSCLEAR_all
+Sep_
+Fnc_LSCLEAR_soli
+Fnc_LSCLEAR_fe
+Fnc_LSCLEAR_iner
+Fnc_PSecLdDelAll
+Sep_
+-All Constraint-
+Fnc_DKDELE_all
+Fnc_DLDELE_all
+Fnc_DADELE_all
+Fnc_DDELE_all
+Fnc_DJDELE_all
+Sep_
+-All Forces-
+Fnc_FKDELE_all
+Fnc_FDELE_all
+Fnc_FJDELE_all
+Sep_
+-All Surface Ld-
+Fnc_SFLDELE_all
+Fnc_SFADELE_all
+Fnc_SFEDELE_all
+Sep_
+-All Body Loads-
+Fnc_BFLDELE_all
+Fnc_BFADELE_all
+Fnc_BFVDELE_all
+Fnc_BFKDELE_all
+Fnc_BFDELE_all
+Fnc_BFEDELE_all
+:E END
+:! 
+:N Men_DelAngAccel
+:S    265,   224,    34
+:T Menu
+:A    Angular Accel
+:D Delete Angular Acceleration
+:K ((PR_STRUC*PR_FLUID*PR_CFD*pr_set) + (lsdyna))
+:K #(STRUCTRL*FLUID*CFD*NOFILTER)
+:K #((PREP7*SOLUTION)+(cfd*NOFILTER))
+Fnc_DOMEGA_dele
+Fnc_CMDOMEGA_dele
+:E END
+:! 
+:N Men_DelAngVeloc
+:S    259,   220,    32
+:T Menu
+:A    Angular Veloc
+:D Delete Angular Velocity
+:K ((PR_STRUC*PR_FLUID*PR_CFD*pr_set) + (lsdyna))
+:K #(STRUCTRL*FLUID*CFD*NOFILTER)
+:K #((PREP7*SOLUTION)+(cfd*NOFILTER))
+Fnc_OMEGA_dele
+Fnc_CMOMEGA_dele
+:E END
+:! 
+:N Men_DelConvect
+:S    235,   157,    71
+:T Menu
+:A    Convection
+:D Delete Convection
+:K (PR_THERM*PR_FLUID*PR_CFD*pr_set)
+:K (THERMAL*FLUID*CFD*NOFILTER)
+Fnc_SFLDELE_conv
+Fnc_SFADELE_conv
+Sep_
+Fnc_SFDELE_conv
+Fnc_SFEDEL_conv
+:E END
+:! 
+:N Men_DelDisplace
+:S    244,   150,    87
+:T Menu
+:A    Displacement
+:D Delete Displacements
+:K ((PR_STRUC*pr_set)+(lsdyna))
+:K #(STRUCTRL*NOFILTER)
+Fnc_DKDELE_uva
+Fnc_DLDELE
+Fnc_DADELE
+Sep_
+Fnc_DDELE_uva
+Fnc_DDELE_uvaCM
+Fnc_DJDE_joint
+:E END
+:! 
+:N Men_DelElecExcit
+:S    648,   218,   423
+:T Menu
+:A    Excitation
+:D    Excitation
+:K (PR_ELMAG*pr_set*PR_MULTI*(PR_THERM+ELECTRIC))
+:K #(ELECTRIC+vfed)*CIRC*ELECSTAT*TIMEINTP*EDGEELC*NOFILTER)
+:P (ELECMAG*THERMAL)
+Fnc_-AppCurrent-
+Fnc_FKDELE_amps
+Fnc_FDELE_amps
+Fnc_-ImprCurr-
+Fnc_FKDELE_ic
+Fnc_FDELE_ic
+Sep_
+Fnc_-AppCharge-
+Fnc_FKDELE_chrg
+Fnc_FDELE_chrg
+Sep_
+Fnc_-AppCharDens-
+Fnc_BFLDELE_chrg
+Fnc_BFADELE_chrg
+Fnc_BFVDELE_chrg
+Fnc_BFKDELE_chrg
+Fnc_BFDELE_chrg
+Fnc_BFEDELE_chrg
+Sep_
+Fnc_-AppSurfChar-
+Fnc_SFLDELE_chrg
+Fnc_SFADELE_chrg
+Fnc_SFDELE_chrg
+Fnc_SFEDEL_chrg
+Sep_
+Fnc_-DelElecField-
+Fnc_BFLDELE_ef
+Fnc_BFADELE_ef
+Fnc_BFDELE_ef
+:E END
+:! 
+:N Men_DelElecFlag
+:S    381,   206,   168
+:T Menu
+:A    Flag
+:D    Flag
+:K (PR_ELMAG*pr_set*PR_MULTI*(PR_THERM+ELECTRIC))
+:K #((ELECTRIC+vfed)*CIRC*ELECSTAT*TIMEINTP*EDGEELC*NOFILTER)
+:P (ELECMAG*THERMAL)
+Fnc_-AppInfinite-
+Fnc_SFLDELE_inf
+Fnc_SFADELE_inf
+Fnc_SFDELE_inf
+Fnc_SFEDEL_inf
+Sep_
+Fnc_-AppMaxwell-
+Fnc_SFLDELE_mxwf
+Fnc_SFADELE_mxwf
+Fnc_SFDELE_mxwf
+Fnc_SFEDEL_mxwf
+:E END
+:! 
+:N Men_DelElecPoten
+:S    592,   167,   418
+:T Menu
+:A    Boundary
+:D Delete Electric Potential
+:K (PR_ELMAG*pr_set)
+:K #(ELECTRIC*ELECSTAT*TIMEINTP*EDGEELC*NOFILTER)
+Fnc_-AppImped_E-
+Fnc_SFADELE_impE
+Fnc_SFDELE_impdE
+Fnc_SFEDEL_impdE
+Sep_
+Fnc_-AppShield-
+Fnc_SFADELE_shld
+Fnc_SFDELE_shld
+Sep_
+Fnc_-Voltage-
+Fnc_DKDELE_volt
+Fnc_DDELE_volt
+Fnc_DLDELE_volt
+Fnc_DADELE_volt
+Sep_
+Fnc_-TimeInt-
+Fnc_DKDELE_ti
+Fnc_DDELE_ti
+Fnc_DADELE_ti
+Sep_
+Fnc_-PerfEC-
+Fnc_DLDELE_pec
+Fnc_DADELE_pec
+Fnc_DDELE_pec
+K_LN(EDGEELC*NOFILTER)
+Sep_
+Fnc_-PMLOpt-
+Fnc_PMLPAR_CL0
+Fnc_PMLPAR_CL1
+Sep_
+Men_DelEmagTemp
+:E END
+:! 
+:N Men_DelEmagTemp
+:S    285,   159,   119
+:T Menu
+:A Temperature
+:D Delete Temperature
+:K #((ELECTRIC+ELECSTAT*EDGEELC*QUASISTA)*(MAGNETIC+thermal)*NOFILTER)
+Fnc_EM_BFLDELE_temp
+Fnc_EM_BFADELE_temp
+Fnc_EM_BFVDELE_temp
+Fnc_EM_BFKDELE_temp
+Fnc_EM_BFDELE_temp
+Fnc_EM_BFEDELE_temp
+:E END
+:! 
+:N Men_DelFSI
+:S    195,   141,    47
+:T Menu
+:A    Field Surface
+:D Delete Field Surface Interface
+:K (PR_FLUID*pr_set)
+:K (FLUID*NOFILTER)
+Fnc_SFLDELE_fsi
+Fnc_SFADELE_fsi
+Fnc_SFDELE_fsi
+:E End
+:! 
+:N Men_DelFlPrsANS
+:S    181,   111,    63
+:T Menu
+:A    Pressure DOF
+:K (PR_FLUID*pr_set)
+:K (FLUID*NOFILTER)
+Fnc_DKDELE_pres
+Fnc_DLDELE_pres
+Fnc_DADELE_pres
+Fnc_DDELE_pres
+:E END
+:! 
+:N Men_DelFlowANS
+:S    144,   102,    35
+:T Menu
+:A    Flow
+:K (PR_FLUID*pr_set)
+:K (FLUID*NOFILTER)
+Fnc_FKDELE_flow_a
+Fnc_FDELE_flow_a
+:E END
+:! 
+:N Men_DelFluidDisp
+:S    206,   143,    56
+:T Menu
+:A    Displacement
+:D Delete Displacements in Flotran
+:K (PR_CFD*pr_set)
+:K (CFD*NOFILTER)
+Fnc_DKDELE_uva
+Fnc_DLDELE
+Fnc_DADELE
+Sep_
+Fnc_DDELE_uva
+:E END
+:! 
+:N Men_DelFluidPres
+:S    178,   108,    63
+:T Menu
+:A    Pressure DOF
+:K (PR_CFD*pr_set)
+:K (CFD*NOFILTER)
+Fnc_DKDELE_pres
+Fnc_DLDELE_pres
+Fnc_DADELE_pres
+Fnc_DDELE_pres
+:E END
+:! 
+:N Men_DelFluidVel
+:S    189,   122,    60
+:T Menu
+:A    Velocity
+:D Delete Velocity
+:K (PR_CFD*pr_set)
+:K (CFD*NOFILTER)
+Fnc_DKDELE_uva
+Fnc_DLDELE_v
+Fnc_DADELE_v
+Sep_
+Fnc_DDELE_uva
+:E END
+:! 
+:N Men_DelForce
+:S    212,   148,    57
+:T Menu
+:A    Force/Moment
+:D Delete Force/Moment
+:K ((PR_STRUC*pr_set) + (lsdyna))
+:K #(STRUCTRL*NOFILTER)
+Fnc_FKDELE_fm
+Fnc_FDELE_fm
+Fnc_FDELE_fmCM
+Fnc_FJDE_joint
+:E END
+:! 
+:N Men_DelHeatFlow
+:S    168,   130,    31
+:T Menu
+:A    Heat Flow
+:D Delete Heat Flow
+:K (PR_THERM*pr_set)
+:K (THERMAL*NOFILTER)
+Fnc_FKDELE_heat
+Fnc_FDELE_heat
+:E END
+:! 
+:N Men_DelHeatFlux
+:S    234,   156,    71
+:T Menu
+:A    Heat Flux
+:D Delete Heat Flux
+:K (PR_THERM*PR_FLUID*PR_CFD*pr_set)
+:K (THERMAL*FLUID*CFD*NOFILTER)
+Fnc_SFLDELE_hflu
+Fnc_SFADELE_hflu
+Sep_
+Fnc_SFDELE_hflu
+Fnc_SFEDEL_hflu
+:E END
+:! 
+:N Men_DelHeatGen
+:S    231,   123,   101
+:T Menu
+:A    Heat Generat
+:K (PR_THERM*PR_CFD*pr_set)
+:K (THERMAL*CFD*NOFILTER)
+Fnc_BFLDELE_hgen
+Fnc_BFADELE_hgen
+Fnc_BFVDELE_hgen
+Fnc_BFKDELE_hgen
+Fnc_BFDELE_hgen
+Fnc_BFEDELE_hgen
+:E END
+:! 
+:N Men_DelHeatGenANS
+:S    170,   113,    50
+:T Menu
+:A    Heat Generat
+:K (PR_FLUID*pr_set)
+:K (FLUID*NOFILTER)
+Fnc_BFKDELE_hgen
+Fnc_BFDELE_hgen
+Fnc_BFEDELE_hgen
+:E END
+:! 
+:N Men_DelHeatGenCFD
+:S    183,   109,    67
+:T Menu
+:A    Heat Generat
+:K (PR_CFD*pr_set)
+:K (CFD*NOFILTER)
+Fnc_BFADELE_hgen
+Fnc_BFVDELE_hgen
+Fnc_BFDELE_hgen
+Fnc_BFEDELE_hgen
+:E END
+:! 
+:N Men_DelImpedance
+:S    208,   130,    71
+:T Menu
+:A    Impedance
+:D Delete Impedance
+:K (pr_set*PR_FLUID)
+:K #(FLUID*NOFILTER)
+Fnc_SFLDELE_impd
+Fnc_SFADELE_impd
+Sep_
+Fnc_SFDELE_impd
+Fnc_SFEDEL_impd
+:E End
+:! 
+:N Men_DelLoadVect
+:S    216,   136,    73
+:T Menu
+:A Load Vector
+:D Delete Load Vector
+:K (lsdyna)
+:K #(pmethod*elecstat)
+:P (LINPLUS)
+Fnc_SFEDELE_selv
+Fnc_LVSCALE_dele
+Fnc_LVSCALE_del_psd
+Fnc_RMLVSCALE_dele
+:E END
+:! 
+:N Men_DelMagExcit
+:S    369,   131,   231
+:T Menu
+:A    Excitation
+:D   Excitation
+:K (PR_ELMAG*pr_set)
+:K #((MAGNETIC)*NOFILTER)
+Fnc_-DelCurrDens-
+Fnc_BFLDELE_js
+Fnc_BFADELE_js
+Fnc_BFVDELE_js
+Fnc_BFKDELE_js
+Fnc_BFDELE_js
+Fnc_BFEDELE_js
+Sep_
+Fnc_-DelMagField-
+Fnc_BFADELE_h
+Fnc_BFDELE_h
+Sep_
+Fnc_-AppVoltDrop-
+Fnc_BFADELE_vltg
+Fnc_BFVDELE_vltg
+Fnc_BFEDELE_vltg
+:E END
+:! 
+:N Men_DelMagFlag
+:S    301,   150,   144
+:T Menu
+:A    Flag
+:D   Delete Magnetic Flag
+:K (PR_ELMAG*pr_set)
+:K #((MAGNETIC+edgeelc+edgeflx)*NOFILTER)
+Fnc_-AppInfinite-
+Fnc_SFLDELE_inf
+Fnc_SFADELE_inf
+Fnc_SFDELE_inf
+Fnc_SFEDEL_inf
+Sep_
+Fnc_-AppMCI-
+Fnc_SFADELE_mci
+Fnc_SFDELE_mci
+Fnc_SFEDEL_mci
+:E END
+:! 
+:N Men_DelMagMisc
+:S    391,   141,   243
+:T Menu
+:A    Other
+:D   Delete Other Loads
+:K (PR_ELMAG*pr_set)
+:K #((MAGNETIC+edgeelc)*NOFILTER)
+Fnc_-AppMagFlux-
+Fnc_FKDELE_flux
+Fnc_FDELE_flux
+Sep_
+Fnc_-AppCurrSeg-
+Fnc_FKDELE_csg
+Fnc_FDELE_csg
+Sep_
+Fnc_-AppMaxwell-
+Fnc_SFLDELE_mxwf
+Fnc_SFADELE_mxwf
+Fnc_SFDELE_mxwf
+Fnc_SFEDEL_mxwf
+Sep_
+Fnc_-AppVirtDisp-
+Fnc_BFKDELE_mvdi
+Fnc_BFDELE_mvdi
+:E END
+:! 
+:N Men_DelMagPoten
+:S    357,   149,   201
+:T Menu
+:A    Boundary
+:D Delete Magnetic Potential
+:K (PR_ELMAG*pr_set)
+:K ((MAGNETIC+edgeelc)*NOFILTER)
+Fnc_-ScalarPot-
+Fnc_DKDELE_mag
+Fnc_DDELE_mag
+Fnc_DADELE_mag
+Sep_
+Fnc_-VectorPot-
+Fnc_DKDELE_a
+Fnc_DLDELE_a
+Fnc_DADELE_a
+Fnc_DDELE_a
+Sep_
+Fnc_-EdgeMVP-
+Fnc_DADELE_azP
+Fnc_DDELE_azP
+Sep_
+Men_DelEmagTemp
+:E END
+:! 
+:N Men_DelNormVel
+:S    158,   117,    34
+:T Menu
+:A    Normal Velo
+:K (PR_FLUID*pr_set)
+:K ((FLUID+TFILM)*NOFILTER)
+Fnc_BFADE_norm_v
+Fnc_BFEDE_norm_v
+:E END
+:! 
+:N Men_DelOtherStru
+:S    318,   181,   130
+:T Menu
+:A    Other
+:D Delete Other Structural Loads
+:K ((PR_STRUC*PR_FLUID*PR_CFD*pr_set) + (lsdyna))
+:K #(STRUCTRL*FLUID*CFD*NOFILTER)
+P_LN(LINPLUS)
+Sep_
+-Fluence-
+Fnc_BFLDELE_flue
+Fnc_BFADELE_flue
+Fnc_BFVDELE_flue
+Fnc_BFKDELE_flue
+Fnc_BFDELE_flue
+Fnc_BFEDELE_flue
+:E END
+:! 
+:N Men_DelPressure
+:S    253,   143,   103
+:T Menu
+:A    Pressure
+:D Delete Pressure
+:K ((PR_STRUC*pr_set) + (lsdyna))
+:K #(STRUCTRL*NOFILTER)
+Fnc_SFLDELE_pres
+Fnc_SFADELE_pres
+Sep_
+Fnc_SFDELE_pres
+Fnc_SFDELE_prCM
+Fnc_SFEDEL_pres
+Fnc_SFEDEL_prCM
+:E END
+:! 
+:N Men_DelRad
+:S    254,   180,    67
+:T Menu
+:A    Ambient Rad
+:D Delete Radiation
+:K (lsdyna)
+:K #(PREP7*SOLUTION)+(CFD*NOFILTER)
+:P (THERMAL+FLOTRAN+LINPLUS+FULL_ANS)*(FLOTRAN)
+Fnc_SFLDELE_rad
+Fnc_SFADELE_rad
+Sep_
+Fnc_SFDELE_rad
+Fnc_SFEDEL_rad
+:E END
+:! 
+:N Men_DelRadiSF
+:S    260,   182,    71
+:T Menu
+:A    Radiation
+:D Delete Surface-to-Surface Radiation
+:K (lsdyna)
+:K (PREP7*SOLUTION)+((RADSURF+THERMAL+cfd)*NOFILTER)
+:P (THERMAL)
+Fnc_SFLDELE_rdmx
+Fnc_SFADELE_rdmx
+Sep_
+Fnc_SFDELE_rdmx
+Fnc_SFEDEL_rdmx
+:E END
+:! 
+:N Men_DelSpecies
+:S    156,   102,    47
+:T Menu
+:A    Species
+:K (PR_CFD*pr_set)
+:K #(CFD*NOFILTER)
+Fnc_DLDELE_spec
+Fnc_DADELE_spec
+Fnc_DDELE_spec
+:E END
+:! 
+:N Men_DelSpectrum
+:S    408,   152,   249
+:T Menu
+:A    Spectrum
+:D Delete Spectrum
+:K ((PR_STRUC*pr_set) + lsdyna)
+:K #((STRUCTRL+SPECTRUM)*NOFILTER)
+Fnc_-BasePSD-
+Fnc_DK_psd_dele
+Fnc_D_psd_dele
+Sep_
+Fnc_-NodePSD-
+Fnc_FKDELE_psd
+Fnc_FDELE_psd
+Sep_
+Fnc_-SinglPtFor-
+Fnc_FKDELE_sv
+Fnc_FDELE_sv
+Sep_
+Fnc_-MultiPtBas-
+Fnc_DK_mult_del
+Fnc_D_mult_del
+Sep_
+Fnc_-MultiPtNod-
+Fnc_FKDELE_mult
+Fnc_FDELE_multi
+:E END
+:! 
+:N Men_DelStruInert
+:S    358,   212,   139
+:T Menu
+:A    Inertia
+:D Delete Inertia Loads
+:K ((PR_STRUC*PR_FLUID*PR_CFD*pr_set) + (lsdyna))
+:K #(STRUCTRL*FLUID*CFD*NOFILTER)
+:K #((PREP7*SOLUTION)+(cfd*NOFILTER))
+-Angular Veloc-
+Fnc_OMEGA_dele
+Fnc_CMOMEGA_dele
+Sep_
+-Angular Accel-
+Fnc_DOMEGA_dele
+Fnc_CMDOMEGA_dele
+Sep_
+Fnc_ACEL_dele
+Fnc_Coriolis_del
+:E END
+:! 
+:N Men_DelStruTemp
+:S    300,   159,   134
+:T Menu
+:A    Temperature
+:D Delete Structural Temperature
+:K ((PR_STRUC*pr_set) +(lsdyna))
+:K #(STRUCTRL*NOFILTER)
+Fnc_BFLDELE_temp
+Fnc_BFADELE_temp
+Fnc_BFVDELE_temp
+Fnc_BFKDELE_temp
+Fnc_BFDELE_temp
+Fnc_BFDELE_teCM
+Fnc_BFEDELE_temp
+Fnc_BFEDELE_teCM
+:E END
+:! 
+:N Men_DelTemp
+:S    226,   156,    63
+:T Menu
+:A    Temperature
+:D Delete Temperature
+:K (PR_THERM*PR_FLUID*PR_CFD*pr_set)
+:K (THERMAL*FLUID*CFD*NOFILTER)
+Fnc_DKDELE_temp
+Fnc_DLDELE_temp
+Fnc_DADELE_temp
+Fnc_DDELE_temp
+:E END
+:! 
+:N Men_DelTurb
+:S    156,   102,    47
+:T Menu
+:A    Turbulence
+:K (PR_CFD*pr_set)
+:K #(CFD*NOFILTER)
+Fnc_DLDELE_turb
+Fnc_DADELE_turb
+Fnc_DDELE_turb
+:E END
+:! 
+:N Men_DelVolFracCFD
+:S    158,   109,    42
+:T Menu
+:A    Volume Fract
+:K (PR_CFD*pr_set)
+:K (CFD*NOFILTER)
+-Bound Loads-
+Fnc_SFLDEL_vf
+Fnc_SFEDEL_vf
+:E END
+:! 
+:N Men_Delete
+:S    306,    87,   212
+:T Menu
+:A    Delete
+:C
+:D Delete
+:K #(igesfail)
+Fnc_KDELE
+Sep_
+Fnc_HPTDELE
+Sep_
+Fnc_LDELE
+Fnc_LDELE_sweep
+Sep_
+Fnc_ADELE
+Fnc_ADELE_sweep
+Sep_
+Fnc_VDELE
+Fnc_VDELE_sweep
+Sep_
+Fnc_NDELE
+Fnc_EDELE
+Sep_
+Fnc_EDELE_pret
+Sep_
+-Del Concats-
+Fnc_ACCAT_del
+Fnc_LCCAT_del
+:E END
+:! 
+:N Men_DeleteLoads
+:S    283,   113,   163
+:T Menu
+:A    Delete
+:D Delete Loads
+:K (lsdyna)
+:K #(PREP7*SOLUTION)
+Men_DelAllLoads
+Sep_
+Men_StrucDelete
+Men_ThermDelete
+Men_MagDelete
+Men_ElecDelete
+Men_FLUIDDelete
+Men_FSIDelete
+Men_FVINDelete
+Sep_
+Fnc_DelInitCon
+Men_DelLoadVect
+:E END
+:! 
+:N Men_Diagnostics
+:S     99,    81,    11
+:T Menu
+:A Diagnostics
+:D Diagnostics
+Fnc_NLDIAG
+:E END
+:! 
+:N Men_Divide
+:S    272,    72,   193
+:T Menu
+:A    Divide
+:C
+:D Divide
+Fnc_VSBA_div
+Fnc_VSBW_div
+Sep_
+Fnc_ASBV_div
+Fnc_ASBA_div
+Fnc_ASBL_div
+Fnc_ASBW_div
+Sep_
+Fnc_LSBV_div
+Fnc_LSBA_div
+Fnc_LSBL_div
+Fnc_LSBW_div
+Fnc_LDIV_2
+Fnc_LDIV
+Fnc_LDIV_opt
+Sep_
+Men_Divide_opt
+:E END
+:! 
+:N Men_Divide_opt
+:S    276,    89,   180
+:T Menu
+:A With Options
+:D Divide with Options
+Fnc_VSBA_div_opt
+Fnc_VSBW_div_opt
+Sep_
+Fnc_ASBV_div_opt
+Fnc_ASBA_div_opt
+Fnc_ASBL_div_opt
+Fnc_ASBW_div_opt
+Sep_
+Fnc_LSBV_div_opt
+Fnc_LSBA_div_opt
+Fnc_LSBL_div_opt
+Fnc_LSBW_div_opt
+:E END
+:! 
+:N Men_DropTest
+:S    150,    82,    61
+:T Menu
+:A Drop Test
+:D Drop Test (PREP7)
+Fnc_DropControl
+Fnc_DtSolve
+Sep_
+Fnc_DtAndyna
+Men_DtTimeHist
+:E END
+:! 
+:N Men_DtTimeHist
+:S    145,   106,    32
+:T Menu
+:A Time History
+:D Time History
+:K #(DROPPOST*NOFILTER)
+Fnc_DtTmHisPlot
+Fnc_DtTmHisPrnt
+:E END
+:! 
+:N Men_ELBOW_endr
+:S    118,    82,    29
+:T Menu
+:A Elbows
+:D Elbow End Releases
+Fnc_ELBOW_all
+Fnc_ELBOW_node
+:E END
+:! 
+:N Men_EMASOLV
+:S    621,   229,   385
+:T Menu
+:A    Electromagnet
+:D    Electromagnet
+:K ((PREP7*SOLUTION+ELECSTAT*(MAGNETIC+transient))*NOFILTER)+lsdyna
+:K #((ELECSTAT*SCALARP*VECTORP*EDGEFLX*MAGEDG)*HARMONIC*EDGEELC*NOFILTER)
+K_LN((STATIC+ELECSTAT*SCALARP*VECTORP*EDGEFLX*MAGEDG+harmonic)*NOFILTER)
+-Static Analysis-
+K_LN(elecstat)
+Fnc_EMA_STAN
+K_LN(elecstat)
+Fnc_INDMATR
+K_LN((STATIC+ELECSTAT)*NOFILTER)
+Fnc_CAPMATR
+K_LN((elecstat+HARMONIC+ELEM2D)*NOFILTER)
+-Harmonic Analys-
+K_LN(elecstat)
+Fnc_HMAGSOLV
+K_LN((elecstat+EDGEELC*MAGHFE)*NOFILTER)
+-HF Emag-
+K_LN((elecstat+HARMONIC+ELEM3D)*NOFILTER)
+Fnc_EMA_HFEL
+:E END
+:! 
+:N Men_ENDRELEASE
+:S    118,    82,    29
+:T Menu
+:A End Releases
+:D End Releases
+Men_BEAM_endr
+Men_ELBOW_endr
+:E END
+:! 
+:N Men_ESURFM
+:S    180,    82,    91
+:T Menu
+:A    Surf Effect
+:D Surface effect
+-Generl Surface-
+Fnc_ESURFN1
+Fnc_ESURFN2
+-Attch to Fluid-
+Fnc_ESURFL
+Fnc_ESURFA
+Fnc_ESURFN
+:E END
+:! 
+:N Men_ElecApply
+:S    250,   193,    50
+:T Menu
+:A Electric
+:K (PR_ELMAG*pr_set*PR_MULTI*(PR_THERM+ELECTRIC))
+:K #(ELECTRIC+vfed)*CIRC*ELECSTAT*TIMEINTP*EDGEELC*NOFILTER)
+:K #(PREP7*SOLUTION)
+Men_AppElecPoten
+Men_AppElecExcit
+Men_AppElecFlag
+:E END
+:! 
+:N Men_ElecDelete
+:S    215,   158,    50
+:T Menu
+:A Electric
+:D Delete Electric Loads
+:K (PR_ELMAG*pr_set)
+:K #(ELECTRIC*ELECSTAT*TIMEINTP*EDGEELC*NOFILTER)
+Men_DelElecPoten
+Men_DelElecExcit
+Men_DelElecFlag
+:E END
+:! 
+:N Men_ElemPSMESH
+:S    168,    84,    77
+:T Menu
+:A    Pretensn Mesh
+:D Pretension
+Fnc_PSME_en
+Fnc_PSME_seln
+Fnc_PSME_ln
+Fnc_PSME_an
+Fnc_PSME_vn
+Men_PSMESH_opt
+:E END
+:! 
+:N Men_ElemTable
+:S    253,    97,   149
+:T Menu
+:A Element Table
+:K #((POST1+RESULTS)*NOFILTER)
+Fnc_ETABLE
+Fnc_PLETAB
+Fnc_PRETAB
+Sep_
+Fnc_SABS
+Fnc_SSUM
+Fnc_SADD
+Fnc_SMULT
+Fnc_SMAX
+Fnc_SMIN
+Sep_
+Fnc_SEXP
+Fnc_VCROSS
+Fnc_VDOT
+Sep_
+Fnc_ETABLE_erase
+:E End
+:! 
+:N Men_ElemType
+:S    156,    80,    69
+:T Menu
+:A Element Type
+:D Element Type
+Fnc_ET
+K_LN(lsdyna)
+Sep_
+Fnc_ETCHG
+Fnc_DOF
+Fnc_DOF_DEL
+Fnc_ETCONTROL
+:E END
+:! 
+:N Men_Elements
+:S    463,    72,   384
+:T Menu
+:A Elements
+:D Elements
+Fnc_MAT_TYPE_gen
+Sep_
+-Auto Numbered-
+Fnc_E
+Fnc_EINTF
+Fnc_EINTF_OFFSET
+-Surf / Contact-
+Fnc_ESURF
+Men_ESURFM
+Fnc_Nd_Surf
+Fnc_InfAElm
+-SpotWeld-
+Men_SWGEN
+Men_SWADD
+Fnc_SWLIST
+Fnc_SWDEL
+-Pretension-
+Men_ElemPSMESH
+-User Numbered-
+Fnc_EN
+Sep_
+Fnc_EWRITE
+Fnc_EREAD_ERRANG
+P_LN(THERMAL*FULL_ANS)
+Sep_
+P_LN(THERMAL*FULL_ANS)
+Fnc_-Superelem-
+Fnc_SE
+Fnc_SESYMM
+Fnc_SETRAN_geom
+Fnc_SETRAN_cs
+:E END
+:! 
+:N Men_ExpPass
+:S    268,   173,    88
+:T Menu
+:A ExpansionPass
+:D Expansion Pass Opts
+:K (lsdyna)
+:K #(PREP7*SOLUTION+(pr_cfd+cfd+magnetic+electric)*NOFILTER)
+:P (LINPLUS)
+-Single Expand-
+Fnc_EXPSOL_HREXP
+Fnc_EXPSOL_HREX2
+Fnc_NUMEXP_HREXP
+Fnc_MXPAND
+Fnc_SEEXP
+:E End
+:! 
+:N Men_Extrude
+:S    218,    72,   139
+:T Menu
+:A Extrude
+:C
+:D Extrude
+P_LN(mdl2d)
+Fnc_EXTOPT
+Sep_
+-Areas-
+Fnc_VOFFST
+Fnc_VEXT
+Fnc_VROTAT
+Fnc_VDRAG
+-Lines-
+Fnc_AROTAT
+Fnc_ADRAG
+-Keypoints-
+Fnc_LROTAT
+Fnc_LDRAG
+:E END
+:! 
+:N Men_FLUIDDelete
+:S    263,   136,   120
+:T Menu
+:A Fluid/ANSYS
+:D Delete Fluid/ANSYS Loads
+:K (PR_FLUID*pr_set)
+:K #(FLUID*NOFILTER)
+Men_DelFlPrsANS
+Men_DelFlowANS
+Men_DelFSI
+Men_DelImpedance
+Men_DelHeatGenANS
+Men_DelNormVel
+K_LN(ALPHA)
+Men_DelFreeSurf
+:E END
+:! 
+:N Men_FSI
+:S    191,    86,    98
+:T Menu
+:A FSI Set Up
+:D Fluid Structure Interface
+Fnc_FSI_Options
+Fnc_FSI_Time
+Fnc_FSI_Iter
+Fnc_FSI_Conv
+Fnc_FSI_Relax
+Fnc_FSI_Restart
+Fnc_FSI_Stat
+:E END
+:! 
+:N Men_FSIDelete
+:S    296,   213,    76
+:T Menu
+:A Field Surface Intr
+:D Delete Field Surface Interface
+:K (PR_THERM*PR_FLUID*PR_CFD*pr_set)
+:K (THERMAL*FLUID*CFD*STRUCTRL*NOFILTER)
+:P (THERMAL*FLOTRAN*NOFILTER)
+Fnc_SFDELE_FSInt
+Fnc_SFEDELE_FSInt
+Sep_
+Fnc_SFLDELE_FSInt
+Fnc_SFADELE_FSInt
+:E END
+:! 
+:N Men_FVINDelete
+:S    127,   104,    16
+:T Menu
+:A Field Volume Intr
+:D Delete Field Volume Interface
+Fnc_BFEDEL_FVIN
+:E END
+:! 
+:N Men_FailCriteria
+:S    215,   134,    74
+:T Menu
+:A Failure Criteria
+:D Fail Criteria
+:K ((lsdyna+STRUCTRL)*NOFILTER)
+:P (LINPLUS)
+Fnc_FCritTemp
+Fnc_FCritDef
+Fnc_FCritDele
+Fnc_FCritList
+Sep_
+Fnc_FCritChek
+:E End
+:! 
+:N Men_FailureCrit
+:S    214,    86,   121
+:T Menu
+:A Failure Crit
+:C
+:D Failure Crit
+Fnc_TB_fail_mstn
+Fnc_TB_fail_msts
+Fnc_TB_fail_wu
+Sep_
+Fnc_TB_fail_ustn
+Fnc_TB_fail_usts
+Fnc_TB_fail_uwu
+Fnc_TB_fail_uoth
+:E END
+:! 
+:N Men_Fatigue
+:S    366,   104,   255
+:T Menu
+:A Fatigue
+:K (PR_STRUC*pr_set)
+:K #(POST1)
+:P (LINPLUS)
+Fnc_FTSIZE
+Sep_
+-Property Table-
+Fnc_FP
+Fnc_FP_smt
+Fnc_FP_mn
+Fnc_FPLIST
+Fnc_FP_erase
+Sep_
+Fnc_FL
+Fnc_FLLIST
+Sep_
+-Store Stresses-
+Fnc_FSNODE
+Fnc_FSSECT
+Fnc_FS
+Fnc_FSPLOT
+Fnc_FSLIST
+Fnc_FSDELE
+Sep_
+Fnc_FE
+Fnc_FELIST
+Fnc_FE_erase
+Sep_
+Fnc_FTCALC
+Fnc_FTWRIT
+:E End
+:! 
+:N Men_File_Control
+:S    204,   118,    79
+:T Menu
+:A File Controls
+:D File Controls
+:K ((LSDYNA*FULL_ANS)+SOLUTION)
+Men_DYNA_Files
+Fnc_DYNA_Outopt
+Fnc_DYNA_Output
+Fnc_DYNA_Start
+Fnc_DYNA_History
+:E END
+:! 
+:N Men_FluidApply
+:S    255,   128,   120
+:T Menu
+:A Fluid/ANSYS
+:K (PR_FLUID*pr_set)
+:K #(FLUID*NOFILTER)
+:K #(PREP7*SOLUTION)
+Men_AppFlPrsANS
+Men_AppFlowANS
+Men_AppFSI
+Men_AppImpedance
+Men_AppHeatGenANS
+Men_AppNormVel
+K_LN(ALPHA)
+Men_AppFreeSurf
+:E END
+:! 
+:N Men_FluxNorma
+:S    142,   111,    24
+:T MENU
+:A Flux Normal
+:D Flux Normal
+:K ((SCALARP+edgeflx)*NOFILTER)
+Fnc_DA_magN
+Fnc_D_magNN
+:E END
+:! 
+:N Men_FluxPMVP
+:S    146,   118,    21
+:T MENU
+:A Flux Par'l 
+:D Flux Par'l
+:K ((PREP7*SOLUTION)+(EDGEFLX*NOFILTER))
+Fnc_DA_azP
+Fnc_D_azP
+:E END
+:! 
+:N Men_GapCond
+:S    220,   169,    44
+:T Menu
+:A Dynamic Gap Cond
+:K ((PR_STRUCTRL*pr_set) + lsdyna))
+:K #((TRNSIENT+(REDUCED*MODESUP)+lstepgt1)*NOFILTER)
+:P (LINPLUS)
+Fnc_GP
+Fnc_GPDELE
+Fnc_GPLIST_all
+Fnc_GPLIST
+:E END
+:! 
+:N Men_GenlPost
+:S   1373,   575,   791
+:T Menu
+:A General Postproc
+:C )/nopr
+:C )*GET,_z1,common,,cycsym_com,,int,2
+:C )KEYWD,CYCLIC,0
+:C )KEYWD,CYCGEN,0
+:C )*IF,_z1,gt,1,then
+:C )KEYWD,CYCLIC,1
+:C )*ELSEIF,_modcyc,eq,1,then
+:C )KEYWD,CYCGEN,1
+:C )*ENDIF
+:C )KEYWORD,ROTKEY,0
+:C )*GET,_Z2,COMMON,,STEPCM,,INT,192
+:C )*IF,_Z2,EQ,1,THEN
+:C )KEYWORD,ROTKEY,1
+:C )*ENDIF
+:C )*GET,_Z2,COMMON,,STEPCM,,INT,198
+:C )*IF,_Z2,EQ,1,THEN
+:C )KEYWORD,ROTKEY,1
+:C )*ENDIF
+:C )!*get,_z1,active,,routin
+:C )!*if,_z1,ne,31,then
+:C /POST1
+:C )!*endif
+:C )/go
+:D General Postprocessor (POST1)
+Men_UVBA_P1_T1
+Men_UVBA_P1_T2
+Men_UVBA_P1_T3
+Fnc_ReadOpts_p1
+Fnc_SET_summary
+Fnc_SET_sum_ord
+Sep_
+-Read Results-
+Fnc_SET_first
+Fnc_SET_next
+Fnc_SET_prev
+Fnc_SET_last
+Fnc_SET_list
+Fnc_SET_list_ord
+Fnc_SET_lstep
+Fnc_SET_time
+Fnc_SET_nset
+K_LN((POST1+RESULTS+lsdyna+STRUCTRL)*NOFILTER)
+Sep_
+Men_FailCriteria
+Sep_
+Men_PlotResults
+Men_ListResults
+Men_QuerResults
+Men_RotResults
+Fnc_OutOpts_p1
+Sep_
+Fnc_ResultView
+Sep_
+Men_NodalCalcs
+Men_ElemTable
+Men_PathOper
+Men_SurfOper
+Men_LoadCase
+Men_ChkElmShape
+Fnc_RAPPND
+Sep_
+Men_ROM_Oper
+Men_ThinFilm_Oper
+K_LN(CYCLIC)
+Sep_
+K_LN(CYCLIC)
+Men_PostCyc
+Sep_
+Men_Submodel
+Men_MagCalcs
+Men_Fatigue
+Men_SafetyFact
+Sep_
+-Define/Modify-
+Fnc_DNSOL
+Fnc_DESOL
+Fnc_DETAB
+Sep_
+Fnc_NLPOST
+Sep_
+Fnc_RESET_p1
+Men_P1_-REZONE-
+Men_UVBA_P1_B1
+Men_UVBA_P1_B2
+Men_UVBA_P1_B3
+:E End
+:! 
+:N Men_Glue
+:S    103,    66,    30
+:T Menu
+:A    Glue
+:C
+:D Glue
+Fnc_VGLUE
+Fnc_AGLUE
+Fnc_LGLUE
+:E END
+:! 
+:N Men_HARDPTA
+:S    124,    97,    20
+:T Menu
+:A Hard PT on area
+:D Hard PT on area
+:!Fnc_HPTAR
+Fnc_HPTAC
+Fnc_HPTAP
+:E End
+:! 
+:N Men_HARDPTA53
+:S    116,    99,    10
+:T Menu
+:A Hard PT on area
+:D Hard PT on area
+:!Fnc_HPTAR
+Fnc_HPTAC
+:E End
+:! 
+:N Men_HARDPTL
+:S    122,    85,    30
+:T Menu
+:A Hard PT on line
+:D Hard PT on line
+Fnc_HPTLR
+Fnc_HPTLC
+Fnc_HPTLP
+:E End
+:! 
+:N Men_HARDPTL53
+:S    114,    87,    20
+:T Menu
+:A Hard PT on line
+:D Hard PT on line
+Fnc_HPTLR
+Fnc_HPTLC
+:E End
+:! 
+:N Men_HPT_54
+:S    111,    76,    28
+:T Menu
+:A Hard Points
+:D Hard Points
+Men_HARDPTL53
+Men_HARDPTA53
+:E End
+:! 
+:N Men_InitialCond
+:S    240,   175,    58
+:T Menu
+:A Initial Condit'n
+:D Initial Conditions
+:K (lsdyna)
+:K #((PREP7*SOLUTION)+(STRUCTRL*THERMAL*FLUID*ELECTRIC*MAGNETIC*CFD))
+Fnc_IC_p
+Fnc_ICLIST_all
+Fnc_ICLIST
+Sep_
+Fnc_LDREAD_tempIC
+:E END
+:! 
+:N Men_Intersect
+:S    194,    81,   106
+:T Menu
+:A    Intersect
+:C
+:D Intersect
+-Common-
+Fnc_VINV
+Fnc_AINA
+Fnc_LINL
+-Pairwise-
+Fnc_VINP
+Fnc_AINP
+Fnc_LINP
+Sep_
+Fnc_AINV
+Fnc_LINV
+Fnc_LINA
+:E END
+:! 
+:N Men_J-Normal-T
+:S    210,   172,    31
+:T Menu
+:A    J-Normal 
+:D Apply J-Normal-T
+:K ((PREP7*SOLUTION)+(elem3d+edgeelc+TIMEINTP)*NOFILTER)
+:P (LINPLUS*THERMAL*ELECMAG)
+Fnc_D_volt0_ti
+Fnc_DA_volt0_ti
+:E END
+:! 
+:N Men_J-Normal1
+:S    240,   195,    38
+:T Menu
+:A    J-Normal 
+:D Apply J-Normal
+:K #(PREP7*SOLUTION*NOFILTER)
+:K (((ELECTRIC*ELECSTAT)+timeintp+edgeelc)*NOFILTER)
+:P (LINPLUS*THERMAL*ELECMAG)
+Fnc_D_volt0
+Fnc_DL_volt0
+Fnc_DA_volt0
+:E END
+:! 
+:N Men_KCEN
+:S    112,    76,    29
+:T Menu
+:A KP at center
+:D KP at center
+Fnc_KCEN
+Fnc_KCENR
+Fnc_KCENL
+:E End
+:! 
+:N Men_Keypoint
+:S    177,    74,    96
+:T Menu
+:A Keypoints
+:D Keypoints
+Fnc_K_p
+Fnc_K
+Fnc_KL
+Fnc_KLD
+Fnc_KNODE
+Fnc_KBET
+Fnc_KFILL
+Men_KCEN
+Sep_
+Men_HARDPTL
+Men_HARDPTA
+:E End
+:! 
+:N Men_Lay-up
+:S    108,    68,    33
+:T Menu
+:A    Lay-up
+:D Shell
+Fnc_ShellAddEdit
+Fnc_SECPLOTshel
+:E END
+:! 
+:N Men_Line
+:S    175,    65,   103
+:T Menu
+:A    Lines
+:D Lines
+Fnc_LSTR
+Fnc_L
+Fnc_LAREA
+Sep_
+Fnc_LTAN
+Fnc_L2TAN
+Sep_
+Fnc_LANG_90
+Fnc_L2ANG_90
+Sep_
+Fnc_LANG
+Fnc_L2ANG
+:E END
+:! 
+:N Men_ListResults
+:S    563,    98,   458
+:T Menu
+:A List Results
+:K #((POST1+RESULTS)*NOFILTER)
+Fnc_SET_detailed
+Fnc_SET_detl_ord
+Fnc_PRITER
+Fnc_PRERR
+Sep_
+-Sorted Listing-
+Fnc_NSORT
+Fnc_NUSORT
+Fnc_ESORT
+Fnc_EUSORT
+Sep_
+Fnc_PRNSOL
+Fnc_PRESOL
+Fnc_SEDLIS
+Fnc_SWDLIS
+Sep_
+Fnc_PRRSOL
+Fnc_PRNLD
+Sep_
+Fnc_PRETAB_dummy
+Fnc_PRVECT
+Fnc_PRPATH_dummy
+Fnc_PRSECT_dummy
+K_LN(ELECTRIC*MAGNETIC+EDGEELC)
+Sep_
+K_LN(ELECTRIC*MAGNETIC+EDGEELC)
+-Field Extension-
+Fnc_RADAR_L
+Fnc_RADAR_NL
+Fnc_HFFAR_L
+Fnc_HFNEAR
+Fnc_ANTPAT_L
+Fnc_ANTDIR_L
+Fnc_ANTPRAD
+Fnc_ANTPGAIN
+Fnc_ANTEFF
+:E End
+:! 
+:N Men_LoadCase
+:S    356,    86,   263
+:T Menu
+:A Load Case
+:K #((POST1)*(NOFILTER))
+Fnc_LC_create
+Fnc_LCASE
+Fnc_LCWRITE
+Sep_
+-Calc Options-
+Fnc_LCSEL
+Fnc_LCABS
+Fnc_LCFACT
+Fnc_STRSOPT
+Sep_
+Fnc_LCOPER_add
+Fnc_LCOPER_sub
+Fnc_LCOPER_squa
+Fnc_LCOPER_sqrt
+Fnc_LCOPER_srss
+Fnc_LCOPER_mn_mx
+Fnc_LCOPER_lprin
+Sep_
+Fnc_LCDEF_stat
+Fnc_LCZERO
+Fnc_LCDEF_erase
+:E End
+:! 
+:N Men_LoadSettings
+:S    310,   100,   203
+:T Menu
+:A    Settings
+:K (lsdyna)
+:K #(PREP7*SOLUTION)
+Fnc_TUNIF
+Fnc_TREF
+P_LN(LINPLUS*THERMAL)
+Sep_
+K_LN(elecstat)
+-For Surface Ld-
+Fnc_SFGRAD
+Fnc_SFFUN
+Sep_
+-Replace vs Add-
+Fnc_DCUM
+Fnc_FCUM
+Fnc_SFCUM
+Fnc_BFCUM
+Fnc_BFECUM
+Fnc_LSCLEAR_lfac
+Fnc_SMOOTH_data
+:E END
+:! 
+:N Men_LoadStepOpts
+:S    803,    88,   708
+:T Menu
+:A Load Step Opts
+:D Load Step Opts
+K_LN(lsdyna)
+Men_OutputCtrls
+K_LN(lsdyna+((static+modal+buckling+trnsient)*SIMPLOFF))
+Fnc_SOLCONTROL
+K_LN(lsdyna+((static+buckling+trnsient)*SIMPLOFF*REDUCED*MODESUP))
+Men_TimeFreq
+K_LN(lsdyna+((static+modal+buckling+trnsient)*SIMPLOFF))
+Men_NonlinLSOpts
+K_LN(lsdyna+((static+modal+buckling+trnsient)*SIMPLOFF))
+Men_SpectrumOpts
+K_LN(lsdyna+((static+trnsient)*SIMPLOFF*REDUCED*MODESUP))
+Men_ExpPass
+K_LN(lsdyna+((static+modal+buckling+trnsient)*SIMPLOFF))
+Men_MagLSOpts
+K_LN(lsdyna+((buckling)*SIMPLOFF))
+Men_OtherLSOpts
+K_LN(lsdyna)
+Fnc_WRFULL
+K_LN(lsdyna+((modal+buckling)*SIMPLOFF))
+Fnc_LSCLEAR_lsop
+K_LN(lsdyna+((modal+buckling)*SIMPLOFF))
+Fnc_LSREAD
+K_LN(lsdyna+((modal+buckling)*SIMPLOFF))
+Fnc_LSWRITE
+:E END
+:! 
+:N Men_Loads
+:S    208,    87,   114
+:T Menu
+:A Loads
+:D Loads in PREP7
+:K #(igesfail)
+Men_Analysis
+P_LN(LINPLUS)
+Sep_
+Men_MasterDOF
+Men_GapCond
+Sep_
+Men_DefineLoads
+Sep_
+K_LN(lsdyna)
+Men_LoadStepOpts
+:E END
+:! 
+:N Men_Loads1
+:S    261,   100,   154
+:T Menu
+:A Loads
+:D Loads in PREP7
+:K #(igesfail)
+:K (LSDYNA)
+-Initial Condtns-
+Men_DYNA_Veloc
+Sep_
+-Constraints-
+Men_DYNapplyDisp
+Men_DYNDelDisp
+Fnc_DYNexport
+Sep_
+Fnc_DYNA_Load
+Fnc_LOADPLOT
+Fnc_EDFPLOT
+Fnc_EDNDTSD
+:E END
+:! 
+:N Men_Local_CS
+:S    147,    93,    47
+:T Menu
+:A Local CS
+:D Local CS
+:K (LSDYNA*FULL_ANS)
+Fnc_DYNA_Coord
+Fnc_DYNA_CSlist
+Fnc_DYNA_CSdele
+:E END
+:! 
+:N Men_MFMCC_Stagger
+:S    144,    87,    50
+:T Menu
+:A Stagger 
+:D Multifield Stagger
+Fnc_MFX_MaxIter
+Fnc_MFSUR_Converg
+Fnc_MFSUR_Relax
+:E END
+:! 
+:N Men_MFSET
+:S    213,   146,    60
+:T Menu
+:C )/NOPR
+:C )/GO
+:A Multi-field Set Up
+:D Multi-field Set Up
+:P (FULL_ANS&LINPLUS&THERMAL&MULTDISC)
+Fnc_MFSET_KEY
+K_LN(MF)
+Fnc_MFSCC
+K_LN(MFAX)
+Fnc_MFX_Ans_CFX
+:E END
+:! 
+:N Men_MFSET_Solu
+:S    223,   151,    65
+:T Menu
+:C )/NOPR
+:C )/GO
+:A Multi-field Set Up
+:D Multi-field Set Up
+:P (FULL_ANS&LINPLUS&THERMAL&MULTDISC)
+Fnc_MFSET_KEY
+K_LN(MF)
+Fnc_MFSCC_Solu
+K_LN(MFAX)
+Fnc_MFX_Ans_CFX
+:E END
+:! 
+:N Men_MFS_Define
+:S    125,    81,    37
+:T Menu
+:A Define
+:D Multifield Define
+Fnc_MFS_Definefield
+Fnc_MFS_Addelems
+:E END
+:! 
+:N Men_MFS_MCCSetup
+:S    134,    93,    34
+:T Menu
+:A Solution Ctrl
+:D MFX Solution Control
+Fnc_MFS_FieldGrp
+Fnc_MFS_MCCOrder
+:E END
+:! 
+:N Men_MFS_SCCInterface
+:S    146,    92,    47
+:T Menu
+:A Interface
+:D Multifield Transfer
+Fnc_MFS_Surface
+Fnc_MFS_Volume
+Fnc_MFS_Mapping
+:E END
+:! 
+:N Men_MFS_SCCSetup
+:S    137,    81,    49
+:T Menu
+:A Setup
+:D Multifield Setup
+Fnc_MFS_SCCSetup
+Fnc_MFS_SCCOrder
+Fnc_MFS_Extern
+:E END
+:! 
+:N Men_MFS_Stagger
+:S    138,    85,    46
+:T Menu
+:A Stagger 
+:D Multifield Stagger
+Fnc_MFS_MaxIter
+Fnc_MFS_Converg
+Fnc_MFS_Relax
+:E END
+:! 
+:N Men_MFX_AC_Advanced
+:S    167,    93,    67
+:T Menu
+:A Advanced Set Up
+:D Advanced Set Up
+Fnc_MFX_MapSetup
+Fnc_MFX_MaxIter
+Fnc_MFSUR_Converg
+Fnc_MFSUR_Relax
+:E END
+:! 
+:N Men_MFX_AC_Interface
+:S    119,    92,    20
+:T Menu
+:A Interface
+:D Multifield Transfer
+Fnc_MFX_AC_LoadComm
+:E END
+:! 
+:N Men_MODCOM_dd
+:S    190,   104,    79
+:T Menu
+:A Mode Combine
+:K #((PREP7*SOLUTION)+(DDAM*NOFILTER))
+Fnc_MODCOM_CQC
+Fnc_MODCOM_GRP
+Fnc_MODCOM_DSUM
+Fnc_MODCOM_SRSS
+Fnc_MODCOM_NRLSM
+:E End
+:! 
+:N Men_MODCOM_mp
+:S    194,   108,    79
+:T Menu
+:A Mode Combine
+:K #((PREP7*SOLUTION)+(MULTIPNT*NOFILTER))
+Fnc_MODCOM_CQC
+Fnc_MODCOM_GRP
+Fnc_MODCOM_DSUM
+Fnc_MODCOM_SRSS
+Fnc_MODCOM_NRLSM
+:E End
+:! 
+:N Men_MODCOM_sp
+:S    194,   108,    79
+:T Menu
+:A Mode Combine
+:K #((PREP7*SOLUTION)+(SINGLEPT*NOFILTER))
+Fnc_MODCOM_CQC
+Fnc_MODCOM_GRP
+Fnc_MODCOM_DSUM
+Fnc_MODCOM_SRSS
+Fnc_MODCOM_NRLSM
+:E End
+:! 
+:N Men_MP_Library
+:S    174,    90,    77
+:T Menu
+:A Material Library
+:D Material Library
+Fnc_/MPLIB
+Fnc_/MPLIB_STATUS
+Fnc_MPLib_Read
+Fnc_MPLib_Write
+Fnc_MPLib_UNITS2
+:E End
+:! 
+:N Men_MP_Library_copy
+:S    179,    95,    77
+:T Menu
+:A Material Library
+:D Material Library
+Fnc_/MPLIB
+Fnc_/MPLIB_STATUS
+Fnc_MPLib_Read
+Fnc_MPLib_Write
+Fnc_MPLib_UNITS2
+:E End
+:! 
+:N Men_MagApply
+:S    211,   142,    62
+:T Menu
+:A Magnetic
+:K (PR_ELMAG*pr_set+pr_cfd*PR_ELMAG)
+:K #(MAGNETIC*NOFILTER)
+:K #(PREP7*SOLUTION)
+Men_AppMagPoten
+Men_AppMagExcit
+Men_AppMagFlag
+Men_AppMagMisc
+:E END
+:! 
+:N Men_MagCalcs
+:S    442,   161,   274
+:T Menu
+:A Elec&Mag Calc
+:K ((PR_ELMAG*pr_set)+(lsdyna))
+:K #((POST1+RESULTS+(MAGNETIC*ELECTRIC)*NOFILTER))
+:P (ELECMAG)
+-Element Based-
+Fnc_SCENERGY
+Fnc_SENERGY
+Fnc_POWERH
+Fnc_EMAGERR
+Fnc_CURR2D
+Sep_
+Fnc_EMFTMAC
+Sep_
+-Component Based-
+Fnc_FMAGSUM
+Fnc_TORQSUM
+Fnc_GMATRIX
+Sep_
+-Path Based-
+Fnc_FOR2D
+Fnc_TORQ2D
+Fnc_TORQC2D
+Fnc_FLUXV
+Fnc_MMF
+Fnc_EMF
+Fnc_IMPD
+Sep_
+-Port-
+Fnc_REFLCOEF
+Fnc_FSSPARM
+:E END
+:! 
+:N Men_MagDelete
+:S    226,   157,    62
+:T Menu
+:A Magnetic
+:D Delete Magnetic Loads
+:K (PR_ELMAG*pr_set+pr_cfd*PR_ELMAG)
+:K #((MAGNETIC+edgeelc)*NOFILTER)
+Men_DelMagPoten
+Men_DelMagExcit
+Men_DelMagFlag
+Men_DelMagMisc
+:E END
+:! 
+:N Men_MagLSOpts
+:S    303,   199,    97
+:T Menu
+:A Magnetics
+:D Magnetic Load Step Options
+:K (((PREP7*SOLUTION)+(cfd*NOFILTER))+lsdyna)
+:K #((modal+SCALARP*(ELEM3D+EDGEFLX))*NOFILTER)
+:P (ELECMAG)
+Fnc_-Options Only-
+Fnc_MAGOPT_rsp
+Fnc_MAGOPT_dsp
+Fnc_MAGOPT_gsp
+Fnc_BIOT
+Fnc_EMSYM
+Fnc_EDG_GAUGE
+:E End
+:! 
+:N Men_ManSizeAreas
+:S    117,    70,    40
+:T MENU
+:A Areas
+:D Areas
+Fnc_AESIZE
+Fnc_AESIZE_p
+Fnc_AESIZE_pdel
+:E END
+:! 
+:N Men_ManSizeGlobal
+:S    123,    73,    43
+:T MENU
+:A Global
+:D Global
+Fnc_ESIZE
+Fnc_ACNTRL
+Fnc_VCNTRL
+Fnc_DESIZE
+:E END
+:! 
+:N Men_ManSizeKeypoints
+:S    129,    82,    40
+:T MENU
+:A Keypoints
+:D Keypoints
+Fnc_KESIZE
+Fnc_KESIZE_p
+Fnc_KESIZE_pdel
+:E END
+:! 
+:N Men_ManSizeLayers
+:S    111,    73,    31
+:T MENU
+:A Layers
+:D Layers
+Fnc_LELAYER_p
+Fnc_LELAYER_pdel
+:E END
+:! 
+:N Men_ManSizeLines
+:S    139,    70,    62
+:T MENU
+:A Lines
+:D Lines
+Fnc_LESIZE
+Fnc_LESIZE_p
+Fnc_LECOPY
+Fnc_LEFLIP
+Fnc_LESIZE_pdel
+:E END
+:! 
+:N Men_MapMshA
+:S    183,    94,    82
+:T Menu
+:A     Mapped
+:D Map Mesh Areas
+:K #(meshtool)
+Fnc_AMAP
+Fnc_AMESH4
+Sep_
+-Concatenate-
+Fnc_LCCAT
+Sep_
+-Del Concats-
+Fnc_LCCAT_del
+:E END
+:! 
+:N Men_MapMshV
+:S    195,    96,    92
+:T Menu
+:A     Mapped
+:D Map Mesh Volumes
+:K #(meshtool)
+Fnc_VMESH6
+Sep_
+-Concatenate-
+Fnc_ACCAT
+Fnc_LCCAT
+-Del Concats-
+Fnc_LCCAT_del
+Fnc_ACCAT_del
+:E END
+:! 
+:N Men_MapNewMesh
+:S    127,   100,    20
+:T Menu
+:A Map to New Mesh
+:K #((POST1+RESULTS)*NOFILTER)
+Fnc_CBDOF
+Fnc_BFINT
+:E End
+:! 
+:N Men_MasterDOF
+:S    336,   280,    49
+:T Menu
+:A Master DOFs
+:K (lsdyna)
+:K #((PREP7*(SOLUTION+lstepgt1))+(REDUCED*SUBSTRUC*NOFILTER))
+:C )/NOPR
+:C )KEYW,CMS,0
+:C )*GET,_keycms,common,,cmssupelcom,,int,1
+:C )*IF,_keycms,EQ,1,THEN
+:C )KEYW,CMS,1
+:C )*ENDIF
+:C )/GO
+:P (LINPLUS)
+Fnc_M
+Fnc_MGEN
+Fnc_MDELE
+Fnc_MLIST_all
+Fnc_MLIST
+:E END
+:! 
+:N Men_MatProp_solu
+:S    355,   123,   225
+:T Menu
+:A Change Mat Props
+:D Change Material Properties
+:K #(PREP7*SOLUTION)
+Men_MP_Library
+Fnc_TempUnits
+K_LN(lsdyna)
+Fnc_EMUNIT
+Fnc_EuidlMat
+Sep_
+Fnc_DYNA_Visco
+Men_DYNA_Hgl
+Fnc_DYNA_Damp
+Fnc_MPAMOD
+Sep_
+Men_Local_CS
+P_LN(LINPLUS*ELECMAG)
+K_LN(lsdyna)
+Men_DYNA_Curve
+Fnc_MPCHG
+Fnc_MPWRITE
+Fnc_MPREAD
+:E END
+:! 
+:N Men_Mat_TB
+:S    192,    97,    88
+:T Menu
+:A Data Tables
+:D Data Tables
+:P (LINPLUS*ELECMAG)
+Fnc_TB
+Fnc_TBTEMP
+Fnc_TB_edit
+Fnc_TB_status
+Fnc_TBCOPY
+Fnc_TBDELE
+Fnc_TBLIST
+Fnc_TBPLOT
+:E END
+:! 
+:N Men_Mat_mooney
+:S    277,   154,   116
+:T Menu
+:A Mooney-Rivlin
+:D Calculate Mooney-Rivlin Constants from Test Data
+:K (PR_STRUC*pr_set)
+:P (FULL_ANS)
+K_LN(lsdyna)
+Fnc_TB_mooney
+K_LN(lsdyna)
+Sep_
+K_LN(lsdyna)
+Fnc_*MOONEY
+Fnc_M_EVAL
+K_LN(lsdyna)
+Sep_
+Fnc_*VPLO_choice
+:E END
+:! 
+:N Men_Mat_mooney_copy
+:S    282,   159,   116
+:T Menu
+:A Mooney-Rivlin
+:D Calculate Mooney-Rivlin Constants from Test Data
+:K (PR_STRUC*pr_set)
+:P (FULL_ANS)
+K_LN(lsdyna)
+Fnc_TB_mooney
+K_LN(lsdyna)
+Sep_
+K_LN(lsdyna)
+Fnc_*MOONEY
+Fnc_M_EVAL
+K_LN(lsdyna)
+Sep_
+Fnc_*VPLO_choice
+:E END
+:! 
+:N Men_Material
+:S    313,    89,   217
+:T Menu
+:A Material Props
+:D Material Properties
+Men_MP_Library_copy
+Fnc_TempUnits
+K_LN(lsdyna)
+Fnc_EMUNIT
+Fnc_EuidlMat
+Sep_
+Fnc_DYNA_Visco
+Men_DYNA_Hgl
+Fnc_DYNA_Damp
+Fnc_MPAMOD
+Sep_
+Men_Local_CS
+Men_DYNA_Curve
+Fnc_MPCHG
+Men_FailCriteria
+Sep_
+Fnc_MPWRITE
+Fnc_MPREAD
+:E END
+:! 
+:N Men_Mesh
+:S    570,   323,   240
+:T Menu
+:A    Mesh
+:D Mesh
+:C )/NOPR
+:C )
+:C )*GET,_z1,ACTIVE,,KEYWORD,,MESHTOOL
+:C )*IF,_z1,eq,1,THEN
+:C )*create,ansuitmp
+:C )*msg,note,
+:C )Some functions of this menu cannot be used while the %/&
+:C )MeshTool is active.
+:C )*end
+:C )/input,ansuitmp
+:C )*ENDIF
+:C )/GO
+:K #(igesfail)
+Fnc_KMESH_m
+Fnc_LMESH_m
+Sep_
+-Areas-
+Men_MapMshA
+Fnc_AMESH_m
+Fnc_AMESHtar
+Sep_
+-Volumes-
+Men_MapMshV
+Fnc_VMESH_m
+Sep_
+-Volume Sweep-
+Fnc_EXTOPT_vswe
+Fnc_VSWEEP_m
+Sep_
+-Tet Mesh From-
+Fnc_FVMESH
+Sep_
+-Interface Mesh-
+Fnc_IMESH2D
+Fnc_IMESH3D
+:E END
+:! 
+:N Men_MeshAttrib
+:S    232,    84,   141
+:T Menu
+:A Mesh Attributes
+:K #(igesfail)
+Fnc_MeshAttrib
+Sep_
+Fnc_KATT
+Fnc_KATT_p
+Sep_
+Fnc_LATT
+Fnc_LATT_p
+Sep_
+Fnc_AATT
+Fnc_AATT_p
+P_LN(mdl2d)
+Sep_
+Fnc_VATT
+Fnc_VATT_p
+Sep_
+Men_VEOR
+:E END
+:! 
+:N Men_MeshConcat
+:S    161,    83,    71
+:T Menu
+:A    Concatenate
+:K #(igesfail)
+Fnc_LCCAT_m
+Fnc_ACCAT_m
+Sep_
+-Del Concats-
+Fnc_ACCAT_del
+Fnc_LCCAT_del
+:E END
+:! 
+:N Men_Meshing
+:S    181,    58,   116
+:T Menu
+:A Meshing
+Men_MeshAttrib
+Fnc_Mesh_tool
+Men_SizeCntrl
+Fnc_MshrOpts
+Men_MeshConcat
+Men_Mesh
+Men_Modify
+Men_Check_mesh
+Men_Clear
+:E END
+:! 
+:N Men_Modeling
+:S    214,    60,   147
+:T Menu
+:A Modeling
+Men_Create52
+Men_Create53
+Men_Operate52
+Men_Operate53
+Men_Move
+Men_Copy
+Men_Reflect
+Men_Check_geom
+Men_Delete
+Men_PrepCyc
+Men_CMS
+Fnc_GSG
+Fnc_Geom
+:E END
+:! 
+:N Men_Modify
+:S    303,    97,   199
+:T Menu
+:A    Modify Mesh
+:D    Modify Mesh
+:K #(igesfail)
+-Refine At-
+Fnc_NREF
+Fnc_EREF
+Fnc_KREF
+Fnc_LREF
+Fnc_AREF
+Fnc_EREF_ALL
+Sep_
+Men_TetImprove
+Sep_
+Fnc_TCHG
+K_LN(PREP7+RESULTS)
+Sep_
+K_LN(PREP7+RESULTS)
+-Phys Morphing-
+Fnc_AMORPH
+Fnc_VMORPH
+Fnc_ELMORPH
+:E END
+:! 
+:N Men_Move
+:S    482,    87,   388
+:T Menu
+:A    Move / Modify
+:D Move
+:K #(igesfail)
+-Keypoints-
+Fnc_KGEN_move
+Fnc_KMODIF
+Fnc_KMOVE
+Sep_
+Fnc_LGEN_move
+-Areas-
+Fnc_AGEN_move
+Fnc_ANORM
+Sep_
+Fnc_VGEN_move
+Sep_
+-Nodes-
+Fnc_NGEN_move
+Fnc_NMODIF
+Fnc_NSCALE_move
+Fnc_MOVE
+Fnc_-RotateNode-
+Men_To_Surf_Norm
+Fnc_NROTAT
+Fnc_NMODIF_ang
+Fnc_NANG
+-Elements-
+Fnc_EMODIF_attr
+Fnc_EMODIF_node
+Fnc_EMID_add
+Fnc_EMID_remove
+Fnc_ENORM
+Fnc_EORIENT
+Sep_
+Men_Transfer_Coord
+Sep_
+Men_ReverseNorm
+:E END
+:! 
+:N Men_MultiPhys
+:S    250,   115,   128
+:T Menu
+:A Physics
+:D Physics
+:K #((PREP7*SOLUTION)+igesfail)
+:K (lsdyna)
+-Environment-
+Fnc_Phys_writ
+Fnc_Phys_read
+Fnc_Phys_stat
+Fnc_Phys_list
+Fnc_Phys_dele
+Fnc_Phys_clear
+-Coupled Solvers-
+Fnc_ESSOLV
+:E END
+:! 
+:N Men_NodalCalcs
+:S    231,    96,   128
+:T Menu
+:A Nodal Calcs
+:K #((POST1+RESULTS)*NOFILTER)
+Fnc_FSUM
+Fnc_NFORCE
+P_LN(LINPLUS)
+-Summation Pt-
+Fnc_SPOINT_node
+Fnc_SPOINT_xyz
+P_LN(LINPLUS*FLOTRAN)
+Sep_
+Fnc_KCALC
+Fnc_INTSRF
+:E End
+:! 
+:N Men_Nodes
+:S    463,   299,   157
+:T Menu
+:A Nodes
+:C )/nopr
+:C )*create,ansuitmp
+:C )_z1=etyiqr(0,14)
+:C )keyw,axissect,0
+:C )*do,_z2,1,_z1,1
+:C )_ztyp=etyiqr(_z2,-2)
+:C )*if,_ztyp,eq,272,or,_ztyp,eq,273,then
+:C )keyw,axissect,1
+:C )*endif
+:C )*enddo
+:C )*end
+:C )/inp,ansuitmp
+:C )/go
+:D Nodes
+Fnc_N_p
+Fnc_N
+Fnc_CENTER
+Fnc_NKPT
+Sep_
+Fnc_FILL
+Fnc_QUAD
+Fnc_NAXIS
+Sep_
+Fnc_-RotateNode-
+Fnc_NROTAT
+Fnc_NMODIF_ang
+Fnc_NANG
+Sep_
+Fnc_NWRITE
+Fnc_NREAD_NRRANG
+:E END
+:! 
+:N Men_NonlinLSOpts
+:S   1065,   212,   846
+:T Menu
+:C )/NOPR
+:C )*GET,_z1,common,,anscom,,int,52
+:C )KEYW,NLCNTRL,_z1
+:C )/GO
+:A Nonlinear
+:D Nonlinear LS Opts
+:K (lsdyna)
+:K #((PREP7*SOLUTION)+(cfd)*(NOFILTER)
+K_LN(MAGNETIC+ELEM2D+structrl+thermal+cfd+fluid)
+Fnc_CNVTOL_0
+K_LN(MAGNETIC+ELEM2D+structrl+thermal+cfd+fluid)
+Fnc_CNVTOL_1
+K_LN(MAGNETIC+ELEM2D+structrl+thermal+cfd+fluid)
+Fnc_CNVTOL_2
+K_LN(MAGNETIC+ELEM2D+structrl+thermal+cfd+fluid)
+Fnc_CNVTOL_3
+K_LN(MAGNETIC+ELEM2D+(STRUCTRL*CFD)+THERMAL+fluid)
+Fnc_CNVTOL_0
+K_LN(MAGNETIC+ELEM2D+(STRUCTRL*CFD)+THERMAL+fluid)
+Fnc_CNVTOL_1
+K_LN(MAGNETIC+ELEM2D+(STRUCTRL*CFD)+THERMAL+fluid)
+Fnc_CNVTOL_2
+K_LN(MAGNETIC+ELEM2D+(STRUCTRL*CFD)+THERMAL+fluid)
+Fnc_CNVTOL_3
+K_LN(magnetic*elem2d)
+Fnc_CNVTOL
+Fnc_NEQIT
+Fnc_SOLC_VolChk
+Fnc_CRPLIM
+Fnc_Strain_Rate
+P_LN(LINPLUS*THERMAL)
+Sep_
+Fnc_LNSRCH
+Fnc_PRED
+Fnc_ARC_opts
+Sep_
+K_LN(magnetic+electric+fluid)
+Fnc_MONITOR
+K_LN(magnetic+electric+fluid)
+Fnc_CUTCONTROL
+K_LN(magnetic+electric+fluid)
+Fnc_OPNCONTROL
+K_LN(magnetic+electric+fluid)
+Fnc_RESCONTROL
+Sep_
+Fnc_NCNV
+:E End
+:! 
+:N Men_NumCtrl
+:S    210,   100,   103
+:T Menu
+:A Numbering Ctrls
+:D Numbering Ctrls
+:K #(igesfail)
+Fnc_NUMMRG
+Fnc_NUMCMP
+Sep_
+Fnc_NUMSTR
+Fnc_NUMSTR_defa
+Fnc_NUMSTR_stat
+Sep_
+Fnc_NUMOFF
+Sep_
+Men_Reorder
+:E END
+:! 
+:N Men_OperLoads
+:S    287,   113,   167
+:T Menu
+:A    Operate
+:D Operate Loads
+:K (lsdyna)
+:K #(PREP7*SOLUTION)
+-Scale FE Loads-
+Fnc_DSCALE
+Fnc_FSCALE
+Fnc_SFSCALE
+Fnc_BFSCALE
+Fnc_BFESCAL
+Sep_
+-Transfer to FE-
+Fnc_SBCTRAN
+Fnc_DTRAN
+Fnc_FTRAN
+Fnc_SFTRAN
+Fnc_BFTRAN
+Sep_
+Fnc_LSDELE
+:E End
+:! 
+:N Men_Operate52
+:S    260,    86,   167
+:T Menu
+:A    Operate
+:D Operate
+:K (priges)
+Men_Extrude
+Fnc_LEXTND
+Sep_
+-Booleans-
+Men_Intersect
+Men_Add
+Men_Subtract
+Men_Divide
+Men_Glue
+Men_Overlap
+Men_Partition
+Fnc_Bool_opts
+Men_Degen
+Sep_
+Men_Scale
+Men_Sum
+:E END
+:! 
+:N Men_Operate53
+:S    254,   101,   146
+:T Menu
+:A    Operate
+:D Operate
+:K (PRIGES)
+:K #(igesfail)
+-Divide-
+Fnc_VSBW_div_igs
+Fnc_ASBW_div_igs
+Fnc_LSBW_div_igs
+Fnc_ASBV_div_igs
+Fnc_LSBV_div_igs
+Sep_
+-Subract-
+Fnc_VSBV_igs
+Sep_
+-Add-
+Fnc_VADD_igs
+:E END
+:! 
+:N Men_OtherLSOpts
+:S    348,   121,   220
+:T Menu
+:A Other
+:D Other LS Opts
+:K (lsdyna)
+:K #((PREP7*SOLUTION*NOFILTER))
+Fnc_MORPH_ON
+Fnc_TREF
+Fnc_KUSE
+Fnc_MODE
+Sep_
+P_LN(FULL_ANS)
+-Birth & Death-
+Fnc_EALIVE
+Fnc_EKILL
+Fnc_ESTIF
+P_LN(FULL_ANS)
+Sep_
+Fnc_CECMOD
+Men_ENDRELEASE
+Fnc_UPMOD
+Men_Real
+Men_MatProp_solu
+P_LN(FULL_ANS)
+Sep_
+Fnc_USRCAL
+:E End
+:! 
+:N Men_OutputCtrls
+:S    271,   136,   128
+:T Menu
+:A Output Ctrls
+:D Output Controls
+:K (lsdyna)
+:K #((PREP7*SOLUTION)+(cfd*NOFILTER))
+Fnc_OUTPR
+Fnc_/GST
+K_LN(lsdyna+((static+trnsient)*SIMPLOFF*REDUCED*MODESUP))
+Fnc_OUTRES
+Fnc_OUT_stat
+Sep_
+Fnc_IRLF_-1
+Fnc_ERESX
+:E End
+:! 
+:N Men_Overlap
+:S    115,    75,    33
+:T Menu
+:A    Overlap
+:C
+:D Overlap
+Fnc_VOVLAP
+Fnc_AOVLAP
+Fnc_LOVLAP
+:E END
+:! 
+:N Men_P26Circ
+:S     93,    69,    17
+:T Menu
+:A Circuit
+:D Circuit
+Fnc_p26DefineVar
+:E END
+:! 
+:N Men_PATHDELETE
+:S    146,   109,    30
+:T Menu
+:A Delete Path
+:D Delete Path
+:K #((POST1*PREP7)*NOFILTER)
+Fnc_PATHDELNAM
+Fnc_PATHDELALL
+:E END
+:! 
+:N Men_PATH_ARC
+:S    192,   114,    71
+:T Menu
+:A Archive Path
+:C
+:D Archive Path
+:K #((POST1+RESULTS)*NOFILTER)
+-Store-
+Fnc_PAGET_AR
+Fnc_PATHSAVE
+-Retrieve-
+Fnc_PAPUT_AR
+Fnc_PATHRESU
+:E END
+:! 
+:N Men_PD_Execute
+:S    188,    76,   105
+:T Menu
+:A    Run
+:D Run Analysis
+-Exec Serial  -
+Fnc_PDEXE_ENTRYS
+Sep_
+-Exec Parallel-
+Fnc_PDEXE_PAR_HP
+Fnc_PDEXE_PAR_AF
+Fnc_PDEXE_ENTRYP
+:E END
+:! 
+:N Men_PPATH
+:S    235,   109,   119
+:T Menu
+:A Define Path
+:C
+:D Define Path
+:K #((POST1+RESULTS)*NOFILTER)
+Fnc_PPATH_Nd
+Fnc_PPATH_WP
+Fnc_PPATH_Lc
+Sep_
+-Path Status-
+Fnc_PATHSTAT_1
+Fnc_PATHSTAT_2
+Sep_
+Fnc_PATHEDIT
+Fnc_PATHOPTS
+:E END
+:! 
+:N Men_PPATH_P7
+:S    215,   104,   104
+:T Menu
+:A Define Path
+:C
+:D Define Path
+:K #((PREP7)*NOFILTER)
+Fnc_PPATH_Nd
+Fnc_PPATH_WP
+Fnc_PPATH_Lc
+Sep_
+-Path Status-
+Fnc_PATHSTAT_1
+Sep_
+Fnc_PATHEDIT
+Fnc_PATHOPTS
+:E END
+:! 
+:N Men_PSMESH_opt
+:S    260,    80,   173
+:T Menu
+:A With Options
+:D Pretension
+-Divide at Node-
+Fnc_PSME_eon
+Fnc_PSME_selon
+Fnc_PSME_lon
+Fnc_PSME_aon
+Fnc_PSME_von
+Sep_
+-Divide at Valu-
+Fnc_PSME_eov
+Fnc_PSME_selov
+Fnc_PSME_lov
+Fnc_PSME_aov
+Fnc_PSME_vov
+:E END
+:! 
+:N Men_PSMESH_opt_copy
+:S    265,    85,   173
+:T Menu
+:A With Options
+:D Pretension
+-Divide at Node-
+Fnc_PSME_eon
+Fnc_PSME_selon
+Fnc_PSME_lon
+Fnc_PSME_aon
+Fnc_PSME_von
+Sep_
+-Divide at Valu-
+Fnc_PSME_eov
+Fnc_PSME_selov
+Fnc_PSME_lov
+Fnc_PSME_aov
+Fnc_PSME_vov
+:E END
+:! 
+:N Men_Partition
+:S    115,    81,    27
+:T Menu
+:A    Partition
+:C
+:D Partition
+Fnc_VPTN
+Fnc_APTN
+Fnc_LPTN
+:E END
+:! 
+:N Men_PathOper
+:S    585,    98,   480
+:T Menu
+:A Path Operations
+:K #((POST1+RESULTS)*NOFILTER)
+Men_PPATH
+Men_PATHDELETE
+Fnc_PATHPLOT
+Sep_
+Fnc_PATHRECALL
+K_LN(edgeelc)
+Fnc_PDEF
+K_LN(EDGEELC)
+Sep_
+K_LN(EDGEELC)
+-Map onto Path-
+Fnc_PFEDEF
+Fnc_PHFDEF
+Sep_
+-Plot Path Item-
+Fnc_PLPATH
+Fnc_PLPAGM
+Fnc_PRPATH
+Fnc_PRANGE_p1
+Sep_
+Fnc_PLSECT
+Fnc_PRSECT
+Sep_
+Fnc_PCALC_add
+Fnc_PCALC_mult
+Fnc_PCALC_div
+Fnc_PCALC_exp
+Fnc_PCALC_deri
+Fnc_PCALC_intg
+Fnc_PCALC_cos
+Fnc_PCALC_sin
+Fnc_PCALC_acos
+Fnc_PCALC_asin
+Fnc_PCALC_log
+Sep_
+Fnc_PCROSS
+Fnc_PDOT
+Fnc_PVECT
+Sep_
+Men_PATH_ARC
+Fnc_PDEF_clear
+:E End
+:! 
+:N Men_PiezoMatrice
+:S    128,    91,    30
+:T Menu
+:A Piezo Matrices
+:C
+:D Piezo Matrices
+Fnc_TB_piezo
+Sep_
+Fnc_TB_anel
+:E END
+:! 
+:N Men_Plasticity
+:S    199,    81,   111
+:T Menu
+:A Plasticity
+:C
+:D Plasticity
+Fnc_TB_bkin
+Fnc_TB_mkin
+Sep_
+Fnc_TB_biso
+Fnc_TB_miso
+Sep_
+Fnc_TB_dp
+Fnc_TB_anand
+Fnc_TB_melas
+Sep_
+Fnc_TB_user
+:E END
+:! 
+:N Men_PlotResults
+:S    719,    98,   614
+:T Menu
+:A Plot Results
+:K #((POST1+RESULTS)*NOFILTER)
+Fnc_PLDISP
+Sep_
+-Contour Plot-
+Fnc_PLNSOL
+Fnc_PLESOL
+Fnc_PLETAB_dummy
+Fnc_PLLS
+Fnc_PLF2D
+Sep_
+-Vector Plot-
+Fnc_PLVECT
+Fnc_PLVECT_user
+Sep_
+-Plot Path Item-
+Fnc_PLPATH
+Fnc_PLPAGM
+Fnc_PLSECT_dummy
+P_LN(THERMAL)
+Sep_
+P_LN(THERMAL*ELECMAG)
+Fnc_FlowTrace
+Fnc_TRPOIN
+Fnc_TRPLIS
+Fnc_TRPDEL
+Fnc_TRTIME
+K_LN(CFD+electric+magnetic)
+Fnc_PLTRAC
+K_LN(cfd+ELECTRIC*MAGNETIC)
+Fnc_PLTRAC_EM
+P_LN(FULL_ANS)
+K_LN(lsdyna)
+Sep_
+P_LN(FULL_ANS)
+Fnc_-ConcPlot-
+Fnc_PLCRACK
+K_LN(ELECTRIC*MAGNETIC+EDGEELC)
+Sep_
+K_LN(ELECTRIC*MAGNETIC+EDGEELC)
+-Field Extension-
+Fnc_RADAR
+Fnc_RADAR_N
+Fnc_HFFAR
+Fnc_ANTPAT
+Fnc_ANTDIR
+-ThinFilm-
+Fnc_MDPLOT
+:E End
+:! 
+:N Men_Polygon
+:S    220,    72,   141
+:T Menu
+:A    Polygon
+:D Polygon
+Fnc_RPR4_2d
+Fnc_RPR4_4_2d
+Fnc_RPR4_5_2d
+Fnc_RPR4_6_2d
+Fnc_RPR4_7_2d
+Fnc_RPR4_8_2d
+Sep_
+Fnc_RPOLY_minor
+Fnc_RPOLY_major
+Fnc_RPOLY
+Fnc_PRI2_2d
+:E END
+:! 
+:N Men_PostCyc
+:S    131,    96,    28
+:T Menu
+:A Cyclic Analysis
+:K (lsdyna)
+:K (POST1+CYCLIC)
+Fnc_/CYCEXPAND
+Men_CycPhase
+:E END
+:! 
+:N Men_PrepCyc
+:S    455,   324,   124
+:T Menu
+:A    Cyclic Sector
+:D Cyclic Analysis
+:C )/nopr
+:C )*GET,_z1,common,,cycsym_com,,int,2
+:C )KEYWD,CYCLIC,0
+:C )KEYWD,CYCGEN,0
+:C )*IF,_z1,gt,1,then
+:C )KEYWD,CYCLIC,1
+:C )*ELSEIF,_modcyc,eq,1,then
+:C )KEYWD,CYCGEN,1
+:C )*ENDIF
+:C )/go
+:K (lsdyna)
+:K (pr_set*PR_MULTI*PR_STRUC)
+-Cyclic Model-
+Fnc_CYCLICMAN
+Fnc_CYCLICAUTO
+Fnc_CYCLICSTAT
+Sep_
+Fnc_CYCLICOFF
+Fnc_CYCLICUNDO
+Sep_
+Fnc_/CYCEXPAND
+Fnc_CYCOPT
+:E END
+:! 
+:N Men_Preproc
+:S    711,   180,   524
+:T Menu
+:A Preprocessor
+:C )/nopr
+:C )!*get,_z1,active,,routin
+:C )!*IF,_z1,NE,17,THEN
+:C /PREP7
+:C )!*ENDIF
+:C )/go
+:D Preprocessor (PREP7)
+Men_UVBA_P7_T1
+Men_UVBA_P7_T2
+Men_UVBA_P7_T3
+Men_ElemType
+Men_Real_copy
+Fnc_R_too
+Men_Material
+Fnc_DYNA_Shell
+Men_Section_Defs
+Sep_
+Men_Modeling
+Sep_
+Men_Meshing
+K_LN(lsdyna)
+Sep_
+Men_CheckCtrl
+Men_NumCtrl
+Men_Archive
+Sep_
+Men_CoupCeqn
+Sep_
+Men_DYNAPREP
+K_LN(lsdyna)
+Sep_
+K_LN(lsdyna)
+Men_MFSET
+K_LN(lsdyna+ROMES)
+Sep_
+K_LN(lsdyna+ROMES)
+Men_ROM_Tool
+K_LN(lsdyna)
+Sep_
+Men_Radiosity
+Sep_
+K_LN(ALPHA)
+Men_QA_Test
+K_LN(lsdyna)
+Men_Loads
+K_LN(lsdyna)
+Sep_
+Men_MultiPhys
+Men_CrePath
+Men_UVBA_P7_B1
+Men_UVBA_P7_B2
+Men_UVBA_P7_B3
+:E END
+:! 
+:N Men_Prism
+:S    207,    77,   123
+:T Menu
+:A    Prism
+:D Prism
+:P (mdl2d)
+Fnc_RPR4
+Fnc_RPR4_4
+Fnc_RPR4_5
+Fnc_RPR4_6
+Fnc_RPR4_7
+Fnc_RPR4_8
+Sep_
+Fnc_RPRISM_minor
+Fnc_RPRISM_major
+Fnc_RPRISM
+Fnc_PRI2
+:E END
+:! 
+:N Men_ProbDesign
+:S    664,   177,   480
+:T Menu
+:A Prob Design
+:D Probabilistic Design
+:C )/NOPR
+:C )*GET,_Z1,ACTIVE,,ROUTIN
+:C )*IF,_Z1,NE,42,THEN
+:C /PDS
+:C )*ENDIF
+:C )/GO
+-Analysis File-
+Fnc_PD_AnFile
+Fnc_PDANL_ENTRY
+Sep_
+-Prob Definitns-
+Fnc_PDVAR_RV
+Fnc_PDPLOT_ENTRY
+Fnc_PDINQR_ENTRY
+Fnc_PDCFLD_ENTRY
+Fnc_PDCORR_ENTRY
+Fnc_PDVAR_RP
+Sep_
+-Prob Method-
+Fnc_PDMETH_WIZ
+Fnc_PDMETH_MCS
+Fnc_PDMETH_RSM
+Sep_
+Men_PD_Execute
+Sep_
+-Response Surf-
+Fnc_RSFIT_ENTRY
+Fnc_RSPLOT_ENTRY
+Fnc_RSPRNT_ENTRY
+Fnc_RSSIMS_ENTRY
+Fnc_RSOUT_ENTRY
+Sep_
+-Prob Results-
+Men_Statistics
+Men_Trends
+Men_Report
+Sep_
+-Prob Database-
+Fnc_PDSAVE
+Fnc_PDRESU
+Fnc_PDCLR_ENTRY
+Fnc_PD_STATUS
+:E END
+:! 
+:N Men_Properties
+:S    300,    78,   215
+:T Menu
+:A Properties
+:D Properties
+Fnc_ET
+Men_Real
+Sep_
+Fnc_MP
+Fnc_MPDELE
+Sep_
+Men_Plasticity
+Fnc_TB_hyper
+Fnc_TB_evisc
+Fnc_TB_anel
+Fnc_TB_concr
+Fnc_TB_creep
+Fnc_TB_swell
+Sep_
+Fnc_TB_bh
+Men_PiezoMatrice
+Sep_
+Men_FailureCrit
+Fnc_TB_pflow
+Fnc_TB_water
+:E END
+:! 
+:N Men_QuerResults
+:S    136,    99,    30
+:T Menu
+:A Query Results
+:K #((POST1+RESULTS)*NOFILTER)
+Fnc_QNSOL
+Fnc_QESOL
+Fnc_QGSOL
+:E End
+:! 
+:N Men_ROM
+:S    427,    86,   334
+:T Menu
+:A ROM Tool
+:D ROM Tool
+:P (ELECMAG*PP*ED)
+-Setup-
+Fnc_RMANL
+Men_RomCapacitances
+Men_RomMasterNodes
+Sep_
+-Mode Selection-
+Fnc_RomModeSAuto
+Fnc_RomModeSManual
+Fnc_RomModeList
+Sep_
+-Sample Pt Gen-
+Fnc_RomRunSamples
+Sep_
+-Resp Surface-
+Fnc_RomPolyOrder
+Fnc_RomDefineRS
+Fnc_RomFitRS
+Fnc_RomPlotRS
+Fnc_RomRSStatus
+Sep_
+-Rom Database-
+Fnc_RMSAVE
+Fnc_RMRESU
+Sep_
+-Export-
+Fnc_RMXPORT
+:E END
+:! 
+:N Men_ROM_Oper
+:S    134,   103,    24
+:T Menu
+:A ROM Operations
+:D ROM Operations
+:P (ELECMAG*PP*ED)
+Fnc_RMNEVEC
+Fnc_RMNDISP
+:E END
+:! 
+:N Men_ROM_Tool
+:S    115,    93,    15
+:T Menu
+:A ROM Tools
+:D ROM Tools
+:P (ELECMAG*PP*ED)
+Fnc_ROM_VSweep
+:E END
+:! 
+:N Men_Radiosity
+:S    182,   135,    40
+:T Menu
+:A Radiation Opts
+:D Radiation Opts
+:K #(AUX12*PR_CFD*PR_THERM*(RADSURF+THERMAL)*CFD)
+Fnc_RadOpt12
+Men_AdvSolOpt
+Fnc_RadOpt13
+:E END
+:! 
+:N Men_Real
+:S    133,    92,    34
+:T Menu
+:A Real Constants
+:D Real Constants
+:K (lsdyna)
+Fnc_R
+Sep_
+Fnc_RTHICK
+Fnc_SETFGAP
+:E END
+:! 
+:N Men_Real_copy
+:S    138,    97,    34
+:T Menu
+:A Real Constants
+:D Real Constants
+:K (lsdyna)
+Fnc_R
+Sep_
+Fnc_RTHICK
+Fnc_SETFGAP
+:E END
+:! 
+:N Men_RebarDisplay
+:S    139,    90,    42
+:T Menu
+:A Display Options
+:D Display Options
+Fnc_RebarNorm
+Fnc_RebarPlus
+Fnc_RebarOnly
+:E END
+:! 
+:N Men_Rectangle
+:S    120,    78,    35
+:T Menu
+:A    Rectangle
+:D Rectangle
+Fnc_BLC4_2d
+Fnc_BLC5_2d
+Fnc_RECTNG
+:E END
+:! 
+:N Men_Reflect
+:S    181,    90,    84
+:T Menu
+:A    Reflect
+:C
+:D Reflect
+:K #(igesfail)
+Fnc_KSYMM
+Fnc_LSYMM
+Fnc_ARSYM
+Fnc_VSYMM
+Sep_
+Fnc_NSYM
+-Elements-
+Fnc_ESYM
+Fnc_ENSYM
+:E END
+:! 
+:N Men_Reorder
+:S    216,   110,    99
+:T Menu
+:A Element Reorder
+:D Element Reorder
+:K #((PREP7)*(NOFILTER))
+Fnc_WFRONT
+Fnc_NOORDER
+Sep_
+Fnc_WSORT
+Sep_
+Fnc_WSTART
+Fnc_WMORE
+Fnc_Wave_List
+Fnc_WERASE
+Fnc_WAVES
+:E END
+:! 
+:N Men_Report
+:S    109,    74,    28
+:T Menu
+:A    Report
+:D HTML Report
+Fnc_PDREP_OPT
+Fnc_PDREP_WRT
+:E END
+:! 
+:N Men_ReverseNorm
+:S    136,    89,    40
+:T Menu
+:A Reverse Normals
+:D Reverse Normals
+Fnc_ENSYMM_rv
+Fnc_LREVERSE
+Fnc_AREVERSE
+:E END
+:! 
+:N Men_Rigid_Deform
+:S    160,   111,    42
+:T Menu
+:A Rigid-Deformable
+:D Rigid-Deformable Switch
+:K (LSDYNA)
+Fnc_DYNA_EDRD
+Fnc_DYNA_EDRI
+Fnc_DYNA_EDRC
+:E END
+:! 
+:N Men_RomAddCap
+:S    138,    81,    50
+:T Menu
+:A Define
+:D Define Capacitance
+Fnc_RomAddSingCap
+Fnc_RomAddAllCap
+Fnc_RomCapList
+:E END
+:! 
+:N Men_RomCapacitances
+:S    143,    93,    43
+:T Menu
+:A  Capacitances
+:D Capacitance Table
+Men_RomAddCap
+Fnc_RomDelCap
+Fnc_RomCapList
+:E END
+:! 
+:N Men_RomMasterNodes
+:S    134,    87,    40
+:T Menu
+:A  Master Nodes
+:D Master Nodes
+Fnc_RomDefMN
+Fnc_RomDelMN
+Fnc_RomListMN
+:E END
+:! 
+:N Men_RotResults
+:S    208,   147,    54
+:T Menu
+:A Rotor Dynamics
+:K #(STRUCTRL)
+:K #((POST1+RESULTS+ROTKEY)+(MODAL*HARMONIC*TRNSIENT*NOFILTER))
+Fnc_PLCAMPBELL
+Fnc_PRCAMPBELL
+Fnc_PLORBIT
+Fnc_PRORBIT
+:E End
+:! 
+:N Men_SE_Management
+:S    128,    76,    45
+:T Menu
+:A SE Management (CMS)
+Fnc_SE_Man_GEN
+Fnc_SE_Man_USE
+Fnc_SE_Man_EXP
+:E END
+:! 
+:N Men_SUCALC_op
+:S    450,   121,   322
+:T Menu
+:A Math Operations
+:H Hlp_C_SUPR
+:K #(POST1+RESULTS)
+:D Math Operations
+Fnc_SUCALC_add
+Fnc_SUCALC_sub
+Fnc_SUCALC_mult
+Fnc_SUCALC_div
+Fnc_SUCALC_exp
+Fnc_SUCALC_cos
+Fnc_SUCALC_sin
+Fnc_SUCALC_acos
+Fnc_SUCALC_asin
+Fnc_SUCALC_atan
+Fnc_SUCALC_atan2
+Fnc_SUCALC_log
+Fnc_SUCALC_abs
+Fnc_SUCALC_init
+Sep_
+Fnc_SUVECT_dot
+Fnc_SUVECT_cross
+Fnc_SUVECT_smult
+Sep_
+Fnc_SUEVAL_sum
+Fnc_SUEVAL_intg
+Fnc_SUEVAL_avg
+:E END
+:! 
+:N Men_SUCR_extr
+:S    116,    76,    33
+:T Menu
+:A    External
+:D External
+Fnc_SUCR_elem
+Fnc_SUCR_comp
+Sep_
+:E END
+:! 
+:N Men_SUCR_sphre
+:S    113,    71,    35
+:T Menu
+:A  Sphere
+:D Sphere
+Fnc_SUCR_SPH1
+Fnc_SUCR_by_dim
+Sep_
+:E END
+:! 
+:N Men_SWADD
+:S    123,    90,    26
+:T Menu
+:A    Add More Surfaces
+:D Add More Surfaces
+Fnc_SWADD_cn
+Fnc_SWADD_an
+:E END
+:! 
+:N Men_SWGEN
+:S    117,    84,    26
+:T Menu
+:A    Create New Set
+:D Create New Set
+Fnc_SWGEN_cn
+Fnc_SWGEN_an
+:E END
+:! 
+:N Men_SafetyFact
+:S    264,   141,   116
+:T Menu
+:A Safety Factor
+:K (PR_STRUC*pr_set)
+:K #((POST1+RESULTS+STRUCTRL)*NOFILTER)
+:P (LINPLUS)
+-Allowable Strs-
+Fnc_SALLOW
+Fnc_TALLOW
+Fnc_SALLOW_reset
+Fnc_TALLOW_reset
+Sep_
+Fnc_SFACT
+Fnc_SFCALC
+Sep_
+Fnc_SFACT_0
+:E End
+:! 
+:N Men_Scale
+:S    175,    79,    89
+:T Menu
+:A Scale
+:C
+:D Scale
+:K #(priges)
+Fnc_KPSCAL
+Fnc_LSSCAL
+Fnc_ARSCAL
+Fnc_VLSCAL
+Sep_
+-Nodes-
+Fnc_NSCALE_copy
+Fnc_NSCALE_move
+:E END
+:! 
+:N Men_Section_Defs
+:S   1223,   126,  1090
+:T Menu
+:A Sections
+:D Define Sections
+:K #(PR_STRUC*PR_THERM*pr_set)
+:K (lsdyna)
+Men_Section_Library
+K_LN(PR_STRUC*pr_set)
+Sep_
+K_LN(PR_STRUC*pr_set)
+-Beam-
+Fnc_Beam_Tool
+K_LN(PR_STRUC*pr_set)
+Men_Beam_Custom
+K_LN(PR_STRUC*pr_set)
+Men_Beam_Taper
+Fnc_SECPLOTbeam
+Fnc_SectControl
+Fnc_BeamPreInt
+Fnc_BeamComposit
+Sep_
+-Shell-
+K_LN(PR_STRUC*LAYTHERM*pr_set)
+Men_Lay-up
+K_LN(PR_STRUC*pr_set)
+Fnc_Preintegrate
+Sep_
+K_LN(PR_STRUC*pr_set)
+-Pretension-
+K_LN(PR_STRUC*pr_set)
+Men_SectionsPSMESH
+K_LN(PR_STRUC*pr_set)
+Fnc_PreSecModNam
+K_LN(PR_STRUC*pr_set)
+Fnc_PreSecModNor
+K_LN(PR_STRUC*pr_set)
+Sep_
+K_LN(PR_STRUC*pr_set)
+-Joints-
+K_LN(PR_STRUC*pr_set)
+Fnc_JointAddEdit
+K_LN(PR_STRUC*pr_set)
+-Reinforcing-
+K_LN(PR_STRUC*pr_set)
+Fnc_ReinfAddEdit
+K_LN(PR_STRUC*pr_set)
+Men_RebarDisplay
+K_LN(PR_STRUC*pr_set)
+Fnc_SECPLOTreinf
+K_LN(PR_STRUC*pr_set)
+Fnc_SECCONreinf
+K_LN(PR_STRUC*pr_set)
+-Pipe-
+Fnc_PipeAdd
+Fnc_PipeEdit
+Fnc_PipeFactors
+Fnc_SECPLOTpipe
+K_LN(PR_STRUC*pr_set)
+-Axis-
+K_LN(PR_STRUC*pr_set)
+Fnc_AxisAdd
+K_LN(PR_STRUC*pr_set)
+Fnc_AxisEdit
+K_LN(PR_STRUC*pr_set)
+-Contact-
+K_LN(PR_STRUC*pr_set)
+Fnc_ContSectAdd
+K_LN(PR_STRUC*pr_set)
+Fnc_ContSectEdit
+Sep_
+Fnc_SLIST
+Fnc_SDELETE
+:E END
+:! 
+:N Men_Section_Library
+:S    123,    93,    23
+:T Menu
+:A Section Library
+:D Section Library
+Fnc_SecLib
+Fnc_SecRead
+:E END
+:! 
+:N Men_SectionsPSMESH
+:S    177,    88,    82
+:T Menu
+:A    Pretensn Mesh
+:D Pretension
+Fnc_PSME_en
+Fnc_PSME_seln
+Fnc_PSME_ln
+Fnc_PSME_an
+Fnc_PSME_vn
+Men_PSMESH_opt_copy
+:E END
+:! 
+:N Men_SizeCntrl
+:S    548,   324,   217
+:T Menu
+:C )/NOPR
+:C )
+:C )*GET,_z1,ACTIVE,,KEYWORD,,MESHTOOL
+:C )*IF,_z1,eq,1,THEN
+:C )*create,ansuitmp
+:C )*msg,note,
+:C )SmartSize basic settings cannot be used while the %/&
+:C )MeshTool is active.
+:C )*end
+:C )/input,ansuitmp
+:C )*ENDIF
+:C )/GO
+:A    Size Cntrls
+:K #(igesfail)
+Fnc_PMLSIZ
+-SmartSize-
+Fnc_ss_SIZE
+Fnc_ss_Advopt
+Fnc_ss_STAT
+Sep_
+-ManualSize-
+Men_ManSizeGlobal
+Men_ManSizeAreas
+Men_ManSizeLines
+Men_ManSizeKeypoints
+Men_ManSizeLayers
+Sep_
+-Concentrat KPs-
+Fnc_KSCON
+Fnc_KSCON_stat
+:E END
+:! 
+:N Men_Sol_ThinFilm
+:S    133,   101,    25
+:T Menu
+:A ThinFilm
+:D ThinFilm Operations
+:P (FULL_ANS)
+Men_DMPEXT
+Fnc_ABEXTRACT
+:E END
+:! 
+:N Men_Solu_Load
+:S    272,    97,   168
+:T Menu
+:A Loading Options
+:D LS-DYNA Loads
+:K (LSDYNA)
+Fnc_DYNA_Load
+Men_DYNA_dLoad
+Fnc_LOADPLOT
+Fnc_EDFPLOT
+Fnc_EDNDTSD
+Men_DYNA_Curve
+Men_DYNA_Accel
+Sep_
+Fnc_LDREAD_dyna
+Fnc_BFLIST_dyna
+Fnc_BFDELE_dyna
+Fnc_TUNIF
+Fnc_TREF
+:E END
+:! 
+:N Men_Solution
+:S   2887,  1249,  1631
+:T Menu
+:A Solution
+:C )/nopr
+:C )*GET,_z1,common,,cycsym_com,,int,2
+:C )*GET,_z2,common,,MFLDCMD,,int,2279 ! 
+:C )KEYWD,CYCLIC,0
+:C )KEYWD,CYCGEN,0
+:C )KEYWD,mfx,0
+:C )*IF,_z1,gt,1,then
+:C )KEYWD,CYCLIC,1
+:C )*ELSEIF,_modcyc,eq,1,then
+:C )KEYWD,CYCGEN,1
+:C )*ENDIF
+:C )*IF,_z2,ge,2,then
+:C )KEYWD,mfx,1
+:C )*ENDIF
+:C /SOLU
+:C )*get,_z10,active,,keyw,,elecstat
+:C )*get,_z11,active,,keyw,,radsurf
+:C )*get,_z12,active,,keyw,,magnetic
+:C )*get,_z13,active,,keyw,,electric
+:C )*get,_z14,active,,keyw,,cfd
+:C )*get,_z15,active,,keyw,,circ
+:C )*get,_z16,active,,keyw,,edgeflx
+:C )*get,_z17,active,,keyw,,fluid
+:C )*get,_z18,active,,keyw,,thermal
+:C )_z30=_z10+_z11+_z12+_z13+_z14+_z15+_z16+_z17+_z18
+:C )*get,_z19,active,,keyw,,pr_elmag
+:C )*get,_z20,active,,keyw,,pr_multi
+:C )*get,_z21,active,,keyw,,pr_cfd
+:C )_z30=_z30+_z19+_z20+_z21
+:C )keyw,oldmenu,0
+:C )*if,_z30,gt,0,then
+:C )keyw,simploff,1
+:C )keyw,oldmenu,1
+:C )*endif
+:C )!keyword for host selection
+:C )keyw,hscript,0
+:C )*get,_z31,common,,soptcm,,int,119
+:C )*if,_z31,eq,2,then
+:C )keyw,hscript,1
+:C )*endif
+:C )keyw,pertbslv,0
+:C )*get,_z32,common,,restartcm,,int,84
+:C )*if,_z32,ne,0,then
+:C )keyw,pertbslv,1
+:C )*endif
+:C )/go
+:D Solution (SOLU)
+Men_UVBA_Solu_T1
+Men_UVBA_Solu_T2
+Men_UVBA_Solu_T3
+Men_DYNA_Cnstr
+K_LN(LSDYNA)
+Men_DYNA_Veloc
+K_LN(LSDYNA)
+Men_Solu_Load
+Men_Rigid_Deform
+Men_Default_Controls
+K_LN(LSDYNA)
+Sep_
+Men_DYNA_TimeCon
+Men_DYNA_OutCtrl
+K_LN(LSDYNA)
+Sep_
+K_LN(LSDYNA)
+Fnc_DYNA_Input
+K_LN(LSDYNA)
+Fnc_SOLVEDYN
+P_LN(LINPLUS*THERMAL*ELECMAG)
+K_LN(lsdyna)
+Men_Analysis
+K_LN(lsdyna+PARPERF)
+Fnc_HostSelect
+K_LN(lsdyna+((static+modal+buckling+trnsient)*SIMPLOFF))
+P_LN(LINPLUS)
+Sep_
+K_LN(lsdyna+((static+buckling+trnsient)*SIMPLOFF*REDUCED))
+Men_MasterDOF
+K_LN(lsdyna+((static+modal+buckling+trnsient)*SIMPLOFF*REDUCED*MODESUP))
+Men_GapCond
+K_LN(lsdyna+((static+buckling+trnsient)*SIMPLOFF*REDUCED*MODESUP))
+Sep_
+K_LN(lsdyna)
+Men_DefineLoads
+K_LN(lsdyna)
+Sep_
+K_LN(lsdyna)
+Men_LoadStepOpts
+K_LN(lsdyna)
+Sep_
+K_LN(lsdyna+((static+modal+buckling+trnsient)*SIMPLOFF))
+Men_MultiPhys
+K_LN(LSDYNA+((static+modal+buckling+trnsient)*SIMPLOFF))
+Sep_
+Men_SE_Management
+Sep_
+Fnc_NLHIST
+Sep_
+K_LN(mfx)
+Fnc_-Solve-
+K_LN(lsdyna+pertbslv)
+Fnc_SOLVE
+K_LN(lsdyna+PERTBSLV)
+Fnc_SOLVE_PERT
+K_LN(lsdyna+pertbslv+((modal+buckling)*SIMPLOFF))
+Fnc_LSSOLVE
+K_LN(lsdyna+((static+modal+buckling+trnsient)*SIMPLOFF))
+Fnc_ADAPT
+K_LN(lsdyna+(ELECSTAT*(static+trnsient)*SIMPLOFF*REDUCED*MODESUP))
+Men_EMASOLV
+Fnc_CYCOPT
+Sep_
+Men_-REZONE-
+K_LN(lsdyna)
+Men_MFSET_Solu
+K_LN(lsdyna+ROMES)
+Sep_
+K_LN(lsdyna+ROMES)
+Men_ROM_Tool
+K_LN(lsdyna+TFILM)
+Men_Sol_ThinFilm
+K_LN(STRUCTRL+lsdyna)
+Sep_
+Men_Adamsc
+K_LN(lsdyna+SIMPLOFF+(PR_CFD*pr_set))
+Sep_
+Men_Radiosity
+Men_Diagnostics
+Sep_
+K_LN(lsdyna+oldmenu)
+Fnc_FullGui
+K_LN(lsdyna+oldmenu)
+Fnc_ReduceGui
+Men_UVBA_Solu_B1
+Men_UVBA_Solu_B2
+Men_UVBA_Solu_B3
+:E End
+:! 
+:N Men_SpectrumOpts
+:S    512,   152,   353
+:T Menu
+:A Spectrum
+:D Spectrum LS Opts
+:K (lsdyna)
+:K #((PREP7*SOLUTION)+(SPECTRUM*NOFILTER))
+:P (LINPLUS)
+Fnc_-SinglePt-
+Fnc_SVTYP_etc
+Fnc_FREQ
+Fnc_SV
+Fnc_SV_stat
+Fnc_FREQ_erase
+Men_MODCOM_sp
+Sep_
+Fnc_-MultiPt-
+Fnc_SPUNIT
+Fnc_SPFREQ
+Fnc_SPVAL
+Fnc_PFACT_mult
+Fnc_SPFRQ_eras
+Fnc_SPGRAPH
+Men_MODCOM_mp
+Sep_
+Fnc_DDAM
+Men_MODCOM_dd
+Sep_
+Fnc_-PSD-
+Fnc_PSDUNIT_psd
+Fnc_PSDVAL_psd
+Fnc_PFACT_psd
+Men_Correlation
+Fnc_PSDRES
+Fnc_PSDFRQ_erasP
+Fnc_PSDGRAPH
+Fnc_MODCOM_psd
+:E End
+:! 
+:N Men_Sphere
+:S    137,    80,    50
+:T Menu
+:A    Sphere
+:D Sphere
+:P (mdl2d)
+Fnc_SPH4
+Fnc_SPH4_hollow
+Sep_
+Fnc_SPH5
+Fnc_SPHERE
+:E END
+:! 
+:N Men_Spline
+:S    132,    71,    54
+:T Menu
+:A    Splines
+:D Splines
+Fnc_BSPLIN_wp
+Fnc_BSPLIN_kp
+Fnc_SPLINE
+Men_Spline_opt
+:E END
+:! 
+:N Men_Spline_opt
+:S    132,    77,    48
+:T Menu
+:A With Options
+:D Splines
+Fnc_BSPLIN_wp_op
+Fnc_BSPLIN_kp_op
+Fnc_SPLINE_op
+:E END
+:! 
+:N Men_Spotweld
+:S    165,    90,    68
+:T Menu
+:A Spotweld
+:D Spotweld
+:K (LSDYNA+PREP7)
+Fnc_DYNA_Spotwld
+Fnc_DYNA_Spotgen
+Fnc_DYNA_Wldlist
+Fnc_DYNA_Wlddele
+:E END
+:! 
+:N Men_Statistics
+:S    162,   101,    54
+:T Menu
+:A    Statistics
+:D Statistics of Simulated Values
+Fnc_PDSHIS
+Fnc_PDHIST
+Fnc_PDCDF
+Fnc_PDPROB
+Fnc_PDPINV
+:E END
+:! 
+:N Men_StrucApply
+:S    313,   152,   153
+:T Menu
+:K ((PR_STRUC*PR_CFD*pr_set)+(lsdyna))
+:K #(STRUCTRL*CFD*NOFILTER)
+:K #(PREP7*SOLUTION)
+:A Structural
+Men_AppDisplace
+Men_AppForce
+Men_AppPressure
+Men_AppStruTemp
+Men_AppStruInertia
+Fnc_SLOAD
+Men_AppSpectrum
+Fnc_GSBloads
+Fnc_OceanAddEdit
+Men_AppOtherStru
+:E END 
+:! 
+:N Men_StrucDelete
+:S    293,   148,   138
+:T Menu
+:A Structural
+:D Delete Structural Loads
+:K (PR_STRUC*PR_CFD*pr_set)
+:K #(STRUCTRL*CFD*NOFILTER)
+Men_DelDisplace
+Men_DelForce
+Men_DelPressure
+Men_DelStruTemp
+Men_DelStruInert
+Fnc_PSecLdDel
+Fnc_OCDELETE
+Men_DelSpectrum
+Men_DelOtherStru
+:E END
+:! 
+:N Men_Submodel
+:S    133,   106,    20
+:T Menu
+:A Submodeling
+:K (lsdyna)
+:K #((POST1+RESULTS)*NOFILTER)
+Fnc_CBDOF
+Fnc_BFINT
+:E End
+:! 
+:N Men_Subtract
+:S    131,    75,    49
+:T Menu
+:A    Subtract
+:D Subtract
+Fnc_VSBV
+Fnc_ASBA
+Fnc_LSBL
+Sep_
+Men_Subtract_opt
+:E END
+:! 
+:N Men_Subtract_opt
+:S    139,    93,    39
+:T Menu
+:A With Options
+:D Subtract with Options
+Fnc_VSBV_opt
+Fnc_ASBA_opt
+Fnc_LSBL_opt
+:E END
+:! 
+:N Men_Sum
+:S    138,    81,    50
+:T Menu
+:A Calc Geom Items
+:D Calc Geom Items
+Fnc_KSUM
+Fnc_LSUM
+Fnc_ASUM
+Fnc_VSUM
+Sep_
+Fnc_GSUM
+:E END
+:! 
+:N Men_SurfOper
+:S    388,   123,   258
+:T Menu
+:A Surface Operations
+:D Surface Operations
+:K #((POST1+RESULTS)*NOFILTER)
+-Create Surface-
+Fnc_SUCR_cplane
+Men_SUCR_sphre
+Fnc_SUCR_infc
+Sep_
+Fnc_SUSEL
+Fnc_SUDEL_surf
+Sep_
+Fnc_SUMAP_itm
+Fnc_SUMAP_srfclr
+Sep_
+Fnc_SUPL
+Fnc_SUPL_vect
+Fnc_SUPR_srfs
+Fnc_SUGET
+Sep_
+Men_SUCALC_op
+Sep_
+Fnc_SUSAVE
+Fnc_SURESU
+Sep_
+-Status-
+Fnc_SUPR_glb
+Sep_
+:E END
+:! 
+:N Men_Surf_Mesh
+:S    125,    75,    43
+:T Menu
+:A Radiation Surface Mesh
+Sep_
+Fnc_Cr_Mesh
+Fnc_Cl_Mesh
+Fnc_Stat_Mesh
+:E END
+:! 
+:N Men_SymmetryOptions
+:S    168,    87,    74
+:T Menu
+:A Radiation Symmetry Options  
+Sep_
+Fnc_Planar_Sym
+Fnc_Cyc_Sym
+Fnc_Condensation
+Fnc_Clear_Sym
+Fnc_Status
+:E END
+:! 
+:N Men_TetImprove
+:S    107,    82,    18
+:T Menu
+:A Improve Tets
+:D Improve Tets
+Fnc_VIMP
+Fnc_TIMP
+:E END
+:! 
+:N Men_ThermApply
+:S    259,   152,    99
+:T Menu
+:A Thermal
+:K (PR_THERM*PR_FLUID*PR_CFD*pr_set)
+:K #(THERMAL*FLUID*CFD*NOFILTER)
+:K #(PREP7*SOLUTION)
+Men_AppTemp
+Men_AppHeatFlow
+Men_AppConvect
+Men_AppHeatFlux
+Men_AppHeatGen
+Men_AppRad
+Men_AppRadiSF
+:E END 
+:! 
+:N Men_ThermDelete
+:S    283,   177,    99
+:T Menu
+:A Thermal
+:D Delete Thermal Loads
+:K (PR_THERM*PR_FLUID*PR_CFD*pr_set)
+:K #(THERMAL*FLUID*CFD*NOFILTER)
+:K #(PREP7*SOLUTION)
+Men_DelTemp
+Men_DelHeatFlow
+Men_DelConvect
+Men_DelHeatFlux
+Men_DelHeatGen
+Men_DelRad
+Men_DelRadiSF
+:E END
+:! 
+:N Men_ThinFilm_Oper
+:S    150,   131,    12
+:T Menu
+:A ThinFilm
+:D ThinFilm Operations
+:P (FULL_ANS)
+:K #((MODAL+TFILM)*NOFILTER)
+Fnc_RMFLVEC
+:E END
+:! 
+:N Men_TimeFreq
+:S    432,   319,   106
+:T Menu
+:C )/NOPR
+:C )*GET,_z1,common,,anscom,,int,52
+:C )KEYW,NLCNTRL,_z1
+:C )*GET,_z2,common,,sectioncm,,int,14
+:C )KEYW,PIPEEXIS,_z2
+:C )/GO
+:A Time/Frequenc
+:D Time/Frequency LS Opts
+:K (lsdyna)
+:K #((PREP7*SOLUTION)+(edgeelc*HARMONIC)*NOFILTER)
+:P (LINPLUS*THERMAL*ELECMAG)
+Fnc_TIME_time
+Fnc_TIME_sub
+Fnc_HARFRQ_etc
+Fnc_HROCEAN_etc
+Fnc_QUASISTAT
+Sep_
+Fnc_Damping
+Men_TimintChoice
+:E End
+:! 
+:N Men_TimePost
+:S    597,   251,   339
+:T Menu
+:A TimeHist Postpro
+:C )/nopr
+:C )!*get,_z1,active,,routin
+:C )!*if,_z1,ne,36,then
+:C /POST26
+:C )!*endif
+:C )~eui,'euidl::results::timeHist::varInterface'
+:C )/go
+:D Time-History Postprocessor (POST26)
+Men_UVBA_P26_T1
+Men_UVBA_P26_T2
+Men_UVBA_P26_T3
+Fnc_VariView
+Sep_
+Men_p26Settings
+Fnc_STORE
+Fnc_p26DefineVar
+Sep_
+Men_DYNA_Read
+Sep_
+Fnc_PRVAR_p26
+Fnc_EXTREM
+Fnc_PLVAR_p26
+Sep_
+Men_p26Oper
+Men_p26Table
+Fnc_EDNDTSD
+Fnc_RESP
+Men_p26Emag
+K_LN(lsdyna)
+Sep_
+Fnc_RPSD
+Fnc_COPSD
+Sep_
+Fnc_RESET_p26
+Men_UVBA_P26_B1
+Men_UVBA_P26_B2
+Men_UVBA_P26_B3
+:E End
+:! 
+:N Men_TimintChoice
+:S    213,   173,    33
+:T Menu
+:A Time Integration
+:D Time Integration Controls
+:K #((PREP7*SOLUTION)+(TRNSIENT*NOFILTER))
+:P (LINPLUS*THERMAL*ELECMAG)
+Fnc_TIMINT_TINT
+Fnc_TIMINT_TINT2
+:E End
+:! 
+:N Men_ToBeDone
+:S     98,    76,    15
+:T Menu
+:A To Be Done
+:D Dummy Menu
+- To Be Done -
+:E END
+:! 
+:N Men_To_Be_Done
+:S    117,    78,    32
+:T Menu
+:A To Be Done
+:D Dummy Menu
+Cmd_/COM
+  Fld_0
+Prm_TO BE DONE
+:E END
+:! 
+:N Men_To_Surf_Norm
+:S    126,    87,    32
+:T Menu
+:A To Surf Norm
+:C
+:D To Surf Norm
+Fnc_NORA
+Fnc_NORL
+Fnc_NORL_with
+:E END
+:! 
+:N Men_Transduc
+:S    114,    78,    29
+:T Menu
+:A Transducers
+:D Transducers
+-Electromechanic-
+Fnc_EMTGEN
+:E END
+:! 
+:N Men_Transfer_Coord
+:S    155,    93,    55
+:T Menu
+:A Transfer Coord
+:C
+:D Transfer Coord
+Fnc_KTRAN
+Fnc_LTRAN
+Fnc_ATRAN
+Fnc_VTRAN
+Sep_
+Fnc_TRANS
+:E END
+:! 
+:N Men_Trends
+:S    126,    80,    39
+:T Menu
+:A    Trends
+:D Trend Information
+Fnc_PDSENS
+Fnc_PDSCAT
+Fnc_PDCMAT_ENTRY
+:E END
+:! 
+:N Men_UVBA_Main_B1
+:S    135,   118,    10
+:T Menu
+:A UIDL Visual Builder Anchor Menu
+:D UVB Anchor
+:K (BEGIN+begin)
+NeverSeen
+:E END
+:! 
+:N Men_UVBA_Main_B2
+:S    135,   118,    10
+:T Menu
+:A UIDL Visual Builder Anchor Menu
+:D UVB Anchor
+:K (BEGIN+begin)
+NeverSeen
+:E END
+:! 
+:N Men_UVBA_Main_B3
+:S    135,   118,    10
+:T Menu
+:A UIDL Visual Builder Anchor Menu
+:D UVB Anchor
+:K (BEGIN+begin)
+NeverSeen
+:E END
+:! 
+:N Men_UVBA_Main_T1
+:S    135,   118,    10
+:T Menu
+:A UIDL Visual Builder Anchor Menu
+:D UVB Anchor
+:K (BEGIN+begin)
+NeverSeen
+:E END
+:! 
+:N Men_UVBA_Main_T2
+:S    135,   118,    10
+:T Menu
+:A UIDL Visual Builder Anchor Menu
+:D UVB Anchor
+:K (BEGIN+begin)
+NeverSeen
+:E END
+:! 
+:N Men_UVBA_Main_T3
+:S    135,   118,    10
+:T Menu
+:A UIDL Visual Builder Anchor Menu
+:D UVB Anchor
+:K (BEGIN+begin)
+NeverSeen
+:E END
+:! 
+:N Men_UVBA_P1_B1
+:S    133,   116,    10
+:T Menu
+:A UIDL Visual Builder Anchor Menu
+:D UVB Anchor
+:K (BEGIN+begin)
+NeverSeen
+:E END
+:! 
+:N Men_UVBA_P1_B2
+:S    133,   116,    10
+:T Menu
+:A UIDL Visual Builder Anchor Menu
+:D UVB Anchor
+:K (BEGIN+begin)
+NeverSeen
+:E END
+:! 
+:N Men_UVBA_P1_B3
+:S    133,   116,    10
+:T Menu
+:A UIDL Visual Builder Anchor Menu
+:D UVB Anchor
+:K (BEGIN+begin)
+NeverSeen
+:E END
+:! 
+:N Men_UVBA_P1_T1
+:S    133,   116,    10
+:T Menu
+:A UIDL Visual Builder Anchor Menu
+:D UVB Anchor
+:K (BEGIN+begin)
+NeverSeen
+:E END
+:! 
+:N Men_UVBA_P1_T2
+:S    133,   116,    10
+:T Menu
+:A UIDL Visual Builder Anchor Menu
+:D UVB Anchor
+:K (BEGIN+begin)
+NeverSeen
+:E END
+:! 
+:N Men_UVBA_P1_T3
+:S    133,   116,    10
+:T Menu
+:A UIDL Visual Builder Anchor Menu
+:D UVB Anchor
+:K (BEGIN+begin)
+NeverSeen
+:E END
+:! 
+:N Men_UVBA_P26_B1
+:S    134,   117,    10
+:T Menu
+:A UIDL Visual Builder Anchor Menu
+:D UVB Anchor
+:K (BEGIN+begin)
+NeverSeen
+:E END
+:! 
+:N Men_UVBA_P26_B2
+:S    134,   117,    10
+:T Menu
+:A UIDL Visual Builder Anchor Menu
+:D UVB Anchor
+:K (BEGIN+begin)
+NeverSeen
+:E END
+:! 
+:N Men_UVBA_P26_B3
+:S    134,   117,    10
+:T Menu
+:A UIDL Visual Builder Anchor Menu
+:D UVB Anchor
+:K (BEGIN+begin)
+NeverSeen
+:E END
+:! 
+:N Men_UVBA_P26_T1
+:S    134,   117,    10
+:T Menu
+:A UIDL Visual Builder Anchor Menu
+:D UVB Anchor
+:K (BEGIN+begin)
+NeverSeen
+:E END
+:! 
+:N Men_UVBA_P26_T2
+:S    134,   117,    10
+:T Menu
+:A UIDL Visual Builder Anchor Menu
+:D UVB Anchor
+:K (BEGIN+begin)
+NeverSeen
+:E END
+:! 
+:N Men_UVBA_P26_T3
+:S    134,   117,    10
+:T Menu
+:A UIDL Visual Builder Anchor Menu
+:D UVB Anchor
+:K (BEGIN+begin)
+NeverSeen
+:E END
+:! 
+:N Men_UVBA_P7_B1
+:S    133,   116,    10
+:T Menu
+:A UIDL Visual Builder Anchor Menu
+:D UVB Anchor
+:K (BEGIN+begin)
+NeverSeen
+:E END
+:! 
+:N Men_UVBA_P7_B2
+:S    133,   116,    10
+:T Menu
+:A UIDL Visual Builder Anchor Menu
+:D UVB Anchor
+:K (BEGIN+begin)
+NeverSeen
+:E END
+:! 
+:N Men_UVBA_P7_B3
+:S    133,   116,    10
+:T Menu
+:A UIDL Visual Builder Anchor Menu
+:D UVB Anchor
+:K (BEGIN+begin)
+NeverSeen
+:E END
+:! 
+:N Men_UVBA_P7_T1
+:S    133,   116,    10
+:T Menu
+:A UIDL Visual Builder Anchor Menu
+:D UVB Anchor
+:K (BEGIN+begin)
+NeverSeen
+:E END
+:! 
+:N Men_UVBA_P7_T2
+:S    133,   116,    10
+:T Menu
+:A UIDL Visual Builder Anchor Menu
+:D UVB Anchor
+:K (BEGIN+begin)
+NeverSeen
+:E END
+:! 
+:N Men_UVBA_P7_T3
+:S    133,   116,    10
+:T Menu
+:A UIDL Visual Builder Anchor Menu
+:D UVB Anchor
+:K (BEGIN+begin)
+NeverSeen
+:E END
+:! 
+:N Men_UVBA_Solu_B1
+:S    183,   166,    10
+:T Menu
+:A UIDL Visual Builder Anchor Menu
+:D UVB Anchor
+:K (BEGIN+begin)
+:K ((static+trnsient)*SIMPLOFF*REDUCED*MODESUP)
+NeverSeen
+:E END
+:! 
+:N Men_UVBA_Solu_B2
+:S    183,   166,    10
+:T Menu
+:A UIDL Visual Builder Anchor Menu
+:D UVB Anchor
+:K (BEGIN+begin)
+:K ((static+trnsient)*SIMPLOFF*REDUCED*MODESUP)
+NeverSeen
+:E END
+:! 
+:N Men_UVBA_Solu_B3
+:S    183,   166,    10
+:T Menu
+:A UIDL Visual Builder Anchor Menu
+:D UVB Anchor
+:K (BEGIN+begin)
+:K ((static+trnsient)*SIMPLOFF*REDUCED*MODESUP)
+NeverSeen
+:E END
+:! 
+:N Men_UVBA_Solu_T1
+:S    183,   166,    10
+:T Menu
+:A UIDL Visual Builder Anchor Menu
+:D UVB Anchor
+:K (BEGIN+begin)
+:K ((static+trnsient)*SIMPLOFF*REDUCED*MODESUP)
+NeverSeen
+:E END
+:! 
+:N Men_UVBA_Solu_T2
+:S    183,   166,    10
+:T Menu
+:A UIDL Visual Builder Anchor Menu
+:D UVB Anchor
+:K (BEGIN+begin)
+:K ((static+trnsient)*SIMPLOFF*REDUCED*MODESUP)
+NeverSeen
+:E END
+:! 
+:N Men_UVBA_Solu_T3
+:S    183,   166,    10
+:T Menu
+:A UIDL Visual Builder Anchor Menu
+:D UVB Anchor
+:K (BEGIN+begin)
+:K ((static+trnsient)*SIMPLOFF*REDUCED*MODESUP)
+NeverSeen
+:E END
+:! 
+:N Men_VEOR
+:S    150,    90,    53
+:T Menu
+:A Volume Brick Orient
+:D Volume Brick Orient
+Fnc_VEORth
+Fnc_VEORk
+Fnc_VEORl
+Fnc_VEORa
+Fnc_VEORdel
+:E END
+:! 
+:N Men_VectFluxN
+:S    154,   112,    35
+:T MENU
+:A Flux Normal 
+:D Flux Normal
+:K ((VECTORP+edgeflx)*NOFILTER)
+Fnc_DL_aN_na
+Fnc_DA_aN
+Fnc_DSYM_aN
+:E END
+:! 
+:N Men_VectFluxP
+:S    151,   109,    35
+:T MENU
+:A Flux Par'l
+:D Flux Par'l
+:K ((VECTORP+edgeflx)*NOFILTER)
+Fnc_DL_aP_na
+Fnc_DA_aP
+Fnc_DSYM_aP
+:E END
+:! 
+:N Men_dDYNROT
+:S    190,   158,    25
+:T Menu
+:A Rotated Nodal
+:D Delete Rotated Nodal Displacements
+:K ((PR_STRUC*pr_set)+(LSDYNA))
+:K #(STRUCTRL*NOFILTER)
+Fnc_adDYNROT
+Fnc_dDYNROT
+:E END
+:! 
+:N Men_p26Emag
+:S    156,   125,    24
+:T Menu
+:A Elec&Mag
+:K (lsdyna)
+:K (lsdyna)
+:K #(POST26+(MAGNETIC*CIRC))
+:P (ELECMAG)
+Men_P26Circ
+Fnc_PMGTRAN
+:E End
+:! 
+:N Men_p26Oper
+:S    287,    66,   214
+:T Menu
+:A Math Operations
+Fnc_ADD
+Fnc_PROD
+Fnc_QUOT
+Sep_
+Fnc_ABS
+Fnc_SQRT
+Fnc_EXP
+Sep_
+Fnc_CLOG
+Fnc_NLOG
+Sep_
+Fnc_DERIV
+Fnc_INT1
+P_LN(LINPLUS*ELECMAG)
+Sep_
+Fnc_CONJUG
+Fnc_REAL_p26
+Fnc_IMAGIN
+Fnc_ATAN
+Sep_
+Fnc_LARGE
+Fnc_SMALL
+Sep_
+Fnc_CFACT
+:E END
+:! 
+:N Men_p26Settings
+:S    130,    63,    60
+:T Menu
+:A Settings
+Fnc_p26FileSet
+Fnc_p26DataSet
+Fnc_p26ListSet
+Fnc_p26GrphSet
+:E End
+:! 
+:N Men_p26Table
+:S    111,    68,    36
+:T Menu
+:A Table Operations
+Fnc_VGET
+Fnc_VPUT
+Sep_
+Fnc_FILL_p26
+:E End
+:! 
+:N MenuRoot
+:S    421,    76,   338
+:T Menu
+:A Main Menu
+:D ANSYS ROOT MENU
+Men_UVBA_Main_T1
+Men_UVBA_Main_T2
+Men_UVBA_Main_T3
+Fnc_Preferences
+Sep_
+Men_Preproc
+Men_Solution
+Men_GenlPost
+Men_TimePost
+K_LN(DROPTEST)
+Sep_
+K_LN(DROPTEST)
+Men_DropTest
+Sep_
+Men_ROM
+Men_ProbDesign
+Men_Aux12
+Sep_
+Fnc_UNDO
+Sep_
+Fnc_FINISH
+Men_FP-Power Island
+K_LN(UTILMENU)
+Men_UtilMenu
+Men_UVBA_Main_B1
+Men_UVBA_Main_B2
+Men_UVBA_Main_B3
+:E END
+:! 
+:X INDEX ADDED BY ANSYS 
+Fnc_MFMCC           1758
+Fnc_MFSCC           2330
+Fnc_MFSCC_Solu      2980
+Fnc_MFSET_KEY       3604
+Fnc_MFX_Ans_CFX     4067
+Men_AAOnComp        4638
+Men_AVOnComp        4994
+Men_Adamsc          5340
+Men_Add             5492
+Men_AdvSolOpt       5594
+Men_AnalyTyp        5733
+Men_Analysis        5965
+Men_AngAccel        6365
+Men_AngVeloc        6620
+Men_AppConvect      6900
+Men_AppDisplace     7194
+Men_AppElecExcit    7573
+Men_AppElecFlag     8166
+Men_AppElecPoten    8512
+Men_AppEmagTemp     9188
+Men_AppFSI          9494
+Men_AppFlPrsANS     9694
+Men_AppFlowANS      9863
+Men_AppFluidDisp   10003
+Men_AppFluidPres   10203
+Men_AppFluidVel    10369
+Men_AppForce       10536
+Men_AppHeatFlow    10786
+Men_AppHeatFlux    10949
+Men_AppHeatGen     11212
+Men_AppHeatGenAN   11465
+Men_AppHeatGenCF   11669
+Men_AppImpedance   11866
+Men_AppLoadVect    12062
+Men_AppMagExcit    12278
+Men_AppMagFlag     12662
+Men_AppMagMisc     12928
+Men_AppMagPoten    13321
+Men_AppNormVel     13718
+Men_AppOtherStru   13876
+Men_AppPressure    14208
+Men_AppRad         14514
+Men_AppRad_old     14759
+Men_AppRadiSF      15002
+Men_AppSpecies     15245
+Men_AppSpectrum    15393
+Men_AppStruInert   15764
+Men_AppStruTemp    16161
+Men_AppTemp        16473
+Men_AppTurb        16737
+Men_AppVolFracCF   16885
+Men_ApplyBodFor    17045
+Men_ApplyFSI       17269
+Men_ApplyFVIN      17551
+Men_ApplyLoads     17677
+Men_Arb_Area       17964
+Men_Arb_Volume     18100
+Men_Arc            18221
+Men_Archive        18347
+Men_Aux12          18462
+Men_BEAM_endr      18899
+Men_Beam_Custom    19016
+Men_Beam_Taper     19164
+Men_Block          19295
+Men_CMS            19411
+Men_CheckCtrl      19667
+Men_Check_geom     19824
+Men_Check_mesh     20005
+Men_ChkElmShape    20193
+Men_CirR3          20328
+Men_CirR3_copy     20480
+Men_CirR4          20637
+Men_CirR4_copy     20789
+Men_Circle         20946
+Men_Circuit        21099
+Men_Circuit_E      21453
+Men_Circuit_M      21803
+Men_Circuit_P      22082
+Men_Circuit_ROM    22371
+Men_Circuit_T      22507
+Men_Clear          22679
+Men_CntcSurf       22815
+Men_Cone           24576
+Men_Contact_Cont   24679
+Men_Copy           24935
+Men_Correlation    25168
+Men_CoupCeqn       25348
+Men_CrePath        25728
+Men_Create52       25934
+Men_Create53       26588
+Men_CycPhase       27100
+Men_Cylinder       27323
+Men_DMPEXT         27484
+Men_DYNAPREP       27619
+Men_DYNASOLU       27900
+Men_DYNA_ALE       28129
+Men_DYNA_Accel     28299
+Men_DYNA_AdptMsh   28444
+Men_DYNA_Cnstr     28635
+Men_DYNA_Curve     28784
+Men_DYNA_EDTER     28991
+Men_DYNA_Files     29164
+Men_DYNA_Hgl       29312
+Men_DYNA_IParts    29465
+Men_DYNA_OutCtrl   29660
+Men_DYNA_Read      29889
+Men_DYNA_RstHt     30048
+Men_DYNA_TimeCon   30226
+Men_DYNA_Veloc     30434
+Men_DYNA_dBND      30710
+Men_DYNA_dEDNB     30909
+Men_DYNA_dLoad     31109
+Men_DYNDelDisp     31253
+Men_DYNapplyDisp   31496
+Men_DecOpt         31842
+Men_Default_Cont   31952
+Men_DefineLoads    32286
+Men_Degen          32491
+Men_Degen_copy     32636
+Men_DelAllLoads    32786
+Men_DelAngAccel    33354
+Men_DelAngVeloc    33623
+Men_DelConvect     33886
+Men_DelDisplace    34125
+Men_DelElecExcit   34373
+Men_DelElecFlag    35025
+Men_DelElecPoten   35410
+Men_DelEmagTemp    36006
+Men_DelFSI         36295
+Men_DelFlPrsANS    36494
+Men_DelFlowANS     36679
+Men_DelFluidDisp   36827
+Men_DelFluidPres   37037
+Men_DelFluidVel    37219
+Men_DelForce       37412
+Men_DelHeatFlow    37628
+Men_DelHeatFlux    37800
+Men_DelHeatGen     38038
+Men_DelHeatGenAN   38273
+Men_DelHeatGenCF   38447
+Men_DelImpedance   38634
+Men_DelLoadVect    38846
+Men_DelMagExcit    39066
+Men_DelMagFlag     39439
+Men_DelMagMisc     39744
+Men_DelMagPoten    40139
+Men_DelNormVel     40500
+Men_DelOtherStru   40662
+Men_DelPressure    40984
+Men_DelRad         41241
+Men_DelRadiSF      41499
+Men_DelSpecies     41763
+Men_DelSpectrum    41923
+Men_DelStruInert   42335
+Men_DelStruTemp    42697
+Men_DelTemp        43001
+Men_DelTurb        43231
+Men_DelVolFracCF   43391
+Men_Delete         43553
+Men_DeleteLoads    43863
+Men_Diagnostics    44150
+Men_Divide         44253
+Men_Divide_opt     44529
+Men_DropTest       44809
+Men_DtTimeHist     44963
+Men_ELBOW_endr     45112
+Men_EMASOLV        45234
+Men_ENDRELEASE     45859
+Men_ESURFM         45981
+Men_ElecApply      46165
+Men_ElecDelete     46419
+Men_ElemPSMESH     46638
+Men_ElemTable      46810
+Men_ElemType       47067
+Men_Elements       47227
+Men_ExpPass        47694
+Men_Extrude        47966
+Men_FLUIDDelete    48188
+Men_FP-Power Isl      88
+Men_FSI            48455
+Men_FSIDelete      48650
+Men_FVINDelete     48950
+Men_FailCriteria   49081
+Men_FailureCrit    49300
+Men_Fatigue        49518
+Men_File_Control   49888
+Men_FluidApply     50096
+Men_FluxNorma      50355
+Men_FluxPMVP       50501
+Men_GapCond        50651
+Men_GenlPost       50875
+Men_Glue           52252
+Men_HARDPTA        52359
+Men_HARDPTA53      52487
+Men_HARDPTL        52607
+Men_HARDPTL53      52733
+Men_HPT_54         52851
+Men_InitialCond    52966
+Men_Intersect      53210
+Men_J-Normal-T     53408
+Men_J-Normal1      53622
+Men_KCEN           53866
+Men_Keypoint       53982
+Men_Lay-up         54163
+Men_Line           54275
+Men_ListResults    54454
+Men_LoadCase       55021
+Men_LoadSettings   55381
+Men_LoadStepOpts   55695
+Men_Loads          56502
+Men_Loads1         56714
+Men_Local_CS       56979
+Men_MFMCC_Stagge   57130
+Men_MFSET          57278
+Men_MFSET_Solu     57495
+Men_MFS_Define     57722
+Men_MFS_MCCSetup   57851
+Men_MFS_SCCInter   57989
+Men_MFS_SCCSetup   58139
+Men_MFS_Stagger    58280
+Men_MFX_AC_Advan   58422
+Men_MFX_AC_Inter   58593
+Men_MODCOM_dd      58716
+Men_MODCOM_mp      58910
+Men_MODCOM_sp      59108
+Men_MP_Library     59306
+Men_MP_Library_c   59484
+Men_MagApply       59667
+Men_MagCalcs       59882
+Men_MagDelete      60328
+Men_MagLSOpts      60558
+Men_ManSizeAreas   60865
+Men_ManSizeGloba   60986
+Men_ManSizeKeypo   61113
+Men_ManSizeLayer   61246
+Men_ManSizeLines   61361
+Men_MapMshA        61504
+Men_MapMshV        61691
+Men_MapNewMesh     61890
+Men_MasterDOF      62021
+Men_MatProp_solu   62361
+Men_Mat_TB         62720
+Men_Mat_mooney     62916
+Men_Mat_mooney_c   63197
+Men_Material       63483
+Men_Materials        383
+Men_Mesh           63800
+Men_MeshAttrib     64374
+Men_MeshConcat     64610
+Men_Meshing        64775
+Men_Model_Mesh       795
+Men_Modeling       64960
+Men_Modelss          591
+Men_Modify         65178
+Men_Move           65485
+Men_MultiPhys      65971
+Men_My_Results       991
+Men_My_displacem    1438
+Men_My_stress_re    1203
+Men_NodalCalcs     66225
+Men_Nodes          66460
+Men_NonlinLSOpts   66927
+Men_NumCtrl        67996
+Men_OperLoads      68210
+Men_Operate52      68501
+Men_Operate53      68765
+Men_OtherLSOpts    69023
+Men_OutputCtrls    69375
+Men_Overlap        69650
+Men_P26Circ        69769
+Men_PATHDELETE     69866
+Men_PATH_ARC       70016
+Men_PD_Execute     70212
+Men_PPATH          70404
+Men_PPATH_P7       70643
+Men_PSMESH_opt     70862
+Men_PSMESH_opt_c   71126
+Men_Partition      71395
+Men_PathOper       71514
+Men_PiezoMatrice   72103
+Men_Plasticity     72235
+Men_PlotResults    72438
+Men_Polygon        73161
+Men_PostCyc        73385
+Men_PrepCyc        73520
+Men_Preproc        73979
+Men_Prism          74694
+Men_ProbDesign     74905
+Men_Properties     75573
+Men_QuerResults    75877
+Men_ROM            76017
+Men_ROM_Oper       76448
+Men_ROM_Tool       76586
+Men_Radiosity      76705
+Men_Real           76891
+Men_Real_copy      77028
+Men_RebarDisplay   77170
+Men_Rectangle      77313
+Men_Reflect        77437
+Men_Reorder        77622
+Men_Report         77842
+Men_ReverseNorm    77955
+Men_Rigid_Deform   78095
+Men_RomAddCap      78259
+Men_RomCapacitan   78401
+Men_RomMasterNod   78548
+Men_RotResults     78686
+Men_SE_Managemen   78898
+Men_SUCALC_op      79030
+Men_SUCR_extr      79484
+Men_SUCR_sphre     79604
+Men_SWADD          79721
+Men_SWGEN          79848
+Men_SafetyFact     79969
+Men_Scale          80237
+Men_Section_Defs   80416
+Men_Section_Libr   81643
+Men_SectionsPSME   81770
+Men_SizeCntrl      81951
+Men_Sol_ThinFilm   82503
+Men_Solu_Load      82640
+Men_Solution       82916
+Men_SpectrumOpts   85807
+Men_Sphere         86323
+Men_Spline         86464
+Men_Spline_opt     86600
+Men_Spotweld       86736
+Men_Statistics     86905
+Men_StrucApply     87071
+Men_StrucDelete    87388
+Men_Submodel       87685
+Men_Subtract       87822
+Men_Subtract_opt   87957
+Men_Sum            88100
+Men_SurfOper       88242
+Men_Surf_Mesh      88634
+Men_SymmetryOpti   88763
+Men_TetImprove     88935
+Men_ThermApply     89046
+Men_ThermDelete    89309
+Men_ThinFilm_Ope   89596
+Men_TimeFreq       89750
+Men_TimePost       90186
+Men_TimintChoice   90787
+Men_ToBeDone       91004
+Men_To_Be_Done     91106
+Men_To_Surf_Norm   91227
+Men_Transduc       91357
+Men_Transfer_Coo   91475
+Men_Trends         91634
+Men_UVBA_Main_B1   91764
+Men_UVBA_Main_B2   91903
+Men_UVBA_Main_B3   92042
+Men_UVBA_Main_T1   92181
+Men_UVBA_Main_T2   92320
+Men_UVBA_Main_T3   92459
+Men_UVBA_P1_B1     92598
+Men_UVBA_P1_B2     92735
+Men_UVBA_P1_B3     92872
+Men_UVBA_P1_T1     93009
+Men_UVBA_P1_T2     93146
+Men_UVBA_P1_T3     93283
+Men_UVBA_P26_B1    93420
+Men_UVBA_P26_B2    93558
+Men_UVBA_P26_B3    93696
+Men_UVBA_P26_T1    93834
+Men_UVBA_P26_T2    93972
+Men_UVBA_P26_T3    94110
+Men_UVBA_P7_B1     94248
+Men_UVBA_P7_B2     94385
+Men_UVBA_P7_B3     94522
+Men_UVBA_P7_T1     94659
+Men_UVBA_P7_T2     94796
+Men_UVBA_P7_T3     94933
+Men_UVBA_Solu_B1   95070
+Men_UVBA_Solu_B2   95257
+Men_UVBA_Solu_B3   95444
+Men_UVBA_Solu_T1   95631
+Men_UVBA_Solu_T2   95818
+Men_UVBA_Solu_T3   96005
+Men_VEOR           96192
+Men_VectFluxN      96346
+Men_VectFluxP      96504
+Men_dDYNROT        96659
+Men_p26Emag        96853
+Men_p26Oper        97013
+Men_p26Settings    97304
+Men_p26Table       97438
+MenuRoot           97553
+Men_p26Settings    97963
+Men_p26Table       98097
+MenuRoot           98212
+Men_p26Settings    98689
+Men_p26Table       98823
+MenuRoot           98938

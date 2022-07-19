@@ -1,0 +1,13 @@
+*Abb,K-ON,/pnum,kp,1
+*Abb,K-OFF,/pnum,kp,0
+*Abb,L-ON,/pnum,line,1
+*Abb,L-OFF,/pnum,line,0
+*Abb,A-ON,/pnum,area,1
+*Abb,A-OFF,/pnum,area,0
+*Abb,V-ON,/pnum,volu,1
+*Abb,V-OFF,/pnum,volu,0
+*Abb,N-ON,/pnum,node,1
+*Abb,N-OFF,/pnum,node,0
+*Abb,E-ON,/pnum,elem,1
+*Abb,E-OFF,/pnum,elem,0
+*abb,RETURN,abbres,,GJ_1_v3.0,abbr
